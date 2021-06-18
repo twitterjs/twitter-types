@@ -1,0 +1,44 @@
+{
+  "name": "twitter-types",
+  "version": "0.0.1",
+  "description": "Type definitions for Twitter API",
+  "main": "./dist/default/index.js",
+  "types": "./dist/default/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "docs": "typedoc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twitterjs/twitter-types.git"
+  },
+  "keywords": [
+    "Twitter",
+    "TypeScript",
+    "twitter.js",
+    "api",
+    "types",
+    "twitter-api",
+    "node.js"
+  ],
+  "author": "Shubham Parihar <shubhamparihar391@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/twitterjs/twitter-types/issues"
+  },
+  "homepage": "https://github.com/twitterjs/twitter-types#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.1",
+    "typedoc": "^0.21.0",
+    "typescript": "^4.3.4"
+  },
+  "type": "module",
+  "files": [
+    "/dist"
+  ]
+}

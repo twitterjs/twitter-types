@@ -1,0 +1,12 @@
+{
+  "name": "twitter-types",
+  "out": "docs",
+  "theme": "minimal",
+  "exclude": [
+    "node_modules/**",
+    "dist/**"
+  ],
+  "entryPoints": [
+    "default/index.ts"
+  ]
+}
