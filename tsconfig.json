@@ -3,9 +3,9 @@
   "compilerOptions": {
     "alwaysStrict": true,
     "lib": [
-      "ES2020"
+      "ESNext",
     ],
-    "module": "ES2020",
+    "module": "ESNext",
     "noUnusedParameters": true,
     "sourceMap": true,
     "declaration": true,
@@ -18,10 +18,10 @@
     "preserveConstEnums": true,
     "outDir": "dist",
     "watch": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
   },
   "include": [
     "v*/**/*",
-    "default/**/*"
-  ]
+    "default/**/*",
+  ],
 }
