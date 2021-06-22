@@ -1,3 +1,6 @@
+/**
+ * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user
+ */
 export interface UserObject {
   /**
    * The unique identifier of the user
@@ -30,7 +33,7 @@ export interface UserObject {
   /**
    * Contains details about text that has a special meaning in the user's description
    */
-  entities?: any;
+  entities?: any; // TODO
 
   /**
    * The location specified in the user's profile, if the user provided one. As this is a freeform value,
@@ -57,7 +60,7 @@ export interface UserObject {
   /**
    * Contains details about activity for this user
    */
-  public_metrics?: any;
+  public_metrics?: any; // TODO
 
   /**
    * The URL specified in the user's profile, if present
@@ -72,5 +75,5 @@ export interface UserObject {
   /**
    * Contains withholding details for withheld content, if applicable
    */
-  withheld?: any;
+  withheld?: any; // TODO
 }
