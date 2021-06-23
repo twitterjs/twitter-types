@@ -1,7 +1,7 @@
 /**
  * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user
  */
-export interface UserObject {
+export interface APIUserObject {
   /**
    * The unique identifier of the user
    */

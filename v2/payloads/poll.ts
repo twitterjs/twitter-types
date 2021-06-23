@@ -1,7 +1,7 @@
 /**
  * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/poll
  */
-export interface PollObject {
+export interface APIPollObject {
   /**
    * The unique identifier of the poll
    */

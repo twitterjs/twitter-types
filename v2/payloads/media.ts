@@ -1,7 +1,7 @@
 /**
  * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/media
  */
-export interface MediaObject {
+export interface APIMediaObject {
   /**
    * The unique identifier of the expanded media content
    */
@@ -10,7 +10,7 @@ export interface MediaObject {
   /**
    * The type of the content
    */
-  type: MediaType;
+  type: APIMediaType;
 
   /**
    * The duration of the content in milliseconds if it is a video
@@ -56,4 +56,4 @@ export interface MediaObject {
   width?: number;
 }
 
-export type MediaType = 'animated_gif' | 'photo' | 'video';
+export type APIMediaType = 'animated_gif' | 'photo' | 'video';

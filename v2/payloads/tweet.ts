@@ -1,7 +1,7 @@
 /**
  * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet
  */
-export interface TweetObject {
+export interface APITweetObject {
   /**
    * The unique identifier of the requested Tweet
    */
@@ -62,13 +62,13 @@ export interface TweetObject {
    * Non-public engagement metrics for the Tweet at the time of the request.
    * Requires user context authentication
    */
-  non_public_metrics?: any; // TODO
+  non_public_metrics?: APINonPublicMetrics;
 
   /**
    * Engagement metrics tracked in an organic context for the Tweet at the time of the request.
    * Requires user context authentication
    */
-  organic_metrics?: any; // TODO
+  organic_metrics?: APIOrganicMetrics;
 
   /**
    * This field only surfaces when a Tweet contains a link. The meaning of the field doesn’t pertain
@@ -86,7 +86,7 @@ export interface TweetObject {
   /**
    * Public engagement metrics for the Tweet at the time of the request
    */
-  public_metrics?: any; // TODO
+  public_metrics?: APIPublicMetrics;
 
   /**
    * A list of Tweets this Tweet refers to. It will also include the related Tweet referenced to by its parent
@@ -96,7 +96,7 @@ export interface TweetObject {
   /**
    * Shows who can reply to the Tweet
    */
-  reply_settings?: ReplySettings;
+  reply_settings?: APIReplySettings;
 
   /**
    * The name of the app the user Tweeted from
@@ -111,4 +111,35 @@ export interface TweetObject {
   withheld?: any;
 }
 
-export type ReplySettings = 'everyone' | 'mentioned_users' | 'followers';
+export interface APINonPublicMetrics {
+  impression_count: number;
+  url_link_clicks?: number;
+  user_profile_clicks: number;
+}
+
+export interface APIOrganicMetrics {
+  impression_count: number;
+  like_count: number;
+  reply_count: number;
+  retweet_count: number;
+  url_link_clicks?: number;
+  user_profile_clicks: number;
+}
+
+export interface APIPromotedMetrics {
+  impression_count: number;
+  like_count: number;
+  reply_count: number;
+  retweet_count: number;
+  url_link_clicks?: number;
+  user_profile_clicks: number;
+}
+
+export interface APIPublicMetrics {
+  retweet_count: number;
+  reply_count: number;
+  like_count: number;
+  quote_count: number;
+}
+
+export type APIReplySettings = 'everyone' | 'mentioned_users' | 'followers';
