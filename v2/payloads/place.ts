@@ -15,7 +15,7 @@ export interface APIPlaceObject {
   /**
    * The identifiers of known places that contain this place
    */
-  contained_within?: Array<any>;
+  contained_within?: Array<any>; // TODO
 
   /**
    * The full-length name of the country this place belongs to

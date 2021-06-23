@@ -40,7 +40,7 @@ export interface APITweetObject {
   /**
    * The entities which have been parsed out of the text of the Tweet
    */
-  entities?: any; // TODO
+  entities?: APITweetEntities;
 
   /**
    * The details about the location tagged by the user in the Tweet, if they specified one
@@ -62,13 +62,13 @@ export interface APITweetObject {
    * Non-public engagement metrics for the Tweet at the time of the request.
    * Requires user context authentication
    */
-  non_public_metrics?: APINonPublicMetrics;
+  non_public_metrics?: APITweetNonPublicMetrics;
 
   /**
    * Engagement metrics tracked in an organic context for the Tweet at the time of the request.
    * Requires user context authentication
    */
-  organic_metrics?: APIOrganicMetrics;
+  organic_metrics?: APITweetOrganicMetrics;
 
   /**
    * This field only surfaces when a Tweet contains a link. The meaning of the field doesn’t pertain
@@ -86,17 +86,17 @@ export interface APITweetObject {
   /**
    * Public engagement metrics for the Tweet at the time of the request
    */
-  public_metrics?: APIPublicMetrics;
+  public_metrics?: APITweetPublicMetrics;
 
   /**
    * A list of Tweets this Tweet refers to. It will also include the related Tweet referenced to by its parent
    */
-  referenced_tweets?: Array<any>;
+  referenced_tweets?: Array<any>; // TODO
 
   /**
    * Shows who can reply to the Tweet
    */
-  reply_settings?: APIReplySettings;
+  reply_settings?: APITweetReplySettings;
 
   /**
    * The name of the app the user Tweeted from
@@ -108,16 +108,50 @@ export interface APITweetObject {
    *
    * See https://help.twitter.com/en/rules-and-policies/tweet-withheld-by-country
    */
-  withheld?: any;
+  withheld?: any; // TODO
 }
 
-export interface APINonPublicMetrics {
+export interface APITweetAnnotationEntity {
+  start: number;
+  end: number;
+  probability: number;
+  type: string;
+  normalized_text: string;
+}
+
+export interface APIBaseTweetEntity {
+  start: number;
+  end: number;
+  tag: string;
+}
+
+export interface APITweetURLEntity {
+  start: number;
+  end: number;
+  url: string;
+  expanded_url: string;
+  display_url: string;
+  status: string;
+  title: string;
+  description: string;
+  unwound_url: string;
+}
+
+export interface APITweetEntities {
+  annotations?: Array<APITweetAnnotationEntity>;
+  cashtags?: Array<APIBaseTweetEntity>;
+  hashtags?: Array<APIBaseTweetEntity>;
+  mentions?: Array<APIBaseTweetEntity>;
+  urls?: Array<APITweetURLEntity>;
+}
+
+export interface APITweetNonPublicMetrics {
   impression_count: number;
   url_link_clicks?: number;
   user_profile_clicks: number;
 }
 
-export interface APIOrganicMetrics {
+export interface APITweetOrganicMetrics {
   impression_count: number;
   like_count: number;
   reply_count: number;
@@ -126,7 +160,7 @@ export interface APIOrganicMetrics {
   user_profile_clicks: number;
 }
 
-export interface APIPromotedMetrics {
+export interface APITweetPromotedMetrics {
   impression_count: number;
   like_count: number;
   reply_count: number;
@@ -135,11 +169,11 @@ export interface APIPromotedMetrics {
   user_profile_clicks: number;
 }
 
-export interface APIPublicMetrics {
+export interface APITweetPublicMetrics {
   retweet_count: number;
   reply_count: number;
   like_count: number;
   quote_count: number;
 }
 
-export type APIReplySettings = 'everyone' | 'mentioned_users' | 'followers';
+export type APITweetReplySettings = 'everyone' | 'mentioned_users' | 'followers';
