@@ -15,7 +15,7 @@ export interface APITweetObject {
   /**
    * The type of attachments (if any) present in the Tweet
    */
-  attachments?: any; // TODO
+  attachments?: APITweetAttachments;
 
   /**
    * The unique identifier of the User who posted the Tweet
@@ -25,7 +25,7 @@ export interface APITweetObject {
   /**
    * Contains context annotations for the Tweet
    */
-  context_annotations?: Array<any>; // TODO
+  context_annotations?: Array<APITweetContextAnnotation>;
 
   /**
    * The ID of the original Tweet of the conversation (which includes direct replies, replies of replies)
@@ -45,7 +45,7 @@ export interface APITweetObject {
   /**
    * The details about the location tagged by the user in the Tweet, if they specified one
    */
-  geo?: any; // TODO
+  geo?: APITweetGeo;
 
   /**
    * If the Tweet is a reply, this field will contain the original Tweet’s author ID.
@@ -81,7 +81,7 @@ export interface APITweetObject {
    * Engagement metrics tracked in a promoted context for the Tweet at the time of the request.
    * Requires user context authentication
    */
-  promoted_metrics?: any; // TODO
+  promoted_metrics?: APITweetPromotedMetrics;
 
   /**
    * Public engagement metrics for the Tweet at the time of the request
@@ -91,7 +91,7 @@ export interface APITweetObject {
   /**
    * A list of Tweets this Tweet refers to. It will also include the related Tweet referenced to by its parent
    */
-  referenced_tweets?: Array<any>; // TODO
+  referenced_tweets?: Array<APITweetReferencedTweet>;
 
   /**
    * Shows who can reply to the Tweet
@@ -119,30 +119,63 @@ export interface APITweetAnnotationEntity {
   normalized_text: string;
 }
 
-export interface APIBaseTweetEntity {
+export interface APITweetAttachments {
+  media_keys: Array<string>;
+  poll_ids: Array<string>;
+}
+
+export interface APITweetCashtagEntity {
   start: number;
   end: number;
   tag: string;
 }
 
-export interface APITweetURLEntity {
-  start: number;
-  end: number;
-  url: string;
-  expanded_url: string;
-  display_url: string;
-  status: string;
-  title: string;
+export interface APITweetContextAnnotation {
+  domain: APITweetContextAnnotationDomain;
+  entity: APITweetContextAnnotationEntity;
+}
+
+export interface APITweetContextAnnotationDomain {
+  id: string;
+  name: string;
   description: string;
-  unwound_url: string;
+}
+
+export interface APITweetContextAnnotationEntity {
+  id: string;
+  name: string;
+  description: string;
 }
 
 export interface APITweetEntities {
   annotations?: Array<APITweetAnnotationEntity>;
-  cashtags?: Array<APIBaseTweetEntity>;
-  hashtags?: Array<APIBaseTweetEntity>;
-  mentions?: Array<APIBaseTweetEntity>;
+  cashtags?: Array<APITweetCashtagEntity>;
+  hashtags?: Array<APITweetHashtagEntity>;
+  mentions?: Array<APITweetMentionEntity>;
   urls?: Array<APITweetURLEntity>;
+}
+
+export interface APITweetGeo {
+  coordinates?: APITweetGeoCoordinates;
+  place_id: string;
+}
+
+export interface APITweetGeoCoordinates {
+  type: 'Point';
+  coordinates: [number, number] | null;
+}
+
+export interface APITweetHashtagEntity {
+  start: number;
+  end: number;
+  tag: string;
+}
+
+export interface APITweetMentionEntity {
+  start: number;
+  end: number;
+  username: string;
+  id: string;
 }
 
 export interface APITweetNonPublicMetrics {
@@ -177,3 +210,22 @@ export interface APITweetPublicMetrics {
 }
 
 export type APITweetReplySettings = 'everyone' | 'mentioned_users' | 'followers';
+
+export interface APITweetReferencedTweet {
+  type: APITweetReferencedTweetType;
+  id: string;
+}
+
+export type APITweetReferencedTweetType = 'retweeted' | 'quoted' | 'replied_to';
+
+export interface APITweetURLEntity {
+  start: number;
+  end: number;
+  url: string;
+  expanded_url: string;
+  display_url: string;
+  status: string;
+  title: string;
+  description: string;
+  unwound_url: string;
+}

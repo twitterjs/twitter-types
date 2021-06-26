@@ -33,7 +33,7 @@ export interface APIUserObject {
   /**
    * Contains details about text that has a special meaning in the user's description
    */
-  entities?: any; // TODO
+  entities?: APIUserEntities;
 
   /**
    * The location specified in the user's profile, if the user provided one. As this is a freeform value,
@@ -60,7 +60,7 @@ export interface APIUserObject {
   /**
    * Contains details about activity for this user
    */
-  public_metrics?: any; // TODO
+  public_metrics?: APIUserPublicMetrics;
 
   /**
    * The URL specified in the user's profile, if present
@@ -76,4 +76,26 @@ export interface APIUserObject {
    * Contains withholding details for withheld content, if applicable
    */
   withheld?: any; // TODO
+}
+
+export interface APIUserEntities {
+  url: APIUserEntitiesURL;
+  description: any; // TODO
+}
+
+export interface APIUserEntitiesURL {
+  urls: Array<{
+    start: number;
+    end: number;
+    url: string;
+    expanded_url: string;
+    display_url: string;
+  }>;
+}
+
+export interface APIUserPublicMetrics {
+  followers_count: number;
+  following_count: number;
+  tweet_count: number;
+  listed_count: number;
 }

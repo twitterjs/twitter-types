@@ -6,20 +6,20 @@ import type { APIMediaObject, APIPlaceObject, APIPollObject, APITweetObject, API
  * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
  */
 export interface GetSingleTweetByIdQuery {
-  expansions?: Array<TweetExpansion>;
+  expansions?: Array<APITweetExpansion>;
 
-  'media.fields'?: Array<MediaField>;
+  'media.fields'?: Array<APIMediaField>;
 
-  'place.fields'?: Array<PlaceField>;
+  'place.fields'?: Array<APIPlaceField>;
 
-  'poll.fields'?: Array<PollField>;
+  'poll.fields'?: Array<APIPollField>;
 
-  'tweet.fields'?: Array<TweetField>;
+  'tweet.fields'?: Array<APITweetField>;
 
-  'user.fields'?: Array<UserField>;
+  'user.fields'?: Array<APIUserField>;
 }
 
-export type TweetExpansion =
+export type APITweetExpansion =
   | 'attachments.poll_ids'
   | 'attachments.media_keys'
   | 'author_id'
@@ -29,22 +29,22 @@ export type TweetExpansion =
   | 'referenced_tweets.id'
   | 'referenced_tweets.id.author_id';
 
-export type MediaField = keyof APIMediaObject;
+export type APIMediaField = keyof APIMediaObject;
 
-export type PlaceField = keyof APIPlaceObject;
+export type APIPlaceField = keyof APIPlaceObject;
 
-export type PollField = keyof APIPollObject;
+export type APIPollField = keyof APIPollObject;
 
-export type TweetField = keyof APITweetObject;
+export type APITweetField = keyof APITweetObject;
 
-export type UserField = keyof APIUserObject;
+export type APIUserField = keyof APIUserObject;
 
-export interface GetTweetByIdResponse {
+export interface GetSingleTweetByIdResponse {
   data: APITweetObject;
-  includes?: TweetIncludes;
+  includes?: APITweetIncludes;
 }
 
-export interface TweetIncludes {
+export interface APITweetIncludes {
   tweets?: Array<APITweetObject>;
   users?: Array<APIUserObject>;
   places?: Array<APIPlaceObject>;
@@ -66,5 +66,5 @@ export interface GetMultipleTweetsByIdsQuery extends GetSingleTweetByIdQuery {
 
 export interface GetMultipleTweetsByIdsResponse {
   data: Array<APITweetObject>;
-  includes?: TweetIncludes;
+  includes?: APITweetIncludes;
 }
