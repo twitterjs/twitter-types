@@ -111,22 +111,23 @@ export interface APITweetObject {
   withheld?: any; // TODO
 }
 
-export interface APITweetAnnotationEntity {
-  start: number;
-  end: number;
+export interface APITweetAnnotationEntity extends APITweetBaseEntity {
   probability: number;
   type: string;
   normalized_text: string;
 }
 
 export interface APITweetAttachments {
-  media_keys: Array<string>;
-  poll_ids: Array<string>;
+  media_keys?: Array<string>;
+  poll_ids?: Array<string>;
 }
 
-export interface APITweetCashtagEntity {
+export interface APITweetBaseEntity {
   start: number;
   end: number;
+}
+
+export interface APITweetCashtagEntity extends APITweetBaseEntity {
   tag: string;
 }
 
@@ -165,15 +166,11 @@ export interface APITweetGeoCoordinates {
   coordinates: [number, number] | null;
 }
 
-export interface APITweetHashtagEntity {
-  start: number;
-  end: number;
+export interface APITweetHashtagEntity extends APITweetBaseEntity {
   tag: string;
 }
 
-export interface APITweetMentionEntity {
-  start: number;
-  end: number;
+export interface APITweetMentionEntity extends APITweetBaseEntity {
   username: string;
   id: string;
 }
