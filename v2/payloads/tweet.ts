@@ -190,14 +190,7 @@ export interface APITweetOrganicMetrics {
   user_profile_clicks: number;
 }
 
-export interface APITweetPromotedMetrics {
-  impression_count: number;
-  like_count: number;
-  reply_count: number;
-  retweet_count: number;
-  url_link_clicks?: number;
-  user_profile_clicks: number;
-}
+export interface APITweetPromotedMetrics extends APITweetOrganicMetrics { }
 
 export interface APITweetPublicMetrics {
   retweet_count: number;
@@ -215,9 +208,7 @@ export interface APITweetReferencedTweet {
 
 export type APITweetReferencedTweetType = 'retweeted' | 'quoted' | 'replied_to';
 
-export interface APITweetURLEntity {
-  start: number;
-  end: number;
+export interface APITweetURLEntity extends APITweetBaseEntity {
   url: string;
   expanded_url: string;
   display_url: string;

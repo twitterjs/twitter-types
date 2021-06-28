@@ -78,19 +78,37 @@ export interface APIUserObject {
   withheld?: any; // TODO
 }
 
+export interface APIUserBaseEntity {
+  start: number;
+  end: number;
+}
+
+export interface APIUserCashtagEntity extends APIUserBaseEntity {
+  tag: string;
+}
+
 export interface APIUserEntities {
-  url: APIUserEntitiesURL;
-  description: any; // TODO
+  url?: APIUserEntitiesURL;
+  description?: APIUserEntitiesDescription;
+}
+
+export interface APIUserEntitiesDescription {
+  urls?: Array<APIUserURLEntity>;
+  hashtags?: Array<APIUserHashtagEntity>;
+  mentions?: Array<APIUserMentionEntity>;
+  cashtags?: Array<APIUserCashtagEntity>;
 }
 
 export interface APIUserEntitiesURL {
-  urls: Array<{
-    start: number;
-    end: number;
-    url: string;
-    expanded_url: string;
-    display_url: string;
-  }>;
+  urls: Array<APIUserURLEntity>;
+}
+
+export interface APIUserHashtagEntity extends APIUserBaseEntity {
+  tag: string;
+}
+
+export interface APIUserMentionEntity extends APIUserBaseEntity {
+  username: string;
 }
 
 export interface APIUserPublicMetrics {
@@ -98,4 +116,10 @@ export interface APIUserPublicMetrics {
   following_count: number;
   tweet_count: number;
   listed_count: number;
+}
+
+export interface APIUserURLEntity extends APIUserBaseEntity {
+  url: string;
+  expanded_url: string;
+  display_url: string;
 }
