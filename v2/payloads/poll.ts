@@ -10,7 +10,7 @@ export interface APIPollObject {
   /**
    * Contains objects describing each choice in the poll
    */
-  options: Array<APIPollOptions>;
+  options: Array<APIPollOption>;
 
   /**
    * The total duration of the poll
@@ -28,7 +28,7 @@ export interface APIPollObject {
   voting_status?: APIPollVotingStatus;
 }
 
-export interface APIPollOptions {
+export interface APIPollOption {
   position: number;
   label: string;
   votes: number;

@@ -47,7 +47,7 @@ export interface APIPlaceObject {
 export interface APIPlaceGeo {
   type: string; // TODO can be narrowed down to only supported `Feature` literal
   bbox: APIPlaceGeoBoundingBox;
-  properties: object; // TODO the shape of the object is not documented in docs as well as in the open api spec
+  properties: Record<string, unknown>; // TODO the shape of the object is not documented
 }
 
 export type APIPlaceGeoBoundingBox = [number, number, number, number];
