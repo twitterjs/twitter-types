@@ -15,7 +15,7 @@ export interface APIPlaceObject {
   /**
    * The identifiers of known places that contain this place
    */
-  contained_within?: Array<any>; // TODO
+  contained_within?: Array<string>;
 
   /**
    * The full-length name of the country this place belongs to
@@ -30,7 +30,7 @@ export interface APIPlaceObject {
   /**
    * Contains details about the place in `GeoJSON` format
    */
-  geo?: any; // TODO
+  geo?: APIPlaceGeo;
 
   /**
    * The short name of this place
@@ -41,5 +41,15 @@ export interface APIPlaceObject {
    * The particular type of information represented by this place information,
    * such as a city name, or a point of interest
    */
-  place_type?: string; // TODO this can be narrowed down to city/<something>??
+  place_type?: APIPlaceType;
 }
+
+export interface APIPlaceGeo {
+  type: string; // TODO can be narrowed down to only supported `Feature` literal
+  bbox: APIPlaceGeoBoundingBox;
+  properties: object; // TODO the shape of the object is not documented in docs as well as in the open api spec
+}
+
+export type APIPlaceGeoBoundingBox = [number, number, number, number];
+
+export type APIPlaceType = 'poi' | 'neighborhood' | 'city' | 'admin' | 'country' | 'unknown';

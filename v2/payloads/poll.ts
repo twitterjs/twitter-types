@@ -10,7 +10,7 @@ export interface APIPollObject {
   /**
    * Contains objects describing each choice in the poll
    */
-  options: Array<any>; // TODO
+  options: Array<APIPollOptions>;
 
   /**
    * The total duration of the poll
@@ -25,5 +25,13 @@ export interface APIPollObject {
   /**
    * Indicates if this poll is still active and can receive votes, or if the voting is now closed
    */
-  voting_status?: string; // TODO this can be narrowed down to open/closed??
+  voting_status?: APIPollVotingStatus;
 }
+
+export interface APIPollOptions {
+  position: number;
+  label: string;
+  votes: number;
+}
+
+export type APIPollVotingStatus = 'open' | 'closed';
