@@ -1,3 +1,4 @@
+import type { APIMediaField, APIPlaceField, APIPollField, APITweetField, APIUserField } from './misc';
 import type { APIMediaObject, APIPlaceObject, APIPollObject, APITweetObject, APIUserObject } from '../payloads/index';
 
 /**
@@ -28,16 +29,6 @@ export type APITweetExpansion =
   | 'in_reply_to_user_id'
   | 'referenced_tweets.id'
   | 'referenced_tweets.id.author_id';
-
-export type APIMediaField = keyof APIMediaObject;
-
-export type APIPlaceField = keyof APIPlaceObject;
-
-export type APIPollField = keyof APIPollObject;
-
-export type APITweetField = keyof APITweetObject;
-
-export type APIUserField = keyof APIUserObject;
 
 export interface GetSingleTweetByIdResponse {
   data: APITweetObject;
