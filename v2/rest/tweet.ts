@@ -32,10 +32,10 @@ export type APITweetExpansion =
 
 export interface GetSingleTweetByIdResponse {
   data: APITweetObject;
-  includes?: APITweetIncludes;
+  includes?: GetSingleTweetByIdResponseIncludes;
 }
 
-export interface APITweetIncludes {
+export interface GetSingleTweetByIdResponseIncludes {
   tweets?: Array<APITweetObject>;
   users?: Array<APIUserObject>;
   places?: Array<APIPlaceObject>;
@@ -57,5 +57,7 @@ export interface GetMultipleTweetsByIdsQuery extends GetSingleTweetByIdQuery {
 
 export interface GetMultipleTweetsByIdsResponse {
   data: Array<APITweetObject>;
-  includes?: APITweetIncludes;
+  includes?: GetMultipleTweetsByIdsResponseIncludes;
 }
+
+export interface GetMultipleTweetsByIdsResponseIncludes extends GetSingleTweetByIdResponseIncludes { }

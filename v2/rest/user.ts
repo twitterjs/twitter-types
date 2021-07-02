@@ -7,14 +7,14 @@ import type { APITweetField, APIUserField } from './misc';
  * https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-id
  */
 export interface GetSingleUserByIdQuery {
-  expansions?: Array<GetSingleUserByIdQueryExpansion>;
+  expansions?: Array<APIUserExpansion>;
 
   'tweet.fields'?: Array<APITweetField>;
 
   'user.fields'?: Array<APIUserField>;
 }
 
-export type GetSingleUserByIdQueryExpansion = 'pinned_tweet_id';
+export type APIUserExpansion = 'pinned_tweet_id';
 
 /**
  * The response for the request of fetching a single user by ID
