@@ -1,8 +1,26 @@
 import type { APIMediaField, APIPlaceField, APIPollField, APITweetField, APIUserField } from './misc';
 import type { APIMediaObject, APIPlaceObject, APIPollObject, APITweetObject, APIUserObject } from '../payloads/index';
 
+export type APITweetExpansion =
+  | 'attachments.poll_ids'
+  | 'attachments.media_keys'
+  | 'author_id'
+  | 'entities.mentions.username'
+  | 'geo.place_id'
+  | 'in_reply_to_user_id'
+  | 'referenced_tweets.id'
+  | 'referenced_tweets.id.author_id';
+
+export interface APITweetIncludes {
+  tweets?: Array<APITweetObject>;
+  users?: Array<APIUserObject>;
+  places?: Array<APIPlaceObject>;
+  media?: Array<APIMediaObject>;
+  polls?: Array<APIPollObject>;
+}
+
 /**
- * Returns a variety of information about a single Tweet specified by the requested ID
+ * The query for fetching a single tweet by ID
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
  */
@@ -20,44 +38,34 @@ export interface GetSingleTweetByIdQuery {
   'user.fields'?: Array<APIUserField>;
 }
 
-export type APITweetExpansion =
-  | 'attachments.poll_ids'
-  | 'attachments.media_keys'
-  | 'author_id'
-  | 'entities.mentions.username'
-  | 'geo.place_id'
-  | 'in_reply_to_user_id'
-  | 'referenced_tweets.id'
-  | 'referenced_tweets.id.author_id';
-
+/**
+ * The response for the request of fetching a single tweet by ID
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
+ */
 export interface GetSingleTweetByIdResponse {
   data: APITweetObject;
-  includes?: GetSingleTweetByIdResponseIncludes;
-}
-
-export interface GetSingleTweetByIdResponseIncludes {
-  tweets?: Array<APITweetObject>;
-  users?: Array<APIUserObject>;
-  places?: Array<APIPlaceObject>;
-  media?: Array<APIMediaObject>;
-  polls?: Array<APIPollObject>;
+  includes?: APITweetIncludes;
 }
 
 /**
- * Returns a variety of information about Tweets specified by the requested of IDs
+ * The query for fetching multiple tweets by IDs
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
  */
 export interface GetMultipleTweetsByIdsQuery extends GetSingleTweetByIdQuery {
   /**
-   * A comma separated list of Tweet IDs. Up to 100 are allowed in a single request
+   * A comma separated list of Tweet IDs. Up to `100` are allowed in a single request
    */
   ids: Array<string>;
 }
 
+/**
+ * The response for the request of fetching multiple tweets by IDs
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
+ */
 export interface GetMultipleTweetsByIdsResponse {
   data: Array<APITweetObject>;
-  includes?: GetMultipleTweetsByIdsResponseIncludes;
+  includes?: APITweetIncludes;
 }
-
-export interface GetMultipleTweetsByIdsResponseIncludes extends GetSingleTweetByIdResponseIncludes { }
