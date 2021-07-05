@@ -16,6 +16,7 @@ export interface APIGenericProblem extends APIProblemFields {
  */
 export interface APIInvalidRequestProblem extends APIProblemFields {
   type: string;
+  title: 'Invalid Request';
   errors: Array<APIInvalidRequestProblemErrors>;
 }
 
