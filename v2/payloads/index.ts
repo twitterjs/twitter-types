@@ -1,3 +1,4 @@
+export * from './error';
 export * from './media';
 export * from './place';
 export * from './poll';
