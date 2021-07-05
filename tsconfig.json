@@ -19,6 +19,7 @@
     "outDir": "dist",
     "watch": true,
     "moduleResolution": "Node",
+    "incremental": true,
   },
   "include": [
     "v*/**/*",
