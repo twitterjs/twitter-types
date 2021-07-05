@@ -1,4 +1,4 @@
-export interface ProblemFields {
+export interface APIProblemFields {
   title: string;
   detail: string;
 }
@@ -6,7 +6,7 @@ export interface ProblemFields {
 /**
  * A generic problem with no additional information beyond that provided by the HTTP status code
  */
-export interface GenericProblem extends ProblemFields {
+export interface APIGenericProblem extends APIProblemFields {
   type: string;
   status: number;
 }
@@ -14,12 +14,16 @@ export interface GenericProblem extends ProblemFields {
 /**
  * A problem that indicates the request is invalid
  */
-export interface InvalidRequestProblem extends ProblemFields {
+export interface APIInvalidRequestProblem extends APIProblemFields {
   type: string;
-  errors: Array<InvalidRequestProblemErrors>;
+  errors: Array<APIInvalidRequestProblemErrors>;
 }
 
-export interface InvalidRequestProblemErrors {
-  parameters: { additionalProperties: Array<string> }; // TODO
+export interface APIInvalidRequestProblemErrors {
+  parameters: APIInvalidRequestProblemErrorsParameters;
   message: string;
+}
+
+export interface APIInvalidRequestProblemErrorsParameters {
+  id: Array<string>;
 }
