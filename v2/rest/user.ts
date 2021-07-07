@@ -1,5 +1,5 @@
-import type { APITweetObject, APIUserObject } from '../payloads';
 import type { APITweetField, APIUserField } from './misc';
+import type { APITweetObject, APIUserObject, Snowflake } from '../payloads/index';
 
 export type APIUserExpansion = 'pinned_tweet_id';
 
@@ -40,7 +40,7 @@ export interface GetMultipleUsersByIdsQuery extends GetSingleUserByIdQuery {
    * Comma separated list of user IDs. Up to `100` are allowed in a single request.
    * Make sure to not include a space between commas and fields
    */
-  ids: Array<string>;
+  ids: Array<Snowflake>;
 }
 
 /**
@@ -58,6 +58,7 @@ export interface GetMultipleUsersByIdsResponse {
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by-username-username
  */
+// eslint-disable-next-line prettier/prettier
 export interface GetSingleUserByUsernameQuery extends GetSingleUserByIdQuery { }
 
 /**
@@ -65,6 +66,7 @@ export interface GetSingleUserByUsernameQuery extends GetSingleUserByIdQuery { }
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by-username-username
  */
+// eslint-disable-next-line prettier/prettier
 export interface GetSingleUserByUsernameResponse extends GetSingleUserByIdResponse { }
 
 /**

@@ -1,3 +1,5 @@
+import type { Snowflake } from './misc';
+
 /**
  * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet
  */
@@ -5,7 +7,7 @@ export interface APITweetObject {
   /**
    * The unique identifier of the requested Tweet
    */
-  id: string;
+  id: Snowflake;
 
   /**
    * The actual `UTF-8` text of the Tweet
@@ -20,7 +22,7 @@ export interface APITweetObject {
   /**
    * The unique identifier of the User who posted the Tweet
    */
-  author_id?: string;
+  author_id?: Snowflake;
 
   /**
    * Contains context annotations for the Tweet
@@ -30,7 +32,7 @@ export interface APITweetObject {
   /**
    * The ID of the original Tweet of the conversation (which includes direct replies, replies of replies)
    */
-  conversation_id?: string;
+  conversation_id?: Snowflake;
 
   /**
    * The `ISO 8601` creation time of the Tweet
@@ -51,7 +53,7 @@ export interface APITweetObject {
    * If the Tweet is a reply, this field will contain the original Tweet’s author ID.
    * This will not necessarily always be the user directly mentioned in the Tweet
    */
-  in_reply_to_user_id?: string;
+  in_reply_to_user_id?: Snowflake;
 
   /**
    * The language of the Tweet, if detected by Twitter. Returned as a `BCP47` language tag
@@ -172,7 +174,7 @@ export interface APITweetHashtagEntity extends APITweetBaseEntity {
 
 export interface APITweetMentionEntity extends APITweetBaseEntity {
   username: string;
-  id: string;
+  id: Snowflake;
 }
 
 export interface APITweetNonPublicMetrics {
@@ -190,6 +192,7 @@ export interface APITweetOrganicMetrics {
   user_profile_clicks: number;
 }
 
+// eslint-disable-next-line prettier/prettier
 export interface APITweetPromotedMetrics extends APITweetOrganicMetrics { }
 
 export interface APITweetPublicMetrics {
@@ -203,7 +206,7 @@ export type APITweetReplySettings = 'everyone' | 'mentioned_users' | 'followers'
 
 export interface APITweetReferencedTweet {
   type: APITweetReferencedTweetType;
-  id: string;
+  id: Snowflake;
 }
 
 export type APITweetReferencedTweetType = 'retweeted' | 'quoted' | 'replied_to';

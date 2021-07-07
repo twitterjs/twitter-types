@@ -1,3 +1,5 @@
+import type { Snowflake } from './misc';
+
 /**
  * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user
  */
@@ -5,7 +7,7 @@ export interface APIUserObject {
   /**
    * The unique identifier of the user
    */
-  id: string;
+  id: Snowflake;
 
   /**
    * The name of the user, as they’ve defined it on their profile. Not necessarily a person’s name.
@@ -45,7 +47,7 @@ export interface APIUserObject {
   /**
    * The unique identifier of this user's pinned Tweet
    */
-  pinned_tweet_id?: string;
+  pinned_tweet_id?: Snowflake;
 
   /**
    * The URL to the profile image for this user, as shown on the user's profile

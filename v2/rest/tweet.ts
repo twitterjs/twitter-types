@@ -1,5 +1,12 @@
 import type { APIMediaField, APIPlaceField, APIPollField, APITweetField, APIUserField } from './misc';
-import type { APIMediaObject, APIPlaceObject, APIPollObject, APITweetObject, APIUserObject } from '../payloads/index';
+import type {
+  APIMediaObject,
+  APIPlaceObject,
+  APIPollObject,
+  APITweetObject,
+  APIUserObject,
+  Snowflake,
+} from '../payloads/index';
 
 export type APITweetExpansion =
   | 'attachments.poll_ids'
@@ -57,7 +64,7 @@ export interface GetMultipleTweetsByIdsQuery extends GetSingleTweetByIdQuery {
   /**
    * A comma separated list of Tweet IDs. Up to `100` are allowed in a single request
    */
-  ids: Array<string>;
+  ids: Array<Snowflake>;
 }
 
 /**
