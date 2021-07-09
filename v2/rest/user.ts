@@ -91,3 +91,51 @@ export interface GetMultipleUsersByUsernamesResponse {
   data: Array<APIUserObject>;
   includes?: APIUserIncludes;
 }
+
+/**
+ * The body for following a user
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
+ */
+export interface PostFollowUserJSONBody {
+  /**
+   * The user ID of the user that you would like to follow
+   */
+  target_user_id: Snowflake;
+}
+
+/**
+ * The response of following a user
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
+ */
+export interface PostFollowUserResponse {
+  data: PostFollowUserResponseData;
+}
+
+export interface PostFollowUserResponseData {
+  /**
+   * Indicates whether the authorized user is following the specified user as a result of the request.
+   * This value is `false` if the target user does not have public Tweets, as they will have to approve
+   * the follow request
+   */
+  following: boolean;
+
+  /**
+   * Indicates whether the target user will need to approve the follow request. Note that the authenticated
+   * user will follow the target user only when they approve the incoming follow request
+   */
+  pending_follow: boolean;
+}
+
+export interface DeleteUnfollowUserResponse {
+  data: DeleteUnfollowUserResponseData;
+}
+
+export interface DeleteUnfollowUserResponseData {
+  /**
+   * Indicates whether the authorized user unfollowed the specified user as a result of the request.
+   * This value is `false` for a successful unfollow request
+   */
+  following: boolean;
+}
