@@ -188,3 +188,49 @@ export interface DeleteUserUnblockResponseData {
    */
   blocking: boolean;
 }
+
+/**
+ * The body for muting a user
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
+ */
+export interface PostUserMuteJSONBody {
+  /**
+   * The user ID of the user to mute
+   */
+  target_user_id: Snowflake;
+}
+
+/**
+ * The response of muting a user
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
+ */
+export interface PostUserMuteResponse {
+  data: PostUserMuteResponseData;
+}
+
+export interface PostUserMuteResponseData {
+  /**
+   * Indicates whether the authorized user is muting the specified user as a result of the request.
+   * This value is `true` for a successful mute request
+   */
+  muting: boolean;
+}
+
+/**
+ * The response of unmuting a user
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/delete-users-user_id-muting
+ */
+export interface DeleteUserUnmuteResponse {
+  data: DeleteUserUnmuteResponseData;
+}
+
+export interface DeleteUserUnmuteResponseData {
+  /**
+   * Indicates whether the authorized user is muting the specified user as a result of the request.
+   * This value is `false` for a successful unmute request
+   */
+  muting: boolean;
+}
