@@ -97,7 +97,7 @@ export interface GetMultipleUsersByUsernamesResponse {
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
  */
-export interface PostFollowUserJSONBody {
+export interface PostUserFollowJSONBody {
   /**
    * The user ID of the user that you would like to follow
    */
@@ -109,11 +109,11 @@ export interface PostFollowUserJSONBody {
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
  */
-export interface PostFollowUserResponse {
-  data: PostFollowUserResponseData;
+export interface PostUserFollowResponse {
+  data: PostUserFollowResponseData;
 }
 
-export interface PostFollowUserResponseData {
+export interface PostUserFollowResponseData {
   /**
    * Indicates whether the authorized user is following the specified user as a result of the request.
    * This value is `false` if the target user does not have public Tweets, as they will have to approve
@@ -128,11 +128,14 @@ export interface PostFollowUserResponseData {
   pending_follow: boolean;
 }
 
-export interface DeleteUnfollowUserResponse {
-  data: DeleteUnfollowUserResponseData;
+/**
+ * The response of unfollowing a user
+ */
+export interface DeleteUserUnfollowResponse {
+  data: DeleteUserUnfollowResponseData;
 }
 
-export interface DeleteUnfollowUserResponseData {
+export interface DeleteUserUnfollowResponseData {
   /**
    * Indicates whether the authorized user unfollowed the specified user as a result of the request.
    * This value is `false` for a successful unfollow request
@@ -145,7 +148,7 @@ export interface DeleteUnfollowUserResponseData {
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking
  */
-export interface PostBlockUserJSONBody {
+export interface PostUserBlockJSONBody {
   /**
    * The user ID of the user to block
    */
@@ -157,11 +160,11 @@ export interface PostBlockUserJSONBody {
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking
  */
-export interface PostBlockUserResponse {
-  data: PostBlockUserResponseData;
+export interface PostUserBlockResponse {
+  data: PostUserBlockResponseData;
 }
 
-export interface PostBlockUserResponseData {
+export interface PostUserBlockResponseData {
   /**
    * Indicates whether the authorized user is blocking the specified user as a result of the request.
    * This value is `true` for a successful block request
@@ -170,9 +173,15 @@ export interface PostBlockUserResponseData {
 }
 
 /**
+ * The response of unblocking a user
+ *
  * https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/delete-users-user_id-blocking
  */
-export interface DeleteUnblockUserResponseData {
+export interface DeleteUserUnblockResponse {
+  data: DeleteUserUnblockResponseData;
+}
+
+export interface DeleteUserUnblockResponseData {
   /**
    * Indicates whether the authorized user is blocking the specified user as a result of the request.
    * This value is `false` for a successful unblock request
