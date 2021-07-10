@@ -139,3 +139,43 @@ export interface DeleteUnfollowUserResponseData {
    */
   following: boolean;
 }
+
+/**
+ * The body for blocking a user
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking
+ */
+export interface PostBlockUserJSONBody {
+  /**
+   * The user ID of the user to block
+   */
+  target_user_id: Snowflake;
+}
+
+/**
+ * The response of blocking a user
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking
+ */
+export interface PostBlockUserResponse {
+  data: PostBlockUserResponseData;
+}
+
+export interface PostBlockUserResponseData {
+  /**
+   * Indicates whether the authorized user is blocking the specified user as a result of the request.
+   * This value is `true` for a successful block request
+   */
+  blocking: boolean;
+}
+
+/**
+ * https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/delete-users-user_id-blocking
+ */
+export interface DeleteUnblockUserResponseData {
+  /**
+   * Indicates whether the authorized user is blocking the specified user as a result of the request.
+   * This value is `false` for a successful unblock request
+   */
+  blocking: boolean;
+}
