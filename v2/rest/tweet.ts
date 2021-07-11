@@ -126,7 +126,7 @@ export interface DeleteTweetUnlikeResponseData {
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/hide-replies/api-reference/put-tweets-id-hidden
  */
-export interface PostTweetReplyHideUnhideJSONBody {
+export interface PutTweetReplyHideUnhideJSONBody {
   /**
    * Indicates the action to perform. Specify `true` to hide and `false` to unhide the specified tweet reply.
    * Trying to hide a tweet that's already hidden (or unhide a tweet that is not hidden)
@@ -140,11 +140,11 @@ export interface PostTweetReplyHideUnhideJSONBody {
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/hide-replies/api-reference/put-tweets-id-hidden#tab1
  */
-export interface PostTweetReplyHideUnhideResponse {
-  data: PostTweetReplyHideUnhideResponseData;
+export interface PutTweetReplyHideUnhideResponse {
+  data: PutTweetReplyHideUnhideResponseData;
 }
 
-export interface PostTweetReplyHideUnhideResponseData {
+export interface PutTweetReplyHideUnhideResponseData {
   /**
    * Indicates if the tweet is hidden or unhidden
    */
