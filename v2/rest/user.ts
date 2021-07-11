@@ -99,7 +99,7 @@ export interface GetMultipleUsersByUsernamesResponse {
  */
 export interface PostUserFollowJSONBody {
   /**
-   * The user ID of the user that you would like to follow
+   * The ID of the user to follow
    */
   target_user_id: Snowflake;
 }
@@ -150,7 +150,7 @@ export interface DeleteUserUnfollowResponseData {
  */
 export interface PostUserBlockJSONBody {
   /**
-   * The user ID of the user to block
+   * The ID of the user to block
    */
   target_user_id: Snowflake;
 }
@@ -196,7 +196,7 @@ export interface DeleteUserUnblockResponseData {
  */
 export interface PostUserMuteJSONBody {
   /**
-   * The user ID of the user to mute
+   * The ID of the user to mute
    */
   target_user_id: Snowflake;
 }

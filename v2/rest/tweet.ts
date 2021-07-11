@@ -76,3 +76,77 @@ export interface GetMultipleTweetsByIdsResponse {
   data: Array<APITweetObject>;
   includes?: APITweetIncludes;
 }
+
+/**
+ * The body for liking a tweet
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
+ */
+export interface PostTweetLikeJSONBody {
+  /**
+   * The ID of the tweet to like
+   */
+  tweet_id: Snowflake;
+}
+
+/**
+ * The response for liking a tweet
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
+ */
+export interface PostTweetLikeResponse {
+  data: PostTweetLikeResponseData;
+}
+
+export interface PostTweetLikeResponseData {
+  /**
+   * Indicates whether the authorized user liked the specified tweet as a result of the request
+   */
+  liked: boolean;
+}
+
+/**
+ * The response of unliking a tweet
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/delete-users-id-likes-tweet_id
+ */
+export interface DeleteTweetUnlikeResponse {
+  data: DeleteTweetUnlikeResponseData;
+}
+
+export interface DeleteTweetUnlikeResponseData {
+  /**
+   * Indicates whether the authorized user unliked the specified tweet as a result of the request
+   */
+  liked: boolean;
+}
+
+/**
+ * The body for hiding or unhiding a tweet reply
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/hide-replies/api-reference/put-tweets-id-hidden
+ */
+export interface PostTweetReplyHideUnhideJSONBody {
+  /**
+   * Indicates the action to perform. Specify `true` to hide and `false` to unhide the specified tweet reply.
+   * Trying to hide a tweet that's already hidden (or unhide a tweet that is not hidden)
+   * will result in a successful call
+   */
+  hidden: boolean;
+}
+
+/**
+ * The response of hiding or unhiding a tweet reply
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/hide-replies/api-reference/put-tweets-id-hidden#tab1
+ */
+export interface PostTweetReplyHideUnhideResponse {
+  data: PostTweetReplyHideUnhideResponseData;
+}
+
+export interface PostTweetReplyHideUnhideResponseData {
+  /**
+   * Indicates if the tweet is hidden or unhidden
+   */
+  hidden: boolean;
+}
