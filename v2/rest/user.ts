@@ -234,3 +234,23 @@ export interface DeleteUserUnmuteResponseData {
    */
   muting: boolean;
 }
+
+export interface GetUserFollowersQuery {
+  expansions?: Array<APIUserExpansion>;
+  max_results?: number;
+  pagination_token?: string;
+  'tweet.fields': Array<APITweetField>;
+  'user.fields': Array<APIUserField>;
+}
+
+export interface GetUserFollowersResponse {
+  data: Array<APIUserObject>;
+  includes?: APIUserIncludes;
+  meta: GetUserFollowersResponseMeta;
+}
+
+export interface GetUserFollowersResponseMeta {
+  result_count: number;
+  previous_token?: string;
+  next_token?: string;
+}
