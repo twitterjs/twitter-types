@@ -1,6 +1,6 @@
 {
   "name": "twitter-types",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Type definitions for Twitter API",
   "main": "./dist/default/index.js",
   "types": "./dist/default/index.d.ts",

@@ -235,7 +235,7 @@ export interface DeleteUserUnmuteResponseData {
   muting: boolean;
 }
 
-export interface GetUserFollowersQuery {
+export interface UserRelatedPaginatedQuery {
   expansions?: Array<APIUserExpansion>;
   max_results?: number;
   pagination_token?: string;
@@ -243,14 +243,22 @@ export interface GetUserFollowersQuery {
   'user.fields': Array<APIUserField>;
 }
 
-export interface GetUserFollowersResponse {
+export interface UserRelatedPaginatedResponse {
   data: Array<APIUserObject>;
   includes?: APIUserIncludes;
-  meta: GetUserFollowersResponseMeta;
+  meta: UserRelatedPaginatedResponseMeta;
 }
 
-export interface GetUserFollowersResponseMeta {
+export interface UserRelatedPaginatedResponseMeta {
   result_count: number;
   previous_token?: string;
   next_token?: string;
 }
+
+export type GetUserFollowersQuery = UserRelatedPaginatedQuery;
+
+export type GetUserFollowersResponse = UserRelatedPaginatedResponse;
+
+export type GetUserFollowingQuery = UserRelatedPaginatedQuery;
+
+export type GetUserFollowingResponse = UserRelatedPaginatedResponse;
