@@ -239,8 +239,8 @@ export interface UserRelatedPaginatedQuery {
   expansions?: Array<APIUserExpansion>;
   max_results?: number;
   pagination_token?: string;
-  'tweet.fields': Array<APITweetField>;
-  'user.fields': Array<APIUserField>;
+  'tweet.fields'?: Array<APITweetField>;
+  'user.fields'?: Array<APIUserField>;
 }
 
 export interface UserRelatedPaginatedResponse {

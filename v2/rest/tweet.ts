@@ -150,3 +150,13 @@ export interface PutTweetReplyHideUnhideResponseData {
    */
   hidden: boolean;
 }
+
+export interface GetSampledTweetStreamQuery {
+  backfill_minutes?: number;
+  expansions?: Array<APITweetExpansion>;
+  'media.fields'?: Array<APIMediaField>;
+  'place.fields'?: Array<APIPlaceField>;
+  'poll.fields'?: Array<APIPollField>;
+  'tweet.fields'?: Array<APITweetField>;
+  'user.fields'?: Array<APIUserField>;
+}
