@@ -1,3 +1,4 @@
+import type { GetSingleUserByIdQuery, GetSingleUserByIdResponse } from './user';
 import type { APIMediaField, APIPlaceField, APIPollField, APITweetField, APIUserField } from './misc';
 import type {
   APIMediaObject,
@@ -159,4 +160,59 @@ export interface GetSampledTweetStreamQuery {
   'poll.fields'?: Array<APIPollField>;
   'tweet.fields'?: Array<APITweetField>;
   'user.fields'?: Array<APIUserField>;
+}
+
+/**
+ * The body for retweeting a tweet
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
+ */
+export interface PostRetweetJSONBody {
+  /**
+   * The ID of the tweet to retweet
+   */
+  tweet_id: Snowflake;
+}
+
+/**
+ * The response of retweeting a tweet
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
+ */
+export interface PostRetweetResponse {
+  data: PostRetweetResponseData;
+}
+
+export interface PostRetweetResponseData {
+  retweeted: boolean;
+}
+
+/**
+ * The response for deleting a retweet
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/delete-users-id-retweets-tweet_id
+ */
+export type DeleteRetweetResponse = PostRetweetResponse;
+
+/**
+ * The query for requesting users who retweeted a specific tweet
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
+ */
+export type GetRetweetedByQuery = GetSingleUserByIdQuery;
+
+/**
+ * The response of requesting users who retweeted a specific tweet
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
+ */
+export interface GetRetweetedByResponse extends GetSingleUserByIdResponse {
+  meta: GetRetweetedByResponseMeta;
+}
+
+export interface GetRetweetedByResponseMeta {
+  /**
+   * The number of user results returned in the response
+   */
+  result_count: number;
 }
