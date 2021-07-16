@@ -1,10 +1,37 @@
-import type { APITweetField, APIUserField } from './misc';
-import type { APITweetObject, APIUserObject, Snowflake } from '../payloads/index';
+import type { APITweet, APIUser, Snowflake } from '../payloads/index';
+import type { TweetFieldsParameter, UserFieldsParameter } from './misc';
 
-export type APIUserExpansion = 'pinned_tweet_id';
+export interface SingleUserLookupResponse {
+  data: APIUser;
+  includes?: APIUserExpansions;
+  errors?: any; // TODO
+}
 
-export interface APIUserIncludes {
-  tweets?: Array<APITweetObject>;
+export interface APIUserExpansions {
+  tweets?: Array<APITweet>;
+}
+
+export interface MultiUserLookupResponse {
+  data: Array<APIUser>;
+  includes?: APIUserExpansions;
+  errors?: any; // TODO
+}
+
+export interface MultipleUsersLookupWithCountResponse extends MultiUserLookupResponse {
+  meta: {
+    /**
+     * The number of user results returned in this response
+     */
+    result_count: number;
+  };
+}
+
+export type UserExpansionsParameter = 'pinned_tweet_id';
+
+export interface SingleUserLookupQuery {
+  expansions?: Array<UserExpansionsParameter>;
+  'tweet.fields'?: Array<TweetFieldsParameter>;
+  'user.fields'?: Array<UserFieldsParameter>;
 }
 
 /**
@@ -12,30 +39,21 @@ export interface APIUserIncludes {
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-id
  */
-export interface GetSingleUserByIdQuery {
-  expansions?: Array<APIUserExpansion>;
-
-  'tweet.fields'?: Array<APITweetField>;
-
-  'user.fields'?: Array<APIUserField>;
-}
+export type GetSingleUserByIdQuery = SingleUserLookupQuery;
 
 /**
  * The response for the request of fetching a single user by ID
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-id
  */
-export interface GetSingleUserByIdResponse {
-  data: APIUserObject;
-  includes?: APIUserIncludes;
-}
+export type GetSingleUserByIdResponse = SingleUserLookupResponse;
 
 /**
  * The query for fetching multiple users by IDs
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users
  */
-export interface GetMultipleUsersByIdsQuery extends GetSingleUserByIdQuery {
+export interface GetMultipleUsersByIdsQuery extends SingleUserLookupQuery {
   /**
    * Comma separated list of user IDs. Up to `100` are allowed in a single request.
    * Make sure to not include a space between commas and fields
@@ -48,10 +66,7 @@ export interface GetMultipleUsersByIdsQuery extends GetSingleUserByIdQuery {
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users
  */
-export interface GetMultipleUsersByIdsResponse {
-  data: Array<APIUserObject>;
-  includes?: APIUserIncludes;
-}
+export type GetMultipleUsersByIdsResponse = MultiUserLookupResponse;
 
 /**
  * The query for fetching a single user by username
@@ -59,7 +74,7 @@ export interface GetMultipleUsersByIdsResponse {
  * https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by-username-username
  */
 // eslint-disable-next-line prettier/prettier
-export interface GetSingleUserByUsernameQuery extends GetSingleUserByIdQuery { }
+export type GetSingleUserByUsernameQuery = SingleUserLookupQuery;
 
 /**
  * The response for the request of fetching a single user by username
@@ -67,14 +82,14 @@ export interface GetSingleUserByUsernameQuery extends GetSingleUserByIdQuery { }
  * https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by-username-username
  */
 // eslint-disable-next-line prettier/prettier
-export interface GetSingleUserByUsernameResponse extends GetSingleUserByIdResponse { }
+export type GetSingleUserByUsernameResponse = SingleUserLookupResponse;
 
 /**
  * The query for fetching multiple users by usernames
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by
  */
-export interface GetMultipleUsersByUsernamesQuery extends GetSingleUserByUsernameQuery {
+export interface GetMultipleUsersByUsernamesQuery extends SingleUserLookupQuery {
   /**
    * A comma separated list of Twitter usernames (handles). Up to 100 are allowed in a single request.
    * Make sure to not include a space between commas and fields
@@ -87,17 +102,14 @@ export interface GetMultipleUsersByUsernamesQuery extends GetSingleUserByUsernam
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by
  */
-export interface GetMultipleUsersByUsernamesResponse {
-  data: Array<APIUserObject>;
-  includes?: APIUserIncludes;
-}
+export type GetMultipleUsersByUsernamesResponse = MultiUserLookupResponse;
 
 /**
  * The body for following a user
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
  */
-export interface PostUserFollowJSONBody {
+export interface PostUsersFollowingJSONBody {
   /**
    * The ID of the user to follow
    */
@@ -109,38 +121,38 @@ export interface PostUserFollowJSONBody {
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
  */
-export interface PostUserFollowResponse {
-  data: PostUserFollowResponseData;
-}
+export interface PostUsersFollowingResponse {
+  data: {
+    /**
+     * Indicates whether the authorized user is following the specified user as a result of the request.
+     * This value is `false` if the target user does not have public Tweets, as they will have to approve
+     * the follow request
+     */
+    following: boolean;
 
-export interface PostUserFollowResponseData {
-  /**
-   * Indicates whether the authorized user is following the specified user as a result of the request.
-   * This value is `false` if the target user does not have public Tweets, as they will have to approve
-   * the follow request
-   */
-  following: boolean;
+    /**
+     * Indicates whether the target user will need to approve the follow request. Note that the authenticated
+     * user will follow the target user only when they approve the incoming follow request
+     */
+    pending_follow: boolean;
+  };
 
-  /**
-   * Indicates whether the target user will need to approve the follow request. Note that the authenticated
-   * user will follow the target user only when they approve the incoming follow request
-   */
-  pending_follow: boolean;
+  errors?: any; // TODO
 }
 
 /**
  * The response of unfollowing a user
  */
-export interface DeleteUserUnfollowResponse {
-  data: DeleteUserUnfollowResponseData;
-}
+export interface DeleteUsersFollowingResponse {
+  data: {
+    /**
+     * Indicates whether the authorized user unfollowed the specified user as a result of the request.
+     * This value is `false` for a successful unfollow request
+     */
+    following: boolean;
+  };
 
-export interface DeleteUserUnfollowResponseData {
-  /**
-   * Indicates whether the authorized user unfollowed the specified user as a result of the request.
-   * This value is `false` for a successful unfollow request
-   */
-  following: boolean;
+  errors?: any; // TODO
 }
 
 /**
@@ -148,11 +160,22 @@ export interface DeleteUserUnfollowResponseData {
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking
  */
-export interface PostUserBlockJSONBody {
+export interface PostUsersBlockingJSONBody {
   /**
    * The ID of the user to block
    */
   target_user_id: Snowflake;
+}
+
+export interface UsersBlockingMutationResponse {
+  data: {
+    /**
+     * Indicates whether the authorized user is blocking the specified user
+     */
+    blocking: boolean;
+  };
+
+  errors?: any; // TODO
 }
 
 /**
@@ -160,45 +183,37 @@ export interface PostUserBlockJSONBody {
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking
  */
-export interface PostUserBlockResponse {
-  data: PostUserBlockResponseData;
-}
-
-export interface PostUserBlockResponseData {
-  /**
-   * Indicates whether the authorized user is blocking the specified user as a result of the request.
-   * This value is `true` for a successful block request
-   */
-  blocking: boolean;
-}
+export type PostUsersBlockingResponse = UsersBlockingMutationResponse;
 
 /**
  * The response of unblocking a user
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/delete-users-user_id-blocking
  */
-export interface DeleteUserUnblockResponse {
-  data: DeleteUserUnblockResponseData;
-}
-
-export interface DeleteUserUnblockResponseData {
-  /**
-   * Indicates whether the authorized user is blocking the specified user as a result of the request.
-   * This value is `false` for a successful unblock request
-   */
-  blocking: boolean;
-}
+export type DeleteUsersBlockingResponse = UsersBlockingMutationResponse;
 
 /**
  * The body for muting a user
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
  */
-export interface PostUserMuteJSONBody {
+export interface PostUsersMutingJSONBody {
   /**
    * The ID of the user to mute
    */
   target_user_id: Snowflake;
+}
+
+export interface UsersMutingMutationResponse {
+  data: {
+    /**
+     * Indicates whether the authorized user is muting the specified user as a result of the request.
+     * This value is `true` for a successful mute request
+     */
+    muting: boolean;
+  };
+
+  errors?: any; // TODO
 }
 
 /**
@@ -206,59 +221,32 @@ export interface PostUserMuteJSONBody {
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
  */
-export interface PostUserMuteResponse {
-  data: PostUserMuteResponseData;
-}
-
-export interface PostUserMuteResponseData {
-  /**
-   * Indicates whether the authorized user is muting the specified user as a result of the request.
-   * This value is `true` for a successful mute request
-   */
-  muting: boolean;
-}
+export type PostUsersMutingResponse = UsersMutingMutationResponse;
 
 /**
  * The response of unmuting a user
  *
  * https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/delete-users-user_id-muting
  */
-export interface DeleteUserUnmuteResponse {
-  data: DeleteUserUnmuteResponseData;
-}
+export type DeleteUsersMutingResponse = UsersMutingMutationResponse;
 
-export interface DeleteUserUnmuteResponseData {
-  /**
-   * Indicates whether the authorized user is muting the specified user as a result of the request.
-   * This value is `false` for a successful unmute request
-   */
-  muting: boolean;
-}
-
-export interface UserRelatedPaginatedQuery {
-  expansions?: Array<APIUserExpansion>;
+export interface UsersPaginatedQuery extends SingleUserLookupQuery {
   max_results?: number;
   pagination_token?: string;
-  'tweet.fields'?: Array<APITweetField>;
-  'user.fields'?: Array<APIUserField>;
 }
 
-export interface UserRelatedPaginatedResponse {
-  data: Array<APIUserObject>;
-  includes?: APIUserIncludes;
-  meta: UserRelatedPaginatedResponseMeta;
+export interface UsersPaginatedResponse extends MultiUserLookupResponse {
+  meta: {
+    result_count: number;
+    previous_token?: string;
+    next_token?: string;
+  };
 }
 
-export interface UserRelatedPaginatedResponseMeta {
-  result_count: number;
-  previous_token?: string;
-  next_token?: string;
-}
+export type GetUsersFollowersQuery = UsersPaginatedQuery;
 
-export type GetUserFollowersQuery = UserRelatedPaginatedQuery;
+export type GetUsersFollowersResponse = UsersPaginatedResponse;
 
-export type GetUserFollowersResponse = UserRelatedPaginatedResponse;
+export type GetUsersFollowingQuery = UsersPaginatedQuery;
 
-export type GetUserFollowingQuery = UserRelatedPaginatedQuery;
-
-export type GetUserFollowingResponse = UserRelatedPaginatedResponse;
+export type GetUsersFollowingResponse = UsersPaginatedResponse;

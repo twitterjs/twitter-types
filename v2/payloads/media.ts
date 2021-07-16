@@ -1,7 +1,7 @@
 /**
  * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/media
  */
-export interface APIMediaObject {
+export interface APIMedia {
   /**
    * The unique identifier of the expanded media content
    */
@@ -97,12 +97,12 @@ export interface APIMediaNonPublicMetrics {
 /**
  * Organic metrics for media of type `video`
  */
-export interface APIMediaOrganicMetrics extends APIMediaPublicNonPublicMetricsUnion { }
+export type APIMediaOrganicMetrics = APIMediaNonPublicMetrics & APIMediaPublicMetrics;
 
 /**
  * Promoted metrics for media of type `video`
  */
-export interface APIMediaPromotedMetrics extends APIMediaPublicNonPublicMetricsUnion { }
+export type APIMediaPromotedMetrics = APIMediaNonPublicMetrics & APIMediaPublicMetrics;
 
 /**
  * Public metrics for a media of type `video`
@@ -113,5 +113,3 @@ export interface APIMediaPublicMetrics {
    */
   view_count: number;
 }
-
-export interface APIMediaPublicNonPublicMetricsUnion extends APIMediaNonPublicMetrics, APIMediaPublicMetrics { }

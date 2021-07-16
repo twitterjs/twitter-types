@@ -1,7 +1,7 @@
 /**
  * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/place
  */
-export interface APIPlaceObject {
+export interface APIPlace {
   /**
    * A longer-form detailed name of this place
    */

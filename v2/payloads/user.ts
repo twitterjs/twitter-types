@@ -1,9 +1,11 @@
 import type { Snowflake } from './misc';
 
 /**
+ * The Twitter User object
+ *
  * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user
  */
-export interface APIUserObject {
+export interface APIUser {
   /**
    * The unique identifier of the user
    */
@@ -77,7 +79,7 @@ export interface APIUserObject {
   /**
    * Contains withholding details for withheld content, if applicable
    */
-  withheld?: any; // TODO
+  withheld?: APIUserWithheld;
 }
 
 export interface APIUserBaseEntity {
@@ -124,4 +126,20 @@ export interface APIUserURLEntity extends APIUserBaseEntity {
   url: string;
   expanded_url: string;
   display_url: string;
+}
+
+/**
+ * Indicates withholding details for
+ * [withheld content](https://help.twitter.com/en/rules-and-policies/tweet-withheld-by-country)
+ */
+export interface APIUserWithheld {
+  /**
+   * Provides a list of countries where this content is not available
+   */
+  country_codes: Array<string>;
+
+  /**
+   * Indicates that the content being withheld is a `user`
+   */
+  scope?: string;
 }

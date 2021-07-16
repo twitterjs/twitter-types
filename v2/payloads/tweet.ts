@@ -3,7 +3,7 @@ import type { Snowflake } from './misc';
 /**
  * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet
  */
-export interface APITweetObject {
+export interface APITweet {
   /**
    * The unique identifier of the requested Tweet
    */
@@ -110,7 +110,7 @@ export interface APITweetObject {
    *
    * See https://help.twitter.com/en/rules-and-policies/tweet-withheld-by-country
    */
-  withheld?: any; // TODO
+  withheld?: APITweetWithheld;
 }
 
 export interface APITweetAnnotationEntity extends APITweetBaseEntity {
@@ -219,4 +219,25 @@ export interface APITweetURLEntity extends APITweetBaseEntity {
   title: string;
   description: string;
   unwound_url: string;
+}
+
+/**
+ * Indicates withholding details for
+ * [withheld content](https://help.twitter.com/en/rules-and-policies/tweet-withheld-by-country)
+ */
+export interface APITweetWithheld {
+  /**
+   * Indicates if the content is being withheld for on the basis of copyright infringement
+   */
+  copyright: boolean;
+
+  /**
+   * Provides a list of countries where this content is not available
+   */
+  country_codes: Array<string>;
+
+  /**
+   * Indicates whether the content being withheld is the `tweet` or a `user`
+   */
+  scope?: string;
 }

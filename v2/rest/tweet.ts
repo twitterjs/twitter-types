@@ -1,15 +1,34 @@
-import type { GetSingleUserByIdQuery, GetSingleUserByIdResponse } from './user';
-import type { APIMediaField, APIPlaceField, APIPollField, APITweetField, APIUserField } from './misc';
+import type { GetSingleUserByIdQuery, MultipleUsersLookupWithCountResponse } from './user';
+import type { APIMedia, APIPlace, APIPoll, APITweet, APIUser, Snowflake } from '../payloads/index';
 import type {
-  APIMediaObject,
-  APIPlaceObject,
-  APIPollObject,
-  APITweetObject,
-  APIUserObject,
-  Snowflake,
-} from '../payloads/index';
+  MediaFieldsParameter,
+  PlaceFieldsParameter,
+  PollFieldsParameter,
+  TweetFieldsParameter,
+  UserFieldsParameter,
+} from './misc';
 
-export type APITweetExpansion =
+export interface SingleTweetLookupResponse {
+  data: APITweet;
+  includes?: APITweetExpansions;
+  errors?: any; // TODO
+}
+
+export interface APITweetExpansions {
+  tweets?: Array<APITweet>;
+  users?: Array<APIUser>;
+  places?: Array<APIPlace>;
+  media?: Array<APIMedia>;
+  polls?: Array<APIPoll>;
+}
+
+export interface MultiTweetLookupResponse {
+  data: Array<APITweet>;
+  includes?: APITweetExpansions;
+  errors?: any; // TODO
+}
+
+export type TweetExpansionsParameter =
   | 'attachments.poll_ids'
   | 'attachments.media_keys'
   | 'author_id'
@@ -19,12 +38,13 @@ export type APITweetExpansion =
   | 'referenced_tweets.id'
   | 'referenced_tweets.id.author_id';
 
-export interface APITweetIncludes {
-  tweets?: Array<APITweetObject>;
-  users?: Array<APIUserObject>;
-  places?: Array<APIPlaceObject>;
-  media?: Array<APIMediaObject>;
-  polls?: Array<APIPollObject>;
+export interface SingleTweetLookupQuery {
+  expansions?: Array<TweetExpansionsParameter>;
+  'media.fields'?: Array<MediaFieldsParameter>;
+  'place.fields'?: Array<PlaceFieldsParameter>;
+  'poll.fields'?: Array<PollFieldsParameter>;
+  'tweet.fields'?: Array<TweetFieldsParameter>;
+  'user.fields'?: Array<UserFieldsParameter>;
 }
 
 /**
@@ -32,36 +52,21 @@ export interface APITweetIncludes {
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
  */
-export interface GetSingleTweetByIdQuery {
-  expansions?: Array<APITweetExpansion>;
-
-  'media.fields'?: Array<APIMediaField>;
-
-  'place.fields'?: Array<APIPlaceField>;
-
-  'poll.fields'?: Array<APIPollField>;
-
-  'tweet.fields'?: Array<APITweetField>;
-
-  'user.fields'?: Array<APIUserField>;
-}
+export type GetSingleTweetByIdQuery = SingleTweetLookupQuery;
 
 /**
  * The response for the request of fetching a single tweet by ID
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
  */
-export interface GetSingleTweetByIdResponse {
-  data: APITweetObject;
-  includes?: APITweetIncludes;
-}
+export type GetSingleTweetByIdResponse = SingleTweetLookupResponse;
 
 /**
  * The query for fetching multiple tweets by IDs
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
  */
-export interface GetMultipleTweetsByIdsQuery extends GetSingleTweetByIdQuery {
+export interface GetMultipleTweetsByIdsQuery extends SingleTweetLookupQuery {
   /**
    * A comma separated list of Tweet IDs. Up to `100` are allowed in a single request
    */
@@ -73,17 +78,14 @@ export interface GetMultipleTweetsByIdsQuery extends GetSingleTweetByIdQuery {
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
  */
-export interface GetMultipleTweetsByIdsResponse {
-  data: Array<APITweetObject>;
-  includes?: APITweetIncludes;
-}
+export type GetMultipleTweetsByIdsResponse = MultiTweetLookupResponse;
 
 /**
  * The body for liking a tweet
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
  */
-export interface PostTweetLikeJSONBody {
+export interface PostTweetsLikeJSONBody {
   /**
    * The ID of the tweet to like
    */
@@ -95,15 +97,15 @@ export interface PostTweetLikeJSONBody {
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
  */
-export interface PostTweetLikeResponse {
-  data: PostTweetLikeResponseData;
-}
+export interface PostTweetsLikeResponse {
+  data: {
+    /**
+     * Indicates whether the authorized user liked the specified tweet as a result of the request
+     */
+    liked: boolean;
+  };
 
-export interface PostTweetLikeResponseData {
-  /**
-   * Indicates whether the authorized user liked the specified tweet as a result of the request
-   */
-  liked: boolean;
+  errors?: any; // TODO
 }
 
 /**
@@ -111,15 +113,15 @@ export interface PostTweetLikeResponseData {
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/delete-users-id-likes-tweet_id
  */
-export interface DeleteTweetUnlikeResponse {
-  data: DeleteTweetUnlikeResponseData;
-}
+export interface DeleteTweetsLikeResponse {
+  data: {
+    /**
+     * Indicates whether the authorized user unliked the specified tweet as a result of the request
+     */
+    liked: boolean;
+  };
 
-export interface DeleteTweetUnlikeResponseData {
-  /**
-   * Indicates whether the authorized user unliked the specified tweet as a result of the request
-   */
-  liked: boolean;
+  errors?: any; // TODO
 }
 
 /**
@@ -142,24 +144,16 @@ export interface PutTweetReplyHideUnhideJSONBody {
  * https://developer.twitter.com/en/docs/twitter-api/tweets/hide-replies/api-reference/put-tweets-id-hidden#tab1
  */
 export interface PutTweetReplyHideUnhideResponse {
-  data: PutTweetReplyHideUnhideResponseData;
+  data: {
+    /**
+     * Indicates if the tweet is hidden or unhidden
+     */
+    hidden: boolean;
+  };
 }
 
-export interface PutTweetReplyHideUnhideResponseData {
-  /**
-   * Indicates if the tweet is hidden or unhidden
-   */
-  hidden: boolean;
-}
-
-export interface GetSampledTweetStreamQuery {
+export interface GetSampledTweetStreamQuery extends SingleTweetLookupQuery {
   backfill_minutes?: number;
-  expansions?: Array<APITweetExpansion>;
-  'media.fields'?: Array<APIMediaField>;
-  'place.fields'?: Array<APIPlaceField>;
-  'poll.fields'?: Array<APIPollField>;
-  'tweet.fields'?: Array<APITweetField>;
-  'user.fields'?: Array<APIUserField>;
 }
 
 /**
@@ -167,7 +161,7 @@ export interface GetSampledTweetStreamQuery {
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
  */
-export interface PostRetweetJSONBody {
+export interface PostUsersRetweetsJSONBody {
   /**
    * The ID of the tweet to retweet
    */
@@ -179,12 +173,11 @@ export interface PostRetweetJSONBody {
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
  */
-export interface PostRetweetResponse {
-  data: PostRetweetResponseData;
-}
-
-export interface PostRetweetResponseData {
-  retweeted: boolean;
+export interface PostUsersRetweetsResponse {
+  data: {
+    retweeted: boolean;
+  };
+  errors?: any; // TODO
 }
 
 /**
@@ -192,7 +185,7 @@ export interface PostRetweetResponseData {
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/delete-users-id-retweets-tweet_id
  */
-export type DeleteRetweetResponse = PostRetweetResponse;
+export type DeleteUsersRetweetsResponse = PostUsersRetweetsResponse;
 
 /**
  * The query for requesting users who retweeted a specific tweet
@@ -206,13 +199,4 @@ export type GetRetweetedByQuery = GetSingleUserByIdQuery;
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
  */
-export interface GetRetweetedByResponse extends GetSingleUserByIdResponse {
-  meta: GetRetweetedByResponseMeta;
-}
-
-export interface GetRetweetedByResponseMeta {
-  /**
-   * The number of user results returned in the response
-   */
-  result_count: number;
-}
+export type GetRetweetedByResponse = MultipleUsersLookupWithCountResponse;
