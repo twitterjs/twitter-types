@@ -1,5 +1,10 @@
-import type { GetSingleUserByIdQuery, MultipleUsersLookupWithCountResponse } from './user';
 import type { APIMedia, APIPlace, APIPoll, APITweet, APIUser, Snowflake } from '../payloads/index';
+import type {
+  GetSingleUserByIdQuery,
+  MultipleUsersLookupWithCountResponse,
+  MultiUserLookupResponse,
+  SingleUserLookupQuery,
+} from './user';
 import type {
   MediaFieldsParameter,
   PlaceFieldsParameter,
@@ -192,11 +197,63 @@ export type DeleteUsersRetweetsResponse = PostUsersRetweetsResponse;
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
  */
-export type GetRetweetedByQuery = GetSingleUserByIdQuery;
+export type GetTweetsRetweetingUsersQuery = GetSingleUserByIdQuery;
 
 /**
  * The response of requesting users who retweeted a specific tweet
  *
  * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
  */
-export type GetRetweetedByResponse = MultipleUsersLookupWithCountResponse;
+export type GetTweetsRetweetingUsersResponse = MultipleUsersLookupWithCountResponse;
+
+export type GetTweetsLikingUsersQuery = SingleUserLookupQuery;
+
+export type GetTweetsLikingUsersResponse = MultiUserLookupResponse;
+
+export interface TweetsPaginatedQuery extends SingleTweetLookupQuery {
+  max_results?: number;
+  pagination_token?: string;
+}
+
+export interface TweetsPaginatedResponse extends MultiTweetLookupResponse {
+  meta: {
+    result_count: number;
+    previous_token?: string;
+    next_token?: string;
+  };
+}
+
+export type GetUsersLikedTweetsQuery = TweetsPaginatedQuery;
+
+export type GetUsersLikedTweetsResponse = TweetsPaginatedResponse;
+
+export interface GenericTweetsTimelineQuery extends SingleTweetLookupQuery {
+  end_time?: Date;
+  max_results?: number;
+  pagination_token?: string;
+  since_id?: Snowflake;
+  start_time?: Date;
+  until_id?: Snowflake;
+}
+
+export interface GenericTweetsTimelineResponse extends MultiTweetLookupResponse {
+  meta: {
+    result_count: number;
+    newest_id: Snowflake;
+    oldest_id: Snowflake;
+    previous_token?: string;
+    next_token?: string;
+  };
+}
+
+export interface GetUsersTweetsQuery extends GenericTweetsTimelineQuery {
+  exclude?: Array<TweetTypeExcludesRequestParameter>;
+}
+
+export type TweetTypeExcludesRequestParameter = 'retweets' | 'replies';
+
+export type GetUsersTweetsResponse = GenericTweetsTimelineResponse;
+
+export type GetUsersMentionTweetsQuery = GenericTweetsTimelineQuery;
+
+export type GetUsersMentionTweetsResponse = GenericTweetsTimelineResponse;

@@ -250,3 +250,7 @@ export type GetUsersFollowersResponse = UsersPaginatedResponse;
 export type GetUsersFollowingQuery = UsersPaginatedQuery;
 
 export type GetUsersFollowingResponse = UsersPaginatedResponse;
+
+export type GetUsersBlockingQuery = UsersPaginatedQuery;
+
+export type GetUsersBlockingResponse = UsersPaginatedResponse;
