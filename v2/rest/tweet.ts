@@ -1,10 +1,5 @@
 import type { APIMedia, APIPlace, APIPoll, APITweet, APIUser, Snowflake } from '../payloads/index';
-import type {
-  GetSingleUserByIdQuery,
-  MultipleUsersLookupWithCountResponse,
-  MultiUserLookupResponse,
-  SingleUserLookupQuery,
-} from './user';
+import type { GetSingleUserByIdQuery, MultipleUsersLookupWithCountResponse, SingleUserLookupQuery } from './user';
 import type {
   MediaFieldsParameter,
   PlaceFieldsParameter,
@@ -214,7 +209,7 @@ export type GetTweetsLikingUsersQuery = SingleUserLookupQuery;
 /**
  * The response of fetching users who liked a tweet
  */
-export type GetTweetsLikingUsersResponse = MultiUserLookupResponse;
+export type GetTweetsLikingUsersResponse = MultipleUsersLookupWithCountResponse;
 
 export interface TweetsPaginatedQuery extends SingleTweetLookupQuery {
   max_results?: number;
