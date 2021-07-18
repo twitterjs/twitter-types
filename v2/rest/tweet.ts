@@ -206,8 +206,14 @@ export type GetTweetsRetweetingUsersQuery = GetSingleUserByIdQuery;
  */
 export type GetTweetsRetweetingUsersResponse = MultipleUsersLookupWithCountResponse;
 
+/**
+ * The query for fetching users who liked a tweet
+ */
 export type GetTweetsLikingUsersQuery = SingleUserLookupQuery;
 
+/**
+ * The response of fetching users who liked a tweet
+ */
 export type GetTweetsLikingUsersResponse = MultiUserLookupResponse;
 
 export interface TweetsPaginatedQuery extends SingleTweetLookupQuery {
@@ -223,8 +229,14 @@ export interface TweetsPaginatedResponse extends MultiTweetLookupResponse {
   };
 }
 
+/**
+ * The query for fetching tweets liked by a user
+ */
 export type GetUsersLikedTweetsQuery = TweetsPaginatedQuery;
 
+/**
+ * The response of fetching tweets liked by a user
+ */
 export type GetUsersLikedTweetsResponse = TweetsPaginatedResponse;
 
 export interface GenericTweetsTimelineQuery extends SingleTweetLookupQuery {
@@ -246,14 +258,26 @@ export interface GenericTweetsTimelineResponse extends MultiTweetLookupResponse 
   };
 }
 
+/**
+ * The query for fetching tweets composed by a user
+ */
 export interface GetUsersTweetsQuery extends GenericTweetsTimelineQuery {
   exclude?: Array<TweetTypeExcludesRequestParameter>;
 }
 
 export type TweetTypeExcludesRequestParameter = 'retweets' | 'replies';
 
+/**
+ * The response of fetching tweets composed by a user
+ */
 export type GetUsersTweetsResponse = GenericTweetsTimelineResponse;
 
+/**
+ * The query for fetching tweets mentioning a user
+ */
 export type GetUsersMentionTweetsQuery = GenericTweetsTimelineQuery;
 
+/**
+ * The response of fetching tweets mentioning a user
+ */
 export type GetUsersMentionTweetsResponse = GenericTweetsTimelineResponse;
