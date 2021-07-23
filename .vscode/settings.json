@@ -24,5 +24,4 @@
   "eslint.validate": [
     "typescript",
   ],
-  "discord.enabled": true,
 }
