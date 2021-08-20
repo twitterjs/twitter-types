@@ -1,10 +1,12 @@
-import type { APIMedia, APIPlace, APIPoll, APITweet, APIUser } from '../payloads/index';
+import type { APIMedia, APIPlace, APIPoll, APISpace, APITweet, APIUser } from '../payloads';
 
 export type MediaFieldsParameter = keyof APIMedia;
 
 export type PlaceFieldsParameter = keyof APIPlace;
 
 export type PollFieldsParameter = keyof APIPoll;
+
+export type SpaceFieldsParameter = keyof APISpace;
 
 export type TweetFieldsParameter = keyof APITweet;
 

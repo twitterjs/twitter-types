@@ -1,4 +1,4 @@
-import type { APIMedia, APIPlace, APIPoll, APITweet, APIUser, Snowflake } from '../payloads/index';
+import type { APIMedia, APIPlace, APIPoll, APITweet, APIUser, Snowflake } from '../payloads';
 import type { GetSingleUserByIdQuery, MultipleUsersLookupWithCountResponse, SingleUserLookupQuery } from './user';
 import type {
   MediaFieldsParameter,

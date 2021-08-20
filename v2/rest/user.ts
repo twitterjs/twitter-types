@@ -1,4 +1,4 @@
-import type { APITweet, APIUser, Snowflake } from '../payloads/index';
+import type { APITweet, APIUser, Snowflake } from '../payloads';
 import type { TweetFieldsParameter, UserFieldsParameter } from './misc';
 
 export interface SingleUserLookupResponse {

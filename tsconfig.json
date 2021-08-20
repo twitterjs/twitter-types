@@ -17,7 +17,6 @@
     "strictNullChecks": true,
     "preserveConstEnums": true,
     "outDir": "dist",
-    "watch": true,
     "moduleResolution": "Node",
     "incremental": true,
   },
