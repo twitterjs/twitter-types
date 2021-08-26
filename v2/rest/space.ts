@@ -46,7 +46,6 @@ export type GetMultipleSpacesByIdsResponse = MultiSpaceLookupResponse;
 
 export interface GetMultipleSpacesByCreatorIdsQuery extends SingleSpaceLookupQuery {
   user_ids: Array<Snowflake>;
-  max_results?: number;
 }
 
 export type GetMultipleSpacesByCreatorIdsResponse = MultiSpaceLookupWithCountResponse;
