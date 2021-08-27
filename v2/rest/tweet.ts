@@ -276,3 +276,56 @@ export type GetUsersMentionTweetsQuery = GenericTweetsTimelineQuery;
  * The response of fetching tweets mentioning a user
  */
 export type GetUsersMentionTweetsResponse = GenericTweetsTimelineResponse;
+
+/**
+ * The query for searching recent and full-archive tweets
+ */
+export interface GetTweetSearchQuery extends Omit<GenericTweetsTimelineQuery, 'pagination_token'> {
+  query: string;
+  next_token?: string;
+}
+
+/**
+ * The response of searching recent and full-archive tweets
+ */
+export interface GetTweetSearchResponse extends MultiTweetLookupResponse {
+  meta: {
+    result_count: number;
+    newest_id: Snowflake;
+    oldest_id: Snowflake;
+    next_token?: string;
+  };
+}
+
+export interface SearchCount {
+  end: Date;
+  start: Date;
+  tweet_count: number;
+}
+
+export type Granularity = 'minute' | 'hour' | 'day';
+
+/**
+ * The query for fetchng recent and full-archive tweet counts
+ */
+export interface GetTweetCountsQuery {
+  query: string;
+  end_time?: Date;
+  granularity?: Granularity;
+  since_id?: string;
+  start_time?: Date;
+  until_id?: string;
+  next_token?: string;
+}
+
+/**
+ * The response of fetching recent and full-archinve tweet counts
+ */
+export interface GetTweetCountsResponse {
+  data: Array<SearchCount>;
+  errors?: any; // TODO
+  meta: {
+    next_token?: string;
+    total_tweet_count: number;
+  };
+}
