@@ -241,3 +241,25 @@ export interface APITweetWithheld {
    */
   scope?: string;
 }
+
+/**
+ * A user-provided stream filtering rule
+ */
+export interface APIFilteredStreamRule {
+  /**
+   * The filter value of the rule
+   * @example "coffee -is:retweet"
+   */
+  value: string;
+
+  /**
+   * A tag meant for the labeling of user provided rules
+   * @example "Non-retweeted coffee tweets"
+   */
+  tag?: string;
+
+  /**
+   * Unique identifier of this rule
+   */
+  id: Snowflake;
+}

@@ -23,5 +23,6 @@
   "include": [
     "v*/**/*",
     "default/**/*",
+    "global/**/*"
   ],
 }

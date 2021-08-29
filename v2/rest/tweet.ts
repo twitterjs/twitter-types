@@ -1,4 +1,5 @@
-import type { APIMedia, APIPlace, APIPoll, APITweet, APIUser, Snowflake } from '../payloads';
+import type { XOR } from '../../global/util';
+import type { APIFilteredStreamRule, APIMedia, APIPlace, APIPoll, APITweet, APIUser, Snowflake } from '../payloads';
 import type { GetSingleUserByIdQuery, MultipleUsersLookupWithCountResponse, SingleUserLookupQuery } from './user';
 import type {
   MediaFieldsParameter,
@@ -329,3 +330,68 @@ export interface GetTweetCountsResponse {
     total_tweet_count: number;
   };
 }
+
+/**
+ * The **optional** query for adding or deleting filtered streaming rules
+ */
+export interface PostAddOrDeleteRulesQuery {
+  /**
+   * Set to `true` to test the syntax of your rule without submitting it.
+   * This is useful if you want to check the syntax of a rule before removing
+   * one or more of your existing rules
+   */
+  dry_run?: boolean;
+}
+
+export interface PostAddRulesJSONBody {
+  add: Array<{
+    value: string;
+    tag?: string;
+  }>;
+}
+
+export interface PostDeleteRulesJSONBody {
+  /**
+   * User-specified stream filtering rules to delete
+   *
+   * **NOTE**: Either provide ids or values of the rules, not both
+   */
+  delete: XOR<{ ids: Array<Snowflake> }, { values: Array<string> }>;
+}
+
+/**
+ * The body for adding or deleting user-specified stream filtering rules
+ *
+ * **Note**: Either provide rules to add or delete, not both
+ */
+export type PostAddOrDeleteRulesJSONBody = XOR<PostAddRulesJSONBody, PostDeleteRulesJSONBody>;
+
+export interface PostAddOrDeleteRulesResponseMetadata {
+  sent: string;
+  summary: XOR<
+    {
+      created: number;
+      not_created: number;
+      valid: number;
+      invalid: number;
+    },
+    {
+      deleted: number;
+      not_deleted: number;
+    }
+  >;
+}
+
+export interface PostAddRulesResponse {
+  data: Array<APIFilteredStreamRule>;
+  meta: PostAddOrDeleteRulesResponseMetadata;
+}
+
+export interface PostDeleteRulesResponse {
+  meta: PostAddOrDeleteRulesResponseMetadata;
+}
+
+/**
+ * The response of adding or deleting a user-specified stream filtering rules
+ */
+export type PostAddOrDeleteRulesResponse = XOR<PostAddRulesResponse, PostDeleteRulesResponse>;
