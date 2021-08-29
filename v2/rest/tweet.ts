@@ -1,5 +1,13 @@
 import type { XOR } from '../../global/util';
-import type { APIFilteredStreamRule, APIMedia, APIPlace, APIPoll, APITweet, APIUser, Snowflake } from '../payloads';
+import type {
+  APIFilteredTweetStreamRule,
+  APIMedia,
+  APIPlace,
+  APIPoll,
+  APITweet,
+  APIUser,
+  Snowflake,
+} from '../payloads';
 import type { GetSingleUserByIdQuery, MultipleUsersLookupWithCountResponse, SingleUserLookupQuery } from './user';
 import type {
   MediaFieldsParameter,
@@ -334,7 +342,7 @@ export interface GetTweetCountsResponse {
 /**
  * The **optional** query for adding or deleting filtered streaming rules
  */
-export interface PostAddOrDeleteRulesQuery {
+export interface PostFilteredTweetStreamRulesQuery {
   /**
    * Set to `true` to test the syntax of your rule without submitting it.
    * This is useful if you want to check the syntax of a rule before removing
@@ -364,7 +372,7 @@ export interface PostDeleteRulesJSONBody {
  *
  * **Note**: Either provide rules to add or delete, not both
  */
-export type PostAddOrDeleteRulesJSONBody = XOR<PostAddRulesJSONBody, PostDeleteRulesJSONBody>;
+export type PostFilteredTweetStreamRulesJSONBody = XOR<PostAddRulesJSONBody, PostDeleteRulesJSONBody>;
 
 export interface PostAddOrDeleteRulesResponseMetadata {
   sent: string;
@@ -383,7 +391,7 @@ export interface PostAddOrDeleteRulesResponseMetadata {
 }
 
 export interface PostAddRulesResponse {
-  data: Array<APIFilteredStreamRule>;
+  data: Array<APIFilteredTweetStreamRule>;
   meta: PostAddOrDeleteRulesResponseMetadata;
 }
 
@@ -394,4 +402,38 @@ export interface PostDeleteRulesResponse {
 /**
  * The response of adding or deleting a user-specified stream filtering rules
  */
-export type PostAddOrDeleteRulesResponse = XOR<PostAddRulesResponse, PostDeleteRulesResponse>;
+export type PostFilteredTweetStreamRulesResponse = XOR<PostAddRulesResponse, PostDeleteRulesResponse>;
+
+/**
+ * The query for fetching filtered tweet streaam rules
+ */
+export interface GetFilteredTweetStreamRulesQuery {
+  /**
+   * Comma-separated list of rule IDs. If omitted, all rules are returned
+   */
+  ids?: Array<Snowflake>;
+}
+
+/**
+ * The response of fetching filtered tweet stream rules
+ */
+export interface GetFilteredTweetStreamRulesResponse {
+  data: Array<APIFilteredTweetStreamRule>;
+  meta: {
+    sent: string;
+  };
+}
+
+/**
+ * The query for connecting to filtered tweet stream
+ */
+export interface GetFilteredTweetStreamQuery extends SingleTweetLookupQuery {
+  backfill_minutes?: number;
+}
+
+/**
+ * The individual response in the filtered tweet stream
+ */
+export interface GetFilteredTweetStreamResponse extends SingleTweetLookupResponse {
+  matching_rules: Array<{ id: Snowflake; tag?: string }>;
+}

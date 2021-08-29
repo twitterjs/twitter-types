@@ -245,7 +245,7 @@ export interface APITweetWithheld {
 /**
  * A user-provided stream filtering rule
  */
-export interface APIFilteredStreamRule {
+export interface APIFilteredTweetStreamRule {
   /**
    * The filter value of the rule
    * @example "coffee -is:retweet"
