@@ -1,4 +1,3 @@
-import type { XOR } from '../../global/util';
 import type {
   APIFilteredTweetStreamRule,
   APIMedia,
@@ -351,61 +350,50 @@ export interface PostFilteredTweetStreamRulesQuery {
   dry_run?: boolean;
 }
 
-export interface PostAddRulesJSONBody {
+export interface PostAddFilteredTweetStreamRulesJSONBody {
   add: Array<{
     value: string;
     tag?: string;
   }>;
 }
 
-export interface PostDeleteRulesJSONBody {
-  /**
-   * User-specified stream filtering rules to delete
-   *
-   * **NOTE**: Either provide ids or values of the rules, not both
-   */
-  delete: XOR<{ ids: Array<Snowflake> }, { values: Array<string> }>;
+export interface PostRemoveFilteredTweetStreamRulesByIdsJSONBody {
+  delete: { ids: Array<Snowflake> };
 }
 
-/**
- * The body for adding or deleting user-specified stream filtering rules
- *
- * **Note**: Either provide rules to add or delete, not both
- */
-export type PostFilteredTweetStreamRulesJSONBody = XOR<PostAddRulesJSONBody, PostDeleteRulesJSONBody>;
+export interface PostRemoveFilteredTweetStreamRulesByValuesJSONBody {
+  delete: { values: Array<string> };
+}
 
-export interface PostAddOrDeleteRulesResponseMetadata {
+export interface PostAddFilteredTweetStreamRulesResponseMetadata {
   sent: string;
-  summary: XOR<
-    {
-      created: number;
-      not_created: number;
-      valid: number;
-      invalid: number;
-    },
-    {
-      deleted: number;
-      not_deleted: number;
-    }
-  >;
+  summary: {
+    created: number;
+    not_created: number;
+    valid: number;
+    invalid: number;
+  };
 }
 
-export interface PostAddRulesResponse {
+export interface PostRemoveFilteredTweetStreamRulesResponseMetadata {
+  sent: string;
+  summary: {
+    deleted: number;
+    not_deleted: number;
+  };
+}
+
+export interface PostAddFilteredTweetStreamRulesResponse {
   data: Array<APIFilteredTweetStreamRule>;
-  meta: PostAddOrDeleteRulesResponseMetadata;
+  meta: PostAddFilteredTweetStreamRulesResponseMetadata;
 }
 
-export interface PostDeleteRulesResponse {
-  meta: PostAddOrDeleteRulesResponseMetadata;
+export interface PostRemoveFilteredTweetStreamRulesResponse {
+  meta: PostRemoveFilteredTweetStreamRulesResponseMetadata;
 }
 
 /**
- * The response of adding or deleting a user-specified stream filtering rules
- */
-export type PostFilteredTweetStreamRulesResponse = XOR<PostAddRulesResponse, PostDeleteRulesResponse>;
-
-/**
- * The query for fetching filtered tweet streaam rules
+ * The query for fetching filtered tweet stream rules
  */
 export interface GetFilteredTweetStreamRulesQuery {
   /**

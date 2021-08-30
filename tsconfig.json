@@ -22,7 +22,6 @@
   },
   "include": [
     "v*/**/*",
-    "default/**/*",
-    "global/**/*"
+    "default/**/*"
   ],
 }
