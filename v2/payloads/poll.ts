@@ -20,7 +20,7 @@ export interface APIPoll {
   /**
    * The `ISO 8601` end date and time for the poll
    */
-  end_datetime?: Date;
+  end_datetime?: string;
 
   /**
    * Indicates if this poll is still active and can receive votes, or if the voting is now closed

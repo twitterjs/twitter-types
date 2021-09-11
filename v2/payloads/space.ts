@@ -14,7 +14,7 @@ export interface APISpace {
   /**
    * Creation time of this Space
    */
-  created_at?: Date;
+  created_at?: string;
 
   /**
    * The unique identifier of the Users who are hosting this Space
@@ -47,7 +47,7 @@ export interface APISpace {
    * This field is returned only if the Space has been scheduled; in other words,
    * if the field is returned, it means the Space is a scheduled Space
    */
-  scheduled_start?: Date;
+  scheduled_start?: string;
 
   /**
    * The list of users who were speaking at any point during the Space.
@@ -59,7 +59,7 @@ export interface APISpace {
   /**
    * Indicates the actual start time of a Space
    */
-  started_at?: Date;
+  started_at?: string;
 
   /**
    * The title of the Space as specified by the creator
@@ -69,7 +69,7 @@ export interface APISpace {
   /**
    * Specifies the date and time of the last update to any of the Space's metadata, such as its title or scheduled time
    */
-  updated_at?: Date;
+  updated_at?: string;
 
   /**
    * The id of the user who created this space

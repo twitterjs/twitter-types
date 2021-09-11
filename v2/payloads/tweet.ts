@@ -37,7 +37,7 @@ export interface APITweet {
   /**
    * The `ISO 8601` creation time of the Tweet
    */
-  created_at?: Date;
+  created_at?: string;
 
   /**
    * The entities which have been parsed out of the text of the Tweet

@@ -243,11 +243,11 @@ export type GetUsersLikedTweetsQuery = TweetsPaginatedQuery;
 export type GetUsersLikedTweetsResponse = TweetsPaginatedResponse;
 
 export interface GenericTweetsTimelineQuery extends SingleTweetLookupQuery {
-  end_time?: Date;
+  end_time?: string;
   max_results?: number;
   pagination_token?: string;
   since_id?: Snowflake;
-  start_time?: Date;
+  start_time?: string;
   until_id?: Snowflake;
 }
 
@@ -306,8 +306,8 @@ export interface GetTweetSearchResponse extends MultiTweetLookupResponse {
 }
 
 export interface SearchCount {
-  end: Date;
-  start: Date;
+  end: string;
+  start: string;
   tweet_count: number;
 }
 
@@ -318,10 +318,10 @@ export type Granularity = 'minute' | 'hour' | 'day';
  */
 export interface GetTweetCountsQuery {
   query: string;
-  end_time?: Date;
+  end_time?: string;
   granularity?: Granularity;
   since_id?: string;
-  start_time?: Date;
+  start_time?: string;
   until_id?: string;
   next_token?: string;
 }

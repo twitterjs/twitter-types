@@ -27,7 +27,7 @@ export interface APIUser {
   /**
    * The UTC datetime that the user account was created on Twitter
    */
-  created_at?: Date;
+  created_at?: string;
 
   /**
    * The text of this user's profile description (also known as bio), if the user provided one
