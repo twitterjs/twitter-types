@@ -164,6 +164,8 @@ export interface GetSampledTweetStreamQuery extends SingleTweetLookupQuery {
   backfill_minutes?: number;
 }
 
+export type GetSampledTweetStreamResponse = SingleTweetLookupResponse;
+
 /**
  * The body for retweeting a tweet
  *

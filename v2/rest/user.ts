@@ -254,3 +254,7 @@ export type GetUsersFollowingResponse = UsersPaginatedResponse;
 export type GetUsersBlockingQuery = UsersPaginatedQuery;
 
 export type GetUsersBlockingResponse = UsersPaginatedResponse;
+
+export type GetUsersMutingQuery = UsersPaginatedQuery;
+
+export type GetUsersMutingResponse = UsersPaginatedResponse;
