@@ -104,3 +104,79 @@ export interface DeleteListRemoveMemberResponse {
   };
   errors: any; // TODO
 }
+
+/**
+ * The body for following a list
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/lists/manage-lists/api-reference/post-users-id-followed-lists
+ */
+export interface PostListFollowJSONBody {
+  /**
+   * The ID of the list to follow
+   */
+  list_id: Snowflake;
+}
+
+/**
+ * The response of following a list
+ */
+export interface PostListFollowResponse {
+  data: {
+    /**
+     * Whether the user followed the specified list as a result of the request
+     */
+    following: boolean;
+  };
+  errors: any; // TODO
+}
+
+/**
+ * The response of unfollowing a list
+ */
+export interface PostListUnfollowResponse {
+  data: {
+    /**
+     * Whether the user unfollowed the specified list as a result of the request
+     */
+    following: boolean;
+  };
+  errors: any; // TODO
+}
+
+/**
+ * The body for pinning a list
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/lists/manage-lists/api-reference/post-users-id-pinned-lists
+ */
+export interface PostListPinJSONBody {
+  /**
+   * The ID of the list to pin
+   */
+  list_id: string;
+}
+
+/**
+ * The response of pinning a list
+ */
+export interface PostListPinResponse {
+  data: {
+    /**
+     * Whether the user pinned the specified list as a result of the request
+     */
+    pinned: boolean;
+  };
+  errors: any; // TODO
+}
+
+/**
+ * The response of unpinning a list
+ */
+export interface PostListUnpinResponse {
+  data: {
+    /**
+     * Whether the user unpinned the specified list as a result of the request
+     */
+    pinned: boolean;
+  };
+  errors: any; // TODO
+}
