@@ -1,7 +1,7 @@
 {
   "name": "twitter-types",
   "out": "docs",
-  "theme": "minimal",
+  "theme": "default",
   "exclude": [
     "node_modules/**",
     "dist/**"
