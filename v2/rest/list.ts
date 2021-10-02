@@ -133,7 +133,7 @@ export interface PostListFollowResponse {
 /**
  * The response of unfollowing a list
  */
-export interface PostListUnfollowResponse {
+export interface DeleteListUnfollowResponse {
   data: {
     /**
      * Whether the user unfollowed the specified list as a result of the request
@@ -171,7 +171,7 @@ export interface PostListPinResponse {
 /**
  * The response of unpinning a list
  */
-export interface PostListUnpinResponse {
+export interface DeleteListUnpinResponse {
   data: {
     /**
      * Whether the user unpinned the specified list as a result of the request
