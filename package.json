@@ -1,6 +1,6 @@
 {
   "name": "twitter-types",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "description": "Type definitions for Twitter API v2",
   "author": "Shubham Parihar <shubhamparihar391@gmail.com>",
   "main": "./dist/default/index.js",
