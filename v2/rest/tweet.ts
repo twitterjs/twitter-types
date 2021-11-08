@@ -1,4 +1,4 @@
-import type { APIMedia, APIPlace, APIPoll, APITweet, APIUser, Snowflake } from '../payloads';
+import type { APIMedia, APIPlace, APIPoll, APITweet, APITweetReplySettings, APIUser, Snowflake } from '../payloads';
 import type { GetSingleUserByIdQuery, MultipleUsersLookupWithCountResponse, SingleUserLookupQuery } from './user';
 import type {
   MediaFieldsParameter,
@@ -326,6 +326,25 @@ export interface GetTweetCountsResponse {
   };
 }
 
+export interface PostTweetCreateGeoData {
+  place_id?: string;
+}
+
+export interface PostTweetCreateMediaData {
+  media_id?: Array<Snowflake>;
+  tagged_user_ids?: Array<Snowflake>;
+}
+
+export interface PostTweetCreatePollData {
+  duration_minutes: number;
+  options: Array<string>;
+}
+
+export interface PostTweetCreateReplyData {
+  exclude_reply_user_ids?: Array<Snowflake>;
+  in_reply_to_tweet_id?: Snowflake;
+}
+
 /**
  * The body for creating a tweet
  *
@@ -334,23 +353,12 @@ export interface GetTweetCountsResponse {
 export interface PostTweetCreateJSONBody {
   direct_message_deep_link?: string;
   for_super_followers_only?: boolean;
-  geo?: {
-    place_id?: string;
-  };
-  media?: {
-    media_id?: Array<Snowflake>;
-    tagged_user_ids?: Array<Snowflake>;
-  };
-  poll?: {
-    duration_minutes?: number;
-    options?: Array<string>;
-  };
-  quote_tweet_id: Snowflake;
-  reply: {
-    exclude_reply_user_ids: Array<Snowflake>;
-    in_reply_to_tweet_id: Snowflake;
-  };
-  reply_settings: 'following' | 'mentionedUsers';
+  geo?: PostTweetCreateGeoData;
+  media?: PostTweetCreateMediaData;
+  poll?: PostTweetCreatePollData;
+  quote_tweet_id?: Snowflake;
+  reply?: PostTweetCreateReplyData;
+  reply_settings?: APITweetReplySettings;
   text?: string;
 }
 
