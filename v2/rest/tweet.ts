@@ -331,7 +331,7 @@ export interface PostTweetCreateGeoData {
 }
 
 export interface PostTweetCreateMediaData {
-  media_id?: Array<Snowflake>;
+  media_ids?: Array<Snowflake>;
   tagged_user_ids?: Array<Snowflake>;
 }
 
