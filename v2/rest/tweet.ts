@@ -366,8 +366,10 @@ export interface PostTweetCreateJSONBody {
  * The response of creating a tweet
  */
 export interface PostTweetCreateResponse {
-  id: Snowflake;
-  text: string;
+  data: {
+    id: Snowflake;
+    text: string;
+  };
   errors?: any; // TODO
 }
 
