@@ -377,6 +377,8 @@ export interface PostTweetCreateResponse {
  * The response of deleting a tweet
  */
 export interface DeleteTweetDeleteResponse {
-  deleted: boolean;
+  data: {
+    deleted: boolean;
+  };
   errors?: any; // TODO
 }
