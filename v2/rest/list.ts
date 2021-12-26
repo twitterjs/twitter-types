@@ -1,4 +1,77 @@
-import type { APIList, Snowflake } from '../payloads';
+import type { ListFieldsParameter, UserFieldsParameter } from './misc';
+import type { APIList, APIUser, Snowflake } from '../payloads';
+import type { TweetsPaginatedQuery, TweetsPaginatedResponse } from './tweet';
+
+export interface APIListExpansions {
+  users?: Array<APIUser>;
+}
+
+export interface SingleListLookupResponse {
+  data: APIList;
+  includes?: APIListExpansions;
+}
+
+export interface MultipleListsLookupResponse {
+  data: Array<APIList>;
+  inlucdes?: APIListExpansions;
+}
+
+export interface ListsPaginatedResponse extends MultipleListsLookupResponse {
+  meta: {
+    result_count: number;
+    previous_token?: number;
+    next_token?: number;
+  };
+}
+
+export type ListExpansionsParameter = 'owner_id';
+
+/**
+ * The query for fetching a single list by id
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id
+ */
+export interface GetSingleListByIdQuery {
+  expansions?: Array<ListExpansionsParameter>;
+  'list.fields'?: Array<ListFieldsParameter>;
+  'user.fields'?: Array<UserFieldsParameter>;
+}
+
+/**
+ * The response of fetching a single list by id
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id
+ */
+export type GetSingleListByIdResponse = SingleListLookupResponse;
+
+/**
+ * The query for fetching all lists owned by a user
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists
+ */
+export interface GetMultipleListsByOwnerIdQuery extends GetSingleListByIdQuery {
+  max_results?: number;
+  pagination_token?: string;
+}
+
+/**
+ * The response of fetching all lists owned by a user
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists
+ */
+export type GetMultipleListsByOwnerIdResponse = ListsPaginatedResponse;
+
+/**
+ * The query for fetching tweets from a list
+ *
+ * https://developer.twitter.com/en/docs/twitter-api/lists/list-tweets/api-reference/get-lists-id-tweets
+ */
+export type GetMultipleTweetsByListIdQuery = TweetsPaginatedQuery;
+
+/**
+ * The response of fetching tweets from a list
+ */
+export type GetMultipleTweetsByListIdResponse = TweetsPaginatedResponse;
 
 /**
  * The body for creating a list
