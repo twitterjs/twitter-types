@@ -8,77 +8,7 @@ import type {
   UserFieldsParameter,
 } from './misc';
 
-export interface SingleTweetLookupResponse {
-  data: APITweet;
-  includes?: APITweetExpansions;
-  errors?: any; // TODO
-}
-
-export interface APITweetExpansions {
-  tweets?: Array<APITweet>;
-  users?: Array<APIUser>;
-  places?: Array<APIPlace>;
-  media?: Array<APIMedia>;
-  polls?: Array<APIPoll>;
-}
-
-export interface MultiTweetLookupResponse {
-  data: Array<APITweet>;
-  includes?: APITweetExpansions;
-  errors?: any; // TODO
-}
-
-export type TweetExpansionsParameter =
-  | 'attachments.poll_ids'
-  | 'attachments.media_keys'
-  | 'author_id'
-  | 'entities.mentions.username'
-  | 'geo.place_id'
-  | 'in_reply_to_user_id'
-  | 'referenced_tweets.id'
-  | 'referenced_tweets.id.author_id';
-
-export interface SingleTweetLookupQuery {
-  expansions?: Array<TweetExpansionsParameter>;
-  'media.fields'?: Array<MediaFieldsParameter>;
-  'place.fields'?: Array<PlaceFieldsParameter>;
-  'poll.fields'?: Array<PollFieldsParameter>;
-  'tweet.fields'?: Array<TweetFieldsParameter>;
-  'user.fields'?: Array<UserFieldsParameter>;
-}
-
-/**
- * The query for fetching a single tweet by ID
- *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
- */
-export type GetSingleTweetByIdQuery = SingleTweetLookupQuery;
-
-/**
- * The response for the request of fetching a single tweet by ID
- *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
- */
-export type GetSingleTweetByIdResponse = SingleTweetLookupResponse;
-
-/**
- * The query for fetching multiple tweets by IDs
- *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
- */
-export interface GetMultipleTweetsByIdsQuery extends SingleTweetLookupQuery {
-  /**
-   * A comma separated list of Tweet IDs. Up to `100` are allowed in a single request
-   */
-  ids: Array<Snowflake>;
-}
-
-/**
- * The response for the request of fetching multiple tweets by IDs
- *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
- */
-export type GetMultipleTweetsByIdsResponse = MultiTweetLookupResponse;
+// ####
 
 /**
  * The body for liking a tweet
@@ -212,7 +142,7 @@ export interface TweetsPaginatedQuery extends SingleTweetLookupQuery {
   pagination_token?: string;
 }
 
-export interface TweetsPaginatedResponse extends MultiTweetLookupResponse {
+export interface TweetsPaginatedResponse extends MultipleTweetsLookupResponse {
   meta: {
     result_count: number;
     previous_token?: string;
@@ -239,7 +169,7 @@ export interface GenericTweetsTimelineQuery extends SingleTweetLookupQuery {
   until_id?: Snowflake;
 }
 
-export interface GenericTweetsTimelineResponse extends MultiTweetLookupResponse {
+export interface GenericTweetsTimelineResponse extends MultipleTweetsLookupResponse {
   meta: {
     result_count: number;
     newest_id: Snowflake;
@@ -249,136 +179,4 @@ export interface GenericTweetsTimelineResponse extends MultiTweetLookupResponse 
   };
 }
 
-/**
- * The query for fetching tweets composed by a user
- */
-export interface GetUsersTweetsQuery extends GenericTweetsTimelineQuery {
-  exclude?: Array<TweetTypeExcludesRequestParameter>;
-}
-
 export type TweetTypeExcludesRequestParameter = 'retweets' | 'replies';
-
-/**
- * The response of fetching tweets composed by a user
- */
-export type GetUsersTweetsResponse = GenericTweetsTimelineResponse;
-
-/**
- * The query for fetching tweets mentioning a user
- */
-export type GetUsersMentionTweetsQuery = GenericTweetsTimelineQuery;
-
-/**
- * The response of fetching tweets mentioning a user
- */
-export type GetUsersMentionTweetsResponse = GenericTweetsTimelineResponse;
-
-/**
- * The query for searching recent and full-archive tweets
- */
-export interface GetTweetSearchQuery extends Omit<GenericTweetsTimelineQuery, 'pagination_token'> {
-  query: string;
-  next_token?: string;
-}
-
-/**
- * The response of searching recent and full-archive tweets
- */
-export interface GetTweetSearchResponse extends MultiTweetLookupResponse {
-  meta: {
-    result_count: number;
-    newest_id: Snowflake;
-    oldest_id: Snowflake;
-    next_token?: string;
-  };
-}
-
-export interface SearchCount {
-  end: string;
-  start: string;
-  tweet_count: number;
-}
-
-export type Granularity = 'minute' | 'hour' | 'day';
-
-/**
- * The query for fetchng recent and full-archive tweet counts
- */
-export interface GetTweetCountsQuery {
-  query: string;
-  end_time?: string;
-  granularity?: Granularity;
-  since_id?: string;
-  start_time?: string;
-  until_id?: string;
-  next_token?: string;
-}
-
-/**
- * The response of fetching recent and full-archinve tweet counts
- */
-export interface GetTweetCountsResponse {
-  data: Array<SearchCount>;
-  errors?: any; // TODO
-  meta: {
-    next_token?: string;
-    total_tweet_count: number;
-  };
-}
-
-export interface PostTweetCreateGeoData {
-  place_id?: string;
-}
-
-export interface PostTweetCreateMediaData {
-  media_ids?: Array<Snowflake>;
-  tagged_user_ids?: Array<Snowflake>;
-}
-
-export interface PostTweetCreatePollData {
-  duration_minutes: number;
-  options: Array<string>;
-}
-
-export interface PostTweetCreateReplyData {
-  exclude_reply_user_ids?: Array<Snowflake>;
-  in_reply_to_tweet_id?: Snowflake;
-}
-
-/**
- * The body for creating a tweet
- *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
- */
-export interface PostTweetCreateJSONBody {
-  direct_message_deep_link?: string;
-  for_super_followers_only?: boolean;
-  geo?: PostTweetCreateGeoData;
-  media?: PostTweetCreateMediaData;
-  poll?: PostTweetCreatePollData;
-  quote_tweet_id?: Snowflake;
-  reply?: PostTweetCreateReplyData;
-  reply_settings?: APITweetReplySettings;
-  text?: string;
-}
-
-/**
- * The response of creating a tweet
- */
-export interface PostTweetCreateResponse {
-  data: {
-    id: Snowflake;
-    text: string;
-  };
-  errors?: any; // TODO
-}
-
-/**
- * The response of deleting a tweet
- */
-export interface DeleteTweetDeleteResponse {
-  data: {
-    deleted: boolean;
-  };
-  errors?: any; // TODO
-}
