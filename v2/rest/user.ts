@@ -1,22 +1,6 @@
 import type { APITweet, APIUser, Snowflake } from '../payloads';
 import type { TweetFieldsParameter, UserFieldsParameter } from './misc';
 
-export interface SingleUserLookupResponse {
-  data: APIUser;
-  includes?: APIUserExpansions;
-  errors?: any; // TODO
-}
-
-export interface APIUserExpansions {
-  tweets?: Array<APITweet>;
-}
-
-export interface MultiUserLookupResponse {
-  data: Array<APIUser>;
-  includes?: APIUserExpansions;
-  errors?: any; // TODO
-}
-
 export interface MultipleUsersLookupWithCountResponse extends MultiUserLookupResponse {
   meta: {
     /**
@@ -24,14 +8,6 @@ export interface MultipleUsersLookupWithCountResponse extends MultiUserLookupRes
      */
     result_count: number;
   };
-}
-
-export type UserExpansionsParameter = 'pinned_tweet_id';
-
-export interface SingleUserLookupQuery {
-  expansions?: Array<UserExpansionsParameter>;
-  'tweet.fields'?: Array<TweetFieldsParameter>;
-  'user.fields'?: Array<UserFieldsParameter>;
 }
 
 /**
