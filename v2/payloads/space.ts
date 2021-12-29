@@ -16,6 +16,8 @@ export interface APISpace {
    */
   created_at?: string;
 
+  ended_at?: string;
+
   /**
    * The unique identifier of the Users who are hosting this Space
    */
@@ -65,6 +67,8 @@ export interface APISpace {
    * The title of the Space as specified by the creator
    */
   title?: string;
+
+  topic_ids?: Array<string>;
 
   /**
    * Specifies the date and time of the last update to any of the Space's metadata, such as its title or scheduled time

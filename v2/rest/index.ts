@@ -1,8 +1,7 @@
 export * from './list';
 export * from './misc';
-export * from './space';
 export * from './stream';
 
-export * from './users';
-
+export * from './spaces';
 export * from './tweets';
+export * from './users';
