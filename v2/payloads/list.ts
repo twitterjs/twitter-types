@@ -20,4 +20,24 @@ export interface APIList {
    * Whether the list is private
    */
   private?: boolean;
+
+  /**
+   * Creation time of this list
+   */
+  created_at?: String;
+
+  /**
+   * Number of users who follow this list
+   */
+  follower_count?: number;
+
+  /**
+   * Number of users who are a member of this list
+   */
+  member_count?: number;
+
+  /**
+   * The user id of the owner of the list
+   */
+  owner_id?: string;
 }

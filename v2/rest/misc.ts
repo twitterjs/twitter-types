@@ -1,4 +1,6 @@
-import type { APIMedia, APIPlace, APIPoll, APISpace, APITweet, APIUser } from '../payloads';
+import type { APIList, APIMedia, APIPlace, APIPoll, APISpace, APITweet, APIUser } from '../payloads';
+
+export type ListFieldsParameter = keyof APIList;
 
 export type MediaFieldsParameter = keyof APIMedia;
 
