@@ -1,13 +1,22 @@
-import type { APIMedia, APIPlace, APIPoll, APISpace, APITweet, APIUser } from '../payloads';
+import type { APIList, APIMedia, APIPlace, APIPoll, APISpace, APITweet, APIUser } from '../payloads';
 
-export type MediaFieldsParameter = keyof APIMedia;
+export type APIListFieldsParameter = keyof APIList;
 
-export type PlaceFieldsParameter = keyof APIPlace;
+export type APIMediaFieldsParameter = keyof APIMedia;
 
-export type PollFieldsParameter = keyof APIPoll;
+export type APIPlaceFieldsParameter = keyof APIPlace;
 
-export type SpaceFieldsParameter = keyof APISpace;
+export type APIPollFieldsParameter = keyof APIPoll;
 
-export type TweetFieldsParameter = keyof APITweet;
+export type APISpaceFieldsParameter = keyof APISpace;
 
-export type UserFieldsParameter = keyof APIUser;
+export type APITweetFieldsParameter = keyof APITweet;
+
+export type APIUserFieldsParameter = keyof APIUser;
+
+// eslint-disable-next-line no-unused-vars
+export type Without<FirstType, SecondType> = { [KeyType in Exclude<keyof FirstType, keyof SecondType>]?: never };
+
+export type MergeExclusive<FirstType, SecondType> = FirstType | SecondType extends object
+  ? (Without<FirstType, SecondType> & SecondType) | (Without<SecondType, FirstType> & FirstType)
+  : FirstType | SecondType;

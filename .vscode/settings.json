@@ -1,12 +1,12 @@
 {
   "editor.formatOnSave": true,
   "[javascript]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   },
   "javascript.format.enable": false,
   "eslint.alwaysShowStatus": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll.eslint": true
   },
   "workbench.editor.highlightModifiedTabs": true,
   "editor.cursorStyle": "line",
@@ -21,7 +21,9 @@
   "editor.tabSize": 2,
   "files.eol": "\n",
   "editor.smoothScrolling": true,
-  "eslint.validate": [
-    "typescript",
-  ],
+  "eslint.validate": ["typescript"],
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.includeCompletionsForImportStatements": true,
+  "typescript.suggest.paths": true
 }
