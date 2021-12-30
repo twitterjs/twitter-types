@@ -1,5 +1,5 @@
-import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '..';
-import type { Snowflake } from '../..';
+import type { Snowflake } from '../../payloads';
+import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
 import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './ListsLookup';
 
 /**

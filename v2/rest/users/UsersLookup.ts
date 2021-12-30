@@ -1,4 +1,5 @@
-import type { APITweet, APIUser, Snowflake, TweetFieldsParameter, UserFieldsParameter } from '../..';
+import type { APITweet, APIUser, Snowflake } from '../../payloads';
+import type { APITweetFieldsParameter, APIUserFieldsParameter } from '../misc';
 
 export type APIUserExpansionsParameter = 'pinned_tweet_id';
 
@@ -8,8 +9,8 @@ export interface APIUserExpansions {
 
 export interface SingleUserLookupQuery {
   expansions?: Array<APIUserExpansionsParameter>;
-  'tweet.fields'?: Array<TweetFieldsParameter>;
-  'user.fields'?: Array<UserFieldsParameter>;
+  'tweet.fields'?: Array<APITweetFieldsParameter>;
+  'user.fields'?: Array<APIUserFieldsParameter>;
 }
 
 export interface SingleUserLookupResponse {

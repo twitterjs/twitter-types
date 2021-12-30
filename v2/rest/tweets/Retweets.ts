@@ -1,5 +1,5 @@
-import type { Snowflake } from '../..';
-import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users/UsersLookup';
+import type { Snowflake } from '../../payloads';
+import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
 
 /**
  * The query for fetching users who retweeted a tweet

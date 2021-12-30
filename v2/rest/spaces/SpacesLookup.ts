@@ -1,10 +1,6 @@
-import type {
-  MultipleUsersLookupQuery,
-  MultipleUsersLookupResponse,
-  SpaceFieldsParameter,
-  UserFieldsParameter,
-} from '..';
-import type { APISpace, APIUser, Snowflake } from '../..';
+import type { APISpace, APIUser, Snowflake } from '../../payloads';
+import type { APISpaceFieldsParameter, APIUserFieldsParameter } from '../misc';
+import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
 
 export type APISpaceExpansionsParameter = 'invited_user_ids' | 'speaker_ids' | 'creator_id' | 'host_ids';
 
@@ -14,9 +10,9 @@ export interface APISpaceExpansions {
 
 export interface SingleSpaceLookupQuery {
   expansions?: Array<APISpaceExpansionsParameter>;
-  'space.fields'?: Array<SpaceFieldsParameter>;
+  'space.fields'?: Array<APISpaceFieldsParameter>;
   'topic.fields'?: 'id' | 'name' | 'description';
-  'user.fields'?: Array<UserFieldsParameter>;
+  'user.fields'?: Array<APIUserFieldsParameter>;
 }
 
 export interface SingleSpaceLookupResponse {

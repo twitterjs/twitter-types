@@ -1,4 +1,4 @@
-import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from '..';
+import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from '../tweets';
 
 /**
  * The query for fetching tweets from a list

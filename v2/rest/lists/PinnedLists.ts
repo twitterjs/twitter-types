@@ -1,4 +1,4 @@
-import type { Snowflake } from '../..';
+import type { Snowflake } from '../../payloads';
 import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './ListsLookup';
 
 /**

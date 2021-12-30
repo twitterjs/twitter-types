@@ -1,4 +1,4 @@
-import type { APITweetReplySettings, Snowflake } from '../..';
+import type { APITweetReplySettings, Snowflake } from '../../payloads';
 
 /**
  * The body for creating a tweet

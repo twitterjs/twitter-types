@@ -1,11 +1,11 @@
+import type { APITweet, APIUser, APIPlace, APIMedia, APIPoll, Snowflake } from '../../payloads';
 import type {
-  MediaFieldsParameter,
-  PlaceFieldsParameter,
-  PollFieldsParameter,
-  TweetFieldsParameter,
-  UserFieldsParameter,
-} from '..';
-import type { APITweet, APIUser, APIPlace, APIMedia, APIPoll, Snowflake } from '../..';
+  APIMediaFieldsParameter,
+  APIPlaceFieldsParameter,
+  APIPollFieldsParameter,
+  APITweetFieldsParameter,
+  APIUserFieldsParameter,
+} from '../misc';
 
 export type APITweetExpansionsParameter =
   | 'attachments.poll_ids'
@@ -27,11 +27,11 @@ export interface APITweetExpansions {
 
 export interface SingleTweetLookupQuery {
   expansions?: Array<APITweetExpansionsParameter>;
-  'media.fields'?: Array<MediaFieldsParameter>;
-  'place.fields'?: Array<PlaceFieldsParameter>;
-  'poll.fields'?: Array<PollFieldsParameter>;
-  'tweet.fields'?: Array<TweetFieldsParameter>;
-  'user.fields'?: Array<UserFieldsParameter>;
+  'media.fields'?: Array<APIMediaFieldsParameter>;
+  'place.fields'?: Array<APIPlaceFieldsParameter>;
+  'poll.fields'?: Array<APIPollFieldsParameter>;
+  'tweet.fields'?: Array<APITweetFieldsParameter>;
+  'user.fields'?: Array<APIUserFieldsParameter>;
 }
 
 export interface SingleTweetLookupResponse {

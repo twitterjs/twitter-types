@@ -1,4 +1,4 @@
-import type { SingleTweetLookupQuery, SingleTweetLookupResponse } from '.';
+import type { SingleTweetLookupQuery, SingleTweetLookupResponse } from './TweetsLookup';
 
 /**
  * The query to connect with the sampled-tweet-stream

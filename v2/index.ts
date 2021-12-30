@@ -1,2 +1,2 @@
-export * from './payloads/index';
-export * from './rest/index';
+export * from './payloads';
+export * from './rest';

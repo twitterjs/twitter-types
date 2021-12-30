@@ -1,5 +1,5 @@
-import type { ListFieldsParameter, UserFieldsParameter } from '..';
-import type { APIList, APIUser } from '../..';
+import type { APIList, APIUser } from '../../payloads';
+import type { APIListFieldsParameter, APIUserFieldsParameter } from '../misc';
 
 export type APIListExpansionsParameter = 'owner_id';
 
@@ -9,8 +9,8 @@ export interface APIListExpansions {
 
 export interface SingleListLookupQuery {
   expansions?: Array<APIListExpansionsParameter>;
-  'list.fields'?: Array<ListFieldsParameter>;
-  'user.fields'?: Array<UserFieldsParameter>;
+  'list.fields'?: Array<APIListFieldsParameter>;
+  'user.fields'?: Array<APIUserFieldsParameter>;
 }
 
 export interface SingleListLookupResponse {
