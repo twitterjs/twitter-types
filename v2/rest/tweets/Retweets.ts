@@ -45,5 +45,7 @@ export interface POST_2_users_id_retweets_Response {
  * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/delete-users-id-retweets-tweet_id
  */
 export interface DELETE_2_users_id_retweets_source_tweet_id_Response {
-  retweeted: boolean;
+  data: {
+    retweeted: boolean;
+  };
 }
