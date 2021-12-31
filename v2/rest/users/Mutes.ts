@@ -17,7 +17,7 @@ export interface GET_2_users_id_muting_Query extends MultipleUsersLookupQuery {
  */
 export interface GET_2_users_id_muting_Response extends MultipleUsersLookupResponse {
   meta: {
-    esult_count: number;
+    result_count: number;
     previous_token?: string;
     next_token?: string;
   };
