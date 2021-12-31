@@ -25,7 +25,7 @@ export interface GET_2_tweets_id_retweeted_by_Response extends MultipleUsersLook
  * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
  */
 export interface POST_2_users_id_retweets_JSONBody {
-  id: Snowflake;
+  tweet_id: Snowflake;
 }
 
 /**
@@ -34,7 +34,9 @@ export interface POST_2_users_id_retweets_JSONBody {
  * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
  */
 export interface POST_2_users_id_retweets_Response {
-  retweeted: boolean;
+  data: {
+    retweeted: boolean;
+  };
 }
 
 /**
