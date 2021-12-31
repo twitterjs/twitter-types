@@ -1,3 +1,5 @@
+import type { Snowflake } from '../../payloads';
+
 /**
  * The body for creating a list
  *
@@ -30,7 +32,7 @@ export interface POST_2_lists_Response {
     /**
      * The id of the list
      */
-    id: number;
+    id: Snowflake;
     /**
      * The name of the list
      */

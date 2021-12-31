@@ -45,7 +45,7 @@ export interface POST_2_users_id_pinned_lists_Response {
  *
  * https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/delete-users-id-pinned-lists-list_id
  */
-export interface DELETE_2_users_id_pinned_lists_list_id_JSONBody {
+export interface DELETE_2_users_id_pinned_lists_list_id_Response {
   data: {
     pinned: false;
   };

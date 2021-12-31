@@ -11,7 +11,7 @@ export interface AddFilteredTweetStreamRulesJSONBody {
 }
 
 export interface RemoveFilteredTweetStreamRulesJSONBody {
-  delete: MergeExclusive<{ ids: Array<Snowflake> }, { values: Array<Snowflake> }>;
+  delete: MergeExclusive<{ ids: Array<Snowflake> }, { values: Array<string> }>;
 }
 
 export interface AddFilteredTweetStreamRulesResponseMeta {
