@@ -24,7 +24,7 @@ export interface APIList {
   /**
    * Creation time of this list
    */
-  created_at?: String;
+  created_at?: string;
 
   /**
    * Number of users who follow this list
@@ -39,5 +39,5 @@ export interface APIList {
   /**
    * The user id of the owner of the list
    */
-  owner_id?: string;
+  owner_id?: Snowflake;
 }

@@ -37,7 +37,7 @@ export type GET_2_lists_id_Query = SingleListLookupQuery;
  *
  * https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id
  */
-export type GET_2_lists_id_Response = MultipleListsLookupResponse;
+export type GET_2_lists_id_Response = SingleListLookupResponse;
 
 /**
  * The query for fetching all lists owned by a user
