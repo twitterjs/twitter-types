@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import type { MergeExclusive } from '../misc';
 import type { Snowflake } from '../../payloads';
-import type { SingleTweetLookupQuery, SingleTweetLookupResponse } from './TweetsLookup';
+import type { SingleTweetLookupQuery, SingleTweetLookupResponse } from './index';
 
 export interface AddFilteredTweetStreamRulesJSONBody {
   add: Array<{

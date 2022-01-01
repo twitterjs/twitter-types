@@ -1,29 +1,10 @@
-import type { APITweet, APIUser, Snowflake } from '../../payloads';
-import type { APITweetFieldsParameter, APIUserFieldsParameter } from '../misc';
-
-export type APIUserExpansionsParameter = 'pinned_tweet_id';
-
-export interface APIUserExpansions {
-  tweets?: Array<APITweet>;
-}
-
-export interface SingleUserLookupQuery {
-  expansions?: Array<APIUserExpansionsParameter>;
-  'tweet.fields'?: Array<APITweetFieldsParameter>;
-  'user.fields'?: Array<APIUserFieldsParameter>;
-}
-
-export interface SingleUserLookupResponse {
-  data: APIUser;
-  includes?: APIUserExpansions;
-}
-
-export type MultipleUsersLookupQuery = SingleUserLookupQuery;
-
-export interface MultipleUsersLookupResponse {
-  data: Array<APIUser>;
-  includes?: APIUserExpansions;
-}
+import type { Snowflake } from '../../payloads';
+import type {
+  MultipleUsersLookupQuery,
+  MultipleUsersLookupResponse,
+  SingleUserLookupQuery,
+  SingleUserLookupResponse,
+} from './index';
 
 /**
  * The query for fetching users by their ids

@@ -1,31 +1,11 @@
-import type { APISpace, APIUser, Snowflake } from '../../payloads';
-import type { APISpaceFieldsParameter, APIUserFieldsParameter } from '../misc';
+import type { Snowflake } from '../../payloads';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
-
-export type APISpaceExpansionsParameter = 'invited_user_ids' | 'speaker_ids' | 'creator_id' | 'host_ids';
-
-export interface APISpaceExpansions {
-  users?: Array<APIUser>;
-}
-
-export interface SingleSpaceLookupQuery {
-  expansions?: Array<APISpaceExpansionsParameter>;
-  'space.fields'?: Array<APISpaceFieldsParameter>;
-  'topic.fields'?: 'id' | 'name' | 'description';
-  'user.fields'?: Array<APIUserFieldsParameter>;
-}
-
-export interface SingleSpaceLookupResponse {
-  data: APISpace;
-  includes?: APISpaceExpansions;
-}
-
-export type MultipleSpacesLookupQuery = SingleSpaceLookupQuery;
-
-export interface MultipleSpacesLookupResponse {
-  data: Array<APISpace>;
-  includes?: APISpaceExpansions;
-}
+import type {
+  SingleSpaceLookupQuery,
+  SingleSpaceLookupResponse,
+  MultipleSpacesLookupQuery,
+  MultipleSpacesLookupResponse,
+} from './index';
 
 /**
  * The query for fetching a space by its id

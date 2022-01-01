@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../payloads';
-import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './UsersLookup';
+import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './index';
 
 /**
  * The query for fetching users followed by a user

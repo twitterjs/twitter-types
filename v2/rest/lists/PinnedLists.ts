@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../payloads';
-import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './ListsLookup';
+import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './index';
 
 /**
  * The query for fetching list pinned by a user

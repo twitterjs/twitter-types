@@ -1,4 +1,4 @@
-import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './UsersLookup';
+import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './index';
 
 /**
  * The query for fetching users muted by a user

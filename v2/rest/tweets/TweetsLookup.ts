@@ -1,50 +1,10 @@
-import type { APITweet, APIUser, APIPlace, APIMedia, APIPoll, Snowflake } from '../../payloads';
+import type { Snowflake } from '../../payloads';
 import type {
-  APIMediaFieldsParameter,
-  APIPlaceFieldsParameter,
-  APIPollFieldsParameter,
-  APITweetFieldsParameter,
-  APIUserFieldsParameter,
-} from '../misc';
-
-export type APITweetExpansionsParameter =
-  | 'attachments.poll_ids'
-  | 'attachments.media_keys'
-  | 'author_id'
-  | 'entities.mentions.username'
-  | 'geo.place_id'
-  | 'in_reply_to_user_id'
-  | 'referenced_tweets.id'
-  | 'referenced_tweets.id.author_id';
-
-export interface APITweetExpansions {
-  tweets?: Array<APITweet>;
-  users?: Array<APIUser>;
-  places?: Array<APIPlace>;
-  media?: Array<APIMedia>;
-  polls?: Array<APIPoll>;
-}
-
-export interface SingleTweetLookupQuery {
-  expansions?: Array<APITweetExpansionsParameter>;
-  'media.fields'?: Array<APIMediaFieldsParameter>;
-  'place.fields'?: Array<APIPlaceFieldsParameter>;
-  'poll.fields'?: Array<APIPollFieldsParameter>;
-  'tweet.fields'?: Array<APITweetFieldsParameter>;
-  'user.fields'?: Array<APIUserFieldsParameter>;
-}
-
-export interface SingleTweetLookupResponse {
-  data: APITweet;
-  includes?: APITweetExpansions;
-}
-
-export type MultipleTweetsLookupQuery = SingleTweetLookupQuery;
-
-export interface MultipleTweetsLookupResponse {
-  data: Array<APITweet>;
-  includes?: APITweetExpansions;
-}
+  MultipleTweetsLookupQuery,
+  MultipleTweetsLookupResponse,
+  SingleTweetLookupQuery,
+  SingleTweetLookupResponse,
+} from './index';
 
 /**
  * The query for fetching multiple tweets by ids

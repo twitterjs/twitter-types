@@ -1,6 +1,6 @@
 import type { Snowflake } from '../../payloads';
+import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './index';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
-import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './ListsLookup';
 
 /**
  * The query for fetching users who are followers of a list

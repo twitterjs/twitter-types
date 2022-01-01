@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../payloads';
-import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './TweetsLookup';
+import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './index';
 
 /**
  * The query for fetching tweets composed by a user

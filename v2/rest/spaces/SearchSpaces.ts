@@ -1,4 +1,4 @@
-import type { MultipleSpacesLookupQuery, MultipleSpacesLookupResponse } from './SpacesLookup';
+import type { MultipleSpacesLookupQuery, MultipleSpacesLookupResponse } from './index';
 
 /**
  * The query for fetching spaces by search query

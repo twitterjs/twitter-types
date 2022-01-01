@@ -1,6 +1,6 @@
 import type { Snowflake } from '../../payloads';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
-import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './TweetsLookup';
+import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './index';
 
 /**
  * The query for fetching users who liked a tweet

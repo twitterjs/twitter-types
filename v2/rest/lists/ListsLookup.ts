@@ -1,29 +1,9 @@
-import type { APIList, APIUser } from '../../payloads';
-import type { APIListFieldsParameter, APIUserFieldsParameter } from '../misc';
-
-export type APIListExpansionsParameter = 'owner_id';
-
-export interface APIListExpansions {
-  users?: Array<APIUser>;
-}
-
-export interface SingleListLookupQuery {
-  expansions?: Array<APIListExpansionsParameter>;
-  'list.fields'?: Array<APIListFieldsParameter>;
-  'user.fields'?: Array<APIUserFieldsParameter>;
-}
-
-export interface SingleListLookupResponse {
-  data: APIList;
-  includes?: APIListExpansions;
-}
-
-export type MultipleListsLookupQuery = SingleListLookupQuery;
-
-export interface MultipleListsLookupResponse {
-  data: Array<APIList>;
-  includes?: APIListExpansions;
-}
+import type {
+  SingleListLookupQuery,
+  SingleListLookupResponse,
+  MultipleListsLookupQuery,
+  MultipleListsLookupResponse,
+} from './index';
 
 /**
  * The query for fetching a list by its id
