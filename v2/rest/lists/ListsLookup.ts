@@ -1,3 +1,4 @@
+import type { Snowflake } from '../..';
 import type {
   SingleListLookupQuery,
   SingleListLookupResponse,
@@ -8,23 +9,34 @@ import type {
 /**
  * The query for fetching a list by its id
  *
- * https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id
  */
-export type GET_2_lists_id_Query = SingleListLookupQuery;
+export type GETListsIdQuery = SingleListLookupQuery;
 
 /**
  * The response of fetching a list by its id
  *
- * https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id
  */
-export type GET_2_lists_id_Response = SingleListLookupResponse;
+export type GETListsIdResponse = SingleListLookupResponse;
+
+/**
+ * Generates a route for fetching a list by its id:
+ * - GET `/lists/:id`
+ * @param listId The list id to fetch
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id
+ */
+export function GETListsIdRoute(listId: Snowflake) {
+  return `/lists/${listId}` as const;
+}
 
 /**
  * The query for fetching all lists owned by a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists
  */
-export interface GET_2_users_id_owned_lists_Query extends MultipleListsLookupQuery {
+export interface GETUsersIdOwnedListsQuery extends MultipleListsLookupQuery {
   max_results?: number;
   pagination_token?: string;
 }
@@ -32,12 +44,23 @@ export interface GET_2_users_id_owned_lists_Query extends MultipleListsLookupQue
 /**
  * The response of fetching all lists owned by a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists
  */
-export interface GET_2_users_id_owned_lists_Response extends MultipleListsLookupResponse {
+export interface GETUsersIdOwnedListsResponse extends MultipleListsLookupResponse {
   meta: {
     result_count: number;
     previous_token?: string;
     next_token?: string;
   };
+}
+
+/**
+ * Generates route for fetching lists owned by a user:
+ * - GET `/users/:id/owned_lists`
+ * @param userId The user id whose owned lists are to be fetched
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists
+ */
+export function GETUsersIdOwnedListsRoute(userId: Snowflake) {
+  return `/users/${userId}/owned_lists` as const;
 }
