@@ -3,9 +3,9 @@ import type { MultipleSpacesLookupQuery, MultipleSpacesLookupResponse } from './
 /**
  * The query for fetching spaces by search query
  *
- * https://developer.twitter.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search
  */
-export interface GET_2_spaces_search_Query extends MultipleSpacesLookupQuery {
+export interface GETSpacesSearchQuery extends MultipleSpacesLookupQuery {
   query: string;
   state?: 'all' | 'live' | 'scheduled';
   max_results?: number;
@@ -14,10 +14,20 @@ export interface GET_2_spaces_search_Query extends MultipleSpacesLookupQuery {
 /**
  * The response of fetching spaces by search query
  *
- * https://developer.twitter.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search
  */
-export interface GET_2_spaces_search_Response extends MultipleSpacesLookupResponse {
+export interface GETSpacesSearchResponse extends MultipleSpacesLookupResponse {
   meta: {
     result_count: number;
   };
+}
+
+/**
+ * Generates route for fetching spaces by search query:
+ * - GET /spaces/search
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search
+ */
+export function GETSpacesSearchRoute() {
+  return `/spaces/search` as const;
 }
