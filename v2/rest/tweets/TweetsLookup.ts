@@ -9,29 +9,50 @@ import type {
 /**
  * The query for fetching multiple tweets by ids
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
  */
-export interface GET_2_tweets_Query extends MultipleTweetsLookupQuery {
+export interface GETTweetsQuery extends MultipleTweetsLookupQuery {
   ids: Array<Snowflake>;
 }
 
 /**
  * The response of fetching multiple tweets by ids
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
  */
-export type GET_2_tweets_Response = MultipleTweetsLookupResponse;
+export type GETTweetsResponse = MultipleTweetsLookupResponse;
+
+/**
+ * Generates route for fetching multiple tweets by ids:
+ * - GET `/tweets`
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
+ */
+export function GETTweetsRoute() {
+  return `/tweets` as const;
+}
 
 /**
  * The query for fetching a single tweet by id
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
  */
-export type GET_2_tweets_id_Query = SingleTweetLookupQuery;
+export type GETTweetsIdQuery = SingleTweetLookupQuery;
 
 /**
  * The response for the request of fetching a single tweet by ID
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
  */
-export type GET_2_tweets_id_Response = SingleTweetLookupResponse;
+export type GETTweetsIdResponse = SingleTweetLookupResponse;
+
+/**
+ * Generates route for fetching a tweet by id:
+ * - GET `/tweets/:id`
+ * @param tweetId The tweet id to fetch
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
+ */
+export function GETTweetsIdRoute(tweetId: Snowflake) {
+  return `/tweets/${tweetId}` as const;
+}

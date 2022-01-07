@@ -1,9 +1,9 @@
 /**
  * The query for fetching count of recent tweets that match a search query
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent
  */
-export interface GET_2_tweets_counts_recent_Query {
+export interface GETTweetsCountsRecentQuery {
   query: string;
   end_time?: string;
   granularity?: 'minute' | 'hour' | 'day';
@@ -16,9 +16,9 @@ export interface GET_2_tweets_counts_recent_Query {
 /**
  * The response of fetching count of recent tweets that match a search query
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent
  */
-export interface GET_2_tweets_counts_recent_Response {
+export interface GETTweetsCountsRecentResponse {
   data: Array<{
     end: string;
     start: string;
@@ -31,15 +31,35 @@ export interface GET_2_tweets_counts_recent_Response {
 }
 
 /**
+ * Generates route for fetching count of recent tweets that match a search query:
+ * - GET `/tweets/counts/recent`
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent
+ */
+export function GETTweetsCountsRecentRoute() {
+  return `/tweets/counts/recent` as const;
+}
+
+/**
  * The query for fetching count of full-archive tweets that match a search query
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-all
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-all
  */
-export type GET_2_tweets_counts_all_Query = GET_2_tweets_counts_recent_Query;
+export type GETTweetsCountsAllQuery = GETTweetsCountsRecentQuery;
 
 /**
  * The response of fetching count of full-archive tweets that match a search query
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-all
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-all
  */
-export type GET_2_tweets_counts_all_Response = GET_2_tweets_counts_recent_Response;
+export type GETTweetsCountsAllResponse = GETTweetsCountsRecentResponse;
+
+/**
+ * Generates route for fetching count of full-archive tweets that match a search query:
+ * - GET `/tweets/counts/all`
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-all
+ */
+export function GETTweetsCountsAllRoute() {
+  return `/tweets/counts/all` as const;
+}

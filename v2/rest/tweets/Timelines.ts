@@ -4,9 +4,9 @@ import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './
 /**
  * The query for fetching tweets composed by a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets
  */
-export interface GET_2_users_id_tweets_Query extends MultipleTweetsLookupQuery {
+export interface GETUsersIdTweetsQuery extends MultipleTweetsLookupQuery {
   end_time?: string;
   max_results?: number;
   pagination_token?: string;
@@ -19,9 +19,9 @@ export interface GET_2_users_id_tweets_Query extends MultipleTweetsLookupQuery {
 /**
  * The response of fetching tweets composed by a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets
  */
-export interface GET_2_users_id_tweets_Response extends MultipleTweetsLookupResponse {
+export interface GETUsersIdTweetsResponse extends MultipleTweetsLookupResponse {
   meta: {
     result_count: number;
     newest_id: Snowflake;
@@ -32,11 +32,22 @@ export interface GET_2_users_id_tweets_Response extends MultipleTweetsLookupResp
 }
 
 /**
+ * Generates route for fetching tweets composed by a user:
+ * - GET `/users/:id/tweets`
+ * @param userId The user id whose tweets are to be fetched
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets
+ */
+export function GETUsersIdTweetsRoute(userId: Snowflake) {
+  return `/users/${userId}/tweets` as const;
+}
+
+/**
  * The query for fetching tweets mentioning a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions
  */
-export interface GET_2_users_id_mentions_Query extends MultipleTweetsLookupQuery {
+export interface GETUsersIdMentionsQuery extends MultipleTweetsLookupQuery {
   end_time?: string;
   max_results?: number;
   pagination_token?: string;
@@ -48,9 +59,9 @@ export interface GET_2_users_id_mentions_Query extends MultipleTweetsLookupQuery
 /**
  * The response of fetching tweets mentioning a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions
  */
-export interface GET_2_users_id_mentions_Response extends MultipleTweetsLookupResponse {
+export interface GETUsersIdMentionsResponse extends MultipleTweetsLookupResponse {
   meta: {
     result_count: number;
     newest_id: Snowflake;
@@ -58,4 +69,15 @@ export interface GET_2_users_id_mentions_Response extends MultipleTweetsLookupRe
     previous_token?: string;
     next_token?: string;
   };
+}
+
+/**
+ * Generates route for fetching tweets mentioning a user:
+ * - GET `/users/:id/mentions`
+ * @param userId The user id that the tweets mention
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions
+ */
+export function GETUsersIdMentionsRoute(userId: Snowflake) {
+  return `users/${userId}/mentions` as const;
 }

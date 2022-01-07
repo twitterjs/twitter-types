@@ -3,15 +3,25 @@ import type { SingleTweetLookupQuery, SingleTweetLookupResponse } from './index'
 /**
  * The query to connect with the sampled-tweet-stream
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream
  */
-export interface GET_2_tweets_sample_stream_Query extends SingleTweetLookupQuery {
+export interface GETTweetsSampleStreamQuery extends SingleTweetLookupQuery {
   backfill_minutes?: number;
 }
 
 /**
  * The response of the sampled-tweet-stream
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream
  */
-export type GET_2_tweets_sample_stream_Response = SingleTweetLookupResponse;
+export type GETTweetsSampleStreamResponse = SingleTweetLookupResponse;
+
+/**
+ * Generates route to connect with the sampled-tweet-stream:
+ * - GET `/tweets/sample/stream`
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream
+ */
+export function GETTweetsSampleStreamRoute() {
+  return `/tweets/sample/stream` as const;
+}

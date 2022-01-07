@@ -4,48 +4,84 @@ import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../u
 /**
  * The query for fetching users who retweeted a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
  */
-export type GET_2_tweets_id_retweeted_by_Query = MultipleUsersLookupQuery;
+export type GETTweetsIdRetweetedByQuery = MultipleUsersLookupQuery;
 
 /**
  * The response of fetching users who retweeted a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
  */
-export interface GET_2_tweets_id_retweeted_by_Response extends MultipleUsersLookupResponse {
+export interface GETTweetsIdRetweetedByResponse extends MultipleUsersLookupResponse {
   meta: {
     result_count: number;
   };
 }
 
 /**
+ * Generates route for fetching users who retweeted a tweet:
+ * - GET `/tweets/:id/retweeted_by`
+ * @param tweetId The tweet id whose retweeting users are to be fetched
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
+ */
+export function GETTweetsIdRetweetedByRoute(tweetId: Snowflake) {
+  return `/tweets/${tweetId}/retweeted_by` as const;
+}
+
+/**
  * The body for retweeting a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
  */
-export interface POST_2_users_id_retweets_JSONBody {
+export interface POSTUsersIdRetweetsJSONBody {
   tweet_id: Snowflake;
 }
 
 /**
  * The response of retweeting a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
  */
-export interface POST_2_users_id_retweets_Response {
+export interface POSTUsersIdRetweetsResponse {
   data: {
     retweeted: boolean;
   };
 }
 
 /**
+ * Generates route for retweeting a tweet:
+ * - POST `/users/:id/retweets`
+ * @param userId The user id to retweet on behalf of
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
+ */
+export function POSTUsersIdRetweetsRoute(userId: Snowflake) {
+  return `/users/${userId}/retweets` as const;
+}
+
+/* eslint-disable max-len */
+/**
  * The response of removing a retweet of a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/delete-users-id-retweets-tweet_id
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/delete-users-id-retweets-tweet_id
  */
-export interface DELETE_2_users_id_retweets_source_tweet_id_Response {
+export interface DELETEUsersIdRetweetsSourceTweetIdResponse {
   data: {
     retweeted: boolean;
   };
 }
+
+/**
+ * Generates route for removing a retweet of a tweet:
+ * - DELETE `/users/:id/retweets/:source_tweet_id`
+ * @param userId The user id to remove the retweet on behalf of
+ * @param tweetId The tweet id whose retweet is to be removed
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/delete-users-id-retweets-tweet_id
+ */
+export function DELETEUsersIdRetweetsSourceTweetIdRoute(userId: Snowflake, tweetId: Snowflake) {
+  return `/users/${userId}/retweets/${tweetId}` as const;
+}
+/* eslint-enable max-len */

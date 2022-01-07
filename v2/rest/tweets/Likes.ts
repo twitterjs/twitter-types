@@ -5,27 +5,38 @@ import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './
 /**
  * The query for fetching users who liked a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users
  */
-export type GET_2_tweets_id_liking_users_Query = MultipleUsersLookupQuery;
+export type GETTweetsIdLikingUsersQuery = MultipleUsersLookupQuery;
 
 /**
  * The response of fetching users who liked a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users
  */
-export interface GET_2_tweets_id_liking_users_Response extends MultipleUsersLookupResponse {
+export interface GETTweetsIdLikingUsersResponse extends MultipleUsersLookupResponse {
   meta: {
     result_count: number;
   };
 }
 
 /**
+ * Generates route for fetching users who liked a tweet:
+ * - GET `/tweets/:id/liking_users`
+ * @param tweetId The tweet id whose liking users are to be fetched
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users
+ */
+export function GETTweetsIdLikingUsersRoute(tweetId: Snowflake) {
+  return `/tweets/${tweetId}/liking_users` as const;
+}
+
+/**
  * The query for fetching tweets liked by a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets
  */
-export interface GET_2_users_id_liked_tweets_Query extends MultipleTweetsLookupQuery {
+export interface GETUsersIdLikedTweetsQuery extends MultipleTweetsLookupQuery {
   max_results?: number;
   pagination_token?: string;
 }
@@ -33,10 +44,9 @@ export interface GET_2_users_id_liked_tweets_Query extends MultipleTweetsLookupQ
 /**
  * The response of fetching tweets liked by a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets
  */
-
-export interface GET_2_users_id_liked_tweets_Response extends MultipleTweetsLookupResponse {
+export interface GETUsersIdLikedTweetsResponse extends MultipleTweetsLookupResponse {
   meta: {
     result_count: number;
     next_token?: string;
@@ -45,32 +55,66 @@ export interface GET_2_users_id_liked_tweets_Response extends MultipleTweetsLook
 }
 
 /**
+ * Generates route for fetching tweets liked by a user:
+ * - GET `/users/:id/liked_tweets`
+ * @param userId The user id whose liked tweets are to be fetched
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets
+ */
+export function GETUsersIdLikedTweetsRoute(userId: Snowflake) {
+  return `/users/${userId}/liked_tweets` as const;
+}
+
+/**
  * The body for liking a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
  */
-export interface POST_2_users_id_likes_JSONBody {
+export interface POSTUsersIdLikesJSONBody {
   tweet_id: Snowflake;
 }
 
 /**
  * The response of liking a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
  */
-export interface POST_2_users_id_likes_Response {
+export interface POSTUsersIdLikesResponse {
   data: {
     liked: boolean;
   };
 }
 
 /**
+ * Generates route for liking a tweet:
+ * - POST `/users/:id/likes`
+ * @param userId The user id to like the tweet on behalf of
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
+ */
+export function POSTUsersIdLikesRoute(userId: Snowflake) {
+  return `/users/${userId}/likes` as const;
+}
+
+/**
  * The response of unliking a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/delete-users-id-likes-tweet_id
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/delete-users-id-likes-tweet_id
  */
-export interface DELETE_2_users_id_likes_tweet_id_Response {
+export interface DELETEUsersIdLikesTweetIdResponse {
   data: {
     liked: boolean;
   };
+}
+
+/**
+ * Generates route for unliking a tweet:
+ * - DELETE `/users/:id/likes/:tweet_id`
+ * @param userId The user id to unlike the tweet on behalf of
+ * @param tweetId The tweet id to unlike
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/delete-users-id-likes-tweet_id
+ */
+export function DELETEUsersIdLikesTweetIdRoute(userId: Snowflake, tweetId: Snowflake) {
+  return `/users/${userId}/likes/${tweetId}` as const;
 }
