@@ -6,7 +6,7 @@ import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './in
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/get-users-blocking
  */
-export interface GET2UsersIdBlockingQuery extends MultipleUsersLookupQuery {
+export interface GETUsersIdBlockingQuery extends MultipleUsersLookupQuery {
   max_results?: number;
   pagination_token?: string;
 }
@@ -16,7 +16,7 @@ export interface GET2UsersIdBlockingQuery extends MultipleUsersLookupQuery {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/get-users-blocking
  */
-export interface GET2UsersIdBlockingResponse extends MultipleUsersLookupResponse {
+export interface GETUsersIdBlockingResponse extends MultipleUsersLookupResponse {
   meta: {
     result_count: number;
     previous_token?: string;
@@ -26,14 +26,14 @@ export interface GET2UsersIdBlockingResponse extends MultipleUsersLookupResponse
 
 /**
  * Generates route for fetching users blocked by a user:
- * - GET `/2/users/:id/blocking`
+ * - GET `/users/:id/blocking`
  * @param userId The user id to block
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/get-users-blocking
  *
  */
-export function GET2UsersIdBlockingRoute(userId: Snowflake) {
-  return `/2/users/${userId}/blocking` as const;
+export function GETUsersIdBlockingRoute(userId: Snowflake) {
+  return `/users/${userId}/blocking` as const;
 }
 
 /**
@@ -41,7 +41,7 @@ export function GET2UsersIdBlockingRoute(userId: Snowflake) {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking
  */
-export interface POST2UsersIdBlockingJSONBody {
+export interface POSTUsersIdBlockingJSONBody {
   target_user_id: Snowflake;
 }
 
@@ -50,7 +50,7 @@ export interface POST2UsersIdBlockingJSONBody {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking
  */
-export interface POST2UsersIdBlockingResponse {
+export interface POSTUsersIdBlockingResponse {
   data: {
     blocking: boolean;
   };
@@ -58,14 +58,14 @@ export interface POST2UsersIdBlockingResponse {
 
 /**
  * Generates route for blocking a user:
- * - POST `/2/users/:id/blocking`
+ * - POST `/users/:id/blocking`
  * @param userId The user id to block
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking
  *
  */
-export function POST2UsersIdBlockingRoute(userId: Snowflake) {
-  return `/2/users/${userId}/blocking` as const;
+export function POSTUsersIdBlockingRoute(userId: Snowflake) {
+  return `/users/${userId}/blocking` as const;
 }
 
 /**
@@ -73,7 +73,7 @@ export function POST2UsersIdBlockingRoute(userId: Snowflake) {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/delete-users-user_id-blocking
  */
-export interface DELETE2UsersSourceUserIdBlockingTargetUserIdResponse {
+export interface DELETEUsersSourceUserIdBlockingTargetUserIdResponse {
   data: {
     blocking: boolean;
   };
@@ -81,12 +81,12 @@ export interface DELETE2UsersSourceUserIdBlockingTargetUserIdResponse {
 
 /**
  * Generates route for unblocking a user:
- * - DELETE `/2/users/:source_user_id/blocking/:target_user_id`
+ * - DELETE `/users/:source_user_id/blocking/:target_user_id`
  * @param sourceUserId The user id to send the request on behalf of
  * @param targetUserId The user id to unblock
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/delete-users-user_id-blocking
  */
-export function DELETE2UsersSourceUserIdBlockingTargetUserIdRoute(sourceUserId: Snowflake, targetUserId: Snowflake) {
-  return `/2/users/${sourceUserId}/blocking/${targetUserId}` as const;
+export function DELETEUsersSourceUserIdBlockingTargetUserIdRoute(sourceUserId: Snowflake, targetUserId: Snowflake) {
+  return `/users/${sourceUserId}/blocking/${targetUserId}` as const;
 }

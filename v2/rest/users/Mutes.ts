@@ -1,11 +1,12 @@
+import type { Snowflake } from '../../payloads';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './index';
 
 /**
  * The query for fetching users muted by a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/get-users-muting
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/get-users-muting
  */
-export interface GET_2_users_id_muting_Query extends MultipleUsersLookupQuery {
+export interface GETUsersIdMutingQuery extends MultipleUsersLookupQuery {
   max_results?: number;
   pagination_token?: string;
 }
@@ -13,9 +14,9 @@ export interface GET_2_users_id_muting_Query extends MultipleUsersLookupQuery {
 /**
  * The response of fetching users muted by a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/get-users-muting
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/get-users-muting
  */
-export interface GET_2_users_id_muting_Response extends MultipleUsersLookupResponse {
+export interface GETUsersIdMutingResponse extends MultipleUsersLookupResponse {
   meta: {
     result_count: number;
     previous_token?: string;
@@ -24,32 +25,66 @@ export interface GET_2_users_id_muting_Response extends MultipleUsersLookupRespo
 }
 
 /**
+ * Generates route for fetching users muted by a user:
+ * - GET `/users/:id/muting`
+ * @param userId The user id whose muted users are to be fetched
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/get-users-muting
+ */
+export function GETUsersIdMutingRoute(userId: Snowflake) {
+  return `/users/${userId}/muting` as const;
+}
+
+/**
  * The body for muting a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
  */
-export interface POST_2_users_id_muting_JSONBody {
+export interface POSTUsersIdMutingJSONBody {
   target_user_id: string;
 }
 
 /**
  * The response of muting a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
  */
-export interface POST_2_users_id_muting_Response {
+export interface POSTUsersIdMutingResponse {
   data: {
     muting: boolean;
   };
 }
 
 /**
+ * Generates route for muting a user:
+ * - POST `/users/:id/muting`
+ * @param userId The user id to make request on behalf of
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
+ */
+export function POSTUsersIdMutingRoute(userId: Snowflake) {
+  return `/users/${userId}/muting` as const;
+}
+
+/**
  * The response of unmuting a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/delete-users-user_id-muting
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/delete-users-user_id-muting
  */
-export interface DELETE_2_users_source_user_id_muting_target_user_id_Response {
+export interface DELETEUsersSourceUserIdMutingTargetUserIdResponse {
   data: {
     muting: boolean;
   };
+}
+
+/**
+ * Generates route for unmuting a user:
+ * - DELETE `/users/:source_user_id/muting/:target_user_id`
+ * @param sourceUserId The user id to make request on behalf of
+ * @param targetUserId The user id to unmute
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/delete-users-user_id-muting
+ */
+export function DELETEUsersSourceUserIdMutingTargetUserId(sourceUserId: Snowflake, targetUserId: Snowflake) {
+  return `/users/${sourceUserId}/muting/${targetUserId}` as const;
 }
