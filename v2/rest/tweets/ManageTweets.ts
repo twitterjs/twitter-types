@@ -3,9 +3,9 @@ import type { APITweetReplySettings, Snowflake } from '../../payloads';
 /**
  * The body for creating a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
  */
-export interface POST_2_tweets_JSONBody {
+export interface POSTTweetsJSONBody {
   direct_message_deep_link?: string;
   for_super_followers_only?: boolean;
   geo?: {
@@ -31,9 +31,9 @@ export interface POST_2_tweets_JSONBody {
 /**
  * The response of creating a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
  */
-export interface POST_2_tweets_Response {
+export interface POSTTweetsResponse {
   data: {
     id: Snowflake;
     text: string;
@@ -41,12 +41,33 @@ export interface POST_2_tweets_Response {
 }
 
 /**
+ * Generates route for creating a tweet:
+ * - POST `/tweets`
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
+ */
+export function POSTTweetsRoute() {
+  return `/tweets` as const;
+}
+
+/**
  * The response of deleting a tweet
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id
  */
-export interface DELETE_2_tweets_id_Response {
+export interface DELETETweetsIdResponse {
   data: {
     deleted: boolean;
   };
+}
+
+/**
+ * Generates route for deleting a tweet:
+ * - DELETE `/tweets/:id`
+ * @param tweetId The tweet id to delete
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id
+ */
+export function DELETETweetsIdRoute(tweetId: Snowflake) {
+  return `/tweets/${tweetId}` as const;
 }

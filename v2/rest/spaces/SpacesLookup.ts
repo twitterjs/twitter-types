@@ -1,68 +1,67 @@
-import type { APISpace, APIUser, Snowflake } from '../../payloads';
-import type { APISpaceFieldsParameter, APIUserFieldsParameter } from '../misc';
+import type { Snowflake } from '../../payloads';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
-
-export type APISpaceExpansionsParameter = 'invited_user_ids' | 'speaker_ids' | 'creator_id' | 'host_ids';
-
-export interface APISpaceExpansions {
-  users?: Array<APIUser>;
-}
-
-export interface SingleSpaceLookupQuery {
-  expansions?: Array<APISpaceExpansionsParameter>;
-  'space.fields'?: Array<APISpaceFieldsParameter>;
-  'topic.fields'?: 'id' | 'name' | 'description';
-  'user.fields'?: Array<APIUserFieldsParameter>;
-}
-
-export interface SingleSpaceLookupResponse {
-  data: APISpace;
-  includes?: APISpaceExpansions;
-}
-
-export type MultipleSpacesLookupQuery = SingleSpaceLookupQuery;
-
-export interface MultipleSpacesLookupResponse {
-  data: Array<APISpace>;
-  includes?: APISpaceExpansions;
-}
+import type {
+  SingleSpaceLookupQuery,
+  SingleSpaceLookupResponse,
+  MultipleSpacesLookupQuery,
+  MultipleSpacesLookupResponse,
+} from './index';
 
 /**
  * The query for fetching a space by its id
  *
- * https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id
  */
-export type GET_2_spaces_id_Query = SingleSpaceLookupQuery;
+export type GETSpacesIdQuery = SingleSpaceLookupQuery;
 
 /**
  * The response of fetching a space by its id
  *
- * https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id
  */
-export type GET_2_spaces_id_Response = SingleSpaceLookupResponse;
+export type GETSpacesIdResponse = SingleSpaceLookupResponse;
+
+/**
+ * Generates route for fetching a space by its id
+ * - GET `/spaces/:id`
+ * @param spaceId The space id to fetch
+ */
+export function GETSpacesIdRoute(spaceId: Snowflake) {
+  return `/spaces/${spaceId}` as const;
+}
 
 /**
  * The query for fetching spaces by their ids
  *
- * https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces
  */
-export interface GET_2_spaces_Query extends MultipleSpacesLookupQuery {
+export interface GETSpacesQuery extends MultipleSpacesLookupQuery {
   ids: Array<Snowflake>;
 }
 
 /**
  * The response of fetching spaces by their ids
  *
- * https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces
  */
-export type GET_2_spaces_Response = MultipleSpacesLookupResponse;
+export type GETSpacesResponse = MultipleSpacesLookupResponse;
+
+/**
+ * Generates route for fetching spaces by their ids:
+ * - GET `/spaces`
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces
+ */
+export function GETSpacesRoute() {
+  return `/spaces` as const;
+}
 
 /**
  * The query for fetching users who purchased a ticket for a space
  *
- * https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-buyers
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-buyers
  */
-export interface GET_2_spaces_id_buyers_Query extends MultipleUsersLookupQuery {
+export interface GETSpacesIdBuyersQuery extends MultipleUsersLookupQuery {
   pagination_token?: string;
 }
 
@@ -70,9 +69,9 @@ export interface GET_2_spaces_id_buyers_Query extends MultipleUsersLookupQuery {
 /**
  * The response of fetching users who purchased a ticket for a space
  *
- * https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-buyers
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-buyers
  */
-export interface GET_2_spaces_id_buyers_Response extends MultipleUsersLookupResponse {
+export interface GETSpacesIdBuyersResponse extends MultipleUsersLookupResponse {
   meta: {
     result_count: number;
     previous_token?: string;
@@ -81,11 +80,22 @@ export interface GET_2_spaces_id_buyers_Response extends MultipleUsersLookupResp
 }
 
 /**
+ * Generates route for fetching users who purchased a ticket for a space:
+ * - GET `/spaces/:id/buyers`
+ * @param spaceId The space id whose buyers are to be fetched
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-buyers
+ */
+export function GETSpacesIdBuyersRoute(spaceId: Snowflake) {
+  return `/spaces/${spaceId}/buyers` as const;
+}
+
+/**
  * The query for fetching spaces created by users
  *
- * https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-by-creator-ids
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-by-creator-ids
  */
-export interface GET_2_spaces_by_creator_ids_Query extends MultipleSpacesLookupQuery {
+export interface GETSpacesByCreatorIdsQuery extends MultipleSpacesLookupQuery {
   user_ids: Array<string>;
 }
 
@@ -93,10 +103,20 @@ export interface GET_2_spaces_by_creator_ids_Query extends MultipleSpacesLookupQ
 /**
  * The response of fetching spaces created by users
  *
- * https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-by-creator-ids
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-by-creator-ids
  */
-export interface GET_2_spaces_by_creator_ids_Response extends MultipleSpacesLookupResponse {
+export interface GETSpacesByCreatorIdsResponse extends MultipleSpacesLookupResponse {
   meta: {
     result_count: number;
   };
+}
+
+/**
+ * Generates route for fetching spaces created by users:
+ * - GET `/spaces/by/creator_ids`
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-by-creator-ids
+ */
+export function GETSpacesByCreatorIdsRoute() {
+  return `/spaces/by/creator_ids` as const;
 }

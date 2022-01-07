@@ -1,13 +1,13 @@
 import type { Snowflake } from '../../payloads';
+import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './index';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
-import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './ListsLookup';
 
 /**
  * The query for fetching users who are members of a list
  *
- * https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-lists-id-members
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-lists-id-members
  */
-export interface GET_2_lists_id_members_Query extends MultipleUsersLookupQuery {
+export interface GETListsIdMembersQuery extends MultipleUsersLookupQuery {
   max_results?: number;
   pagination_token?: string;
 }
@@ -15,9 +15,9 @@ export interface GET_2_lists_id_members_Query extends MultipleUsersLookupQuery {
 /**
  * The response of fetching users who are members of a list
  *
- * https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-lists-id-members
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-lists-id-members
  */
-export interface GET_2_lists_id_members_Response extends MultipleUsersLookupResponse {
+export interface GETListsIdMembersResponse extends MultipleUsersLookupResponse {
   meta: {
     result_count: number;
     previous_token?: string;
@@ -26,11 +26,22 @@ export interface GET_2_lists_id_members_Response extends MultipleUsersLookupResp
 }
 
 /**
+ * Generates route for fetching members of a list:
+ * - GET `/lists/:id/members`
+ * @param listId The list id to fetch members of
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-lists-id-members
+ */
+export function GETListsIdMembersRoute(listId: Snowflake) {
+  return `/lists/${listId}/members` as const;
+}
+
+/**
  * The query for fetching lists in which a user is member
  *
- * https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-users-id-list_memberships
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-users-id-list_memberships
  */
-export interface GET_2_users_id_list_memberships_Query extends MultipleListsLookupQuery {
+export interface GETUsersIdListMembershipsQuery extends MultipleListsLookupQuery {
   max_results?: number;
   pagination_token?: string;
 }
@@ -38,9 +49,9 @@ export interface GET_2_users_id_list_memberships_Query extends MultipleListsLook
 /**
  * The response of fetching lists in which a user is member
  *
- * https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-users-id-list_memberships
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-users-id-list_memberships
  */
-export interface GET_2_users_id_list_memberships_Response extends MultipleListsLookupResponse {
+export interface GETUsersIdListMembershipsResponse extends MultipleListsLookupResponse {
   meta: {
     result_count: number;
     previous_token?: string;
@@ -49,32 +60,68 @@ export interface GET_2_users_id_list_memberships_Response extends MultipleListsL
 }
 
 /**
+ * Generates route for fetching lists in which a user is member:
+ * - GET `/users/:id/list_memberships`
+ * @param userId The user id to fetch list membership of
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-users-id-list_memberships
+ */
+export function GETUsersIdListMembershipsRoute(userId: Snowflake) {
+  return `/users/${userId}/list_memberships` as const;
+}
+
+/**
  * The body for adding a member to a list
  *
- * https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/post-lists-id-members
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/post-lists-id-members
  */
-export interface POST_2_lists_id_members_JSONBody {
+export interface POSTListsIdMembersJSONBody {
   user_id: Snowflake;
 }
 
 /**
  * The response of adding a member to a list
  *
- * https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/post-lists-id-members
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/post-lists-id-members
  */
-export interface POST_2_lists_id_members_Response {
+export interface POSTListsIdMembersResponse {
   data: {
     is_member: boolean;
   };
 }
 
 /**
+ * Generates route for adding a member to a list:
+ * - `POST /lists/:id/members`
+ * @param listId The list id to add the member to
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/post-lists-id-members
+ */
+export function POSTListsIdMembersRoute(listId: Snowflake) {
+  return `/lists/${listId}/members` as const;
+}
+
+/* eslint-disable max-len */
+/**
  * The response of removing a member from a list
  *
- * https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/delete-lists-id-members-user_id
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/delete-lists-id-members-user_id
  */
-export interface DELETE_2_lists_id_members_user_id_Response {
+export interface DELETEListsIdMembersUserIdResponse {
   data: {
     is_member: boolean;
   };
 }
+
+/**
+ * Generates route for removing a member from a list:
+ * - DELETE `/lists/:id/members/:user_id`
+ * @param listId The list id to remove the member from
+ * @param userId The user id to remove from the list
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/delete-lists-id-members-user_id
+ */
+export function DELETEListsIdMembersUserIdRoute(listId: Snowflake, userId: Snowflake) {
+  return `/lists/${listId}/members/${userId}` as const;
+}
+/* eslint-enable max-len */

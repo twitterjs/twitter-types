@@ -60,6 +60,11 @@ export interface APIMedia {
    * The width of the media content in pixels
    */
   width?: number;
+
+  /**
+   * The description of an image
+   */
+  alt_text?: string;
 }
 
 export type APIMediaType = 'animated_gif' | 'photo' | 'video';

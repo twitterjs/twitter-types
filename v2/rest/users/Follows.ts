@@ -1,12 +1,12 @@
 import type { Snowflake } from '../../payloads';
-import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './UsersLookup';
+import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './index';
 
 /**
  * The query for fetching users followed by a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following
  */
-export interface GET_2_users_id_following_Query extends MultipleUsersLookupQuery {
+export interface GETUsersIdFollowingQuery extends MultipleUsersLookupQuery {
   max_results?: number;
   pagination_token?: string;
 }
@@ -14,9 +14,9 @@ export interface GET_2_users_id_following_Query extends MultipleUsersLookupQuery
 /**
  * The response of fetching users followed by a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following
  */
-export interface GET_2_users_id_following_Response extends MultipleUsersLookupResponse {
+export interface GETUsersIdFollowingResponse extends MultipleUsersLookupResponse {
   meta: {
     result_count: number;
     previous_token?: string;
@@ -25,21 +25,32 @@ export interface GET_2_users_id_following_Response extends MultipleUsersLookupRe
 }
 
 /**
- * The query for fetching users following a user
+ * Generates route for fetching users followed by a user:
+ * - GET `/users/:id/following`
+ * @param userId The user id whose following is to be fetched
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following
  */
-export interface GET_2_users_id_followers_Query extends MultipleUsersLookupQuery {
+export function GETUsersIdFollowingRoute(userId: Snowflake) {
+  return `/users/${userId}/following` as const;
+}
+
+/**
+ * The query for fetching followers of a user
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers
+ */
+export interface GETUsersIdFollowersQuery extends MultipleUsersLookupQuery {
   max_results?: number;
   pagination_token?: string;
 }
 
 /**
- * The response of fetching users following a user
+ * The response of fetching followers of a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers
  */
-export interface GET_2_users_id_followers_Response extends MultipleUsersLookupResponse {
+export interface GETUsersIdFollowersResponse extends MultipleUsersLookupResponse {
   meta: {
     result_count: number;
     previous_token?: string;
@@ -48,20 +59,32 @@ export interface GET_2_users_id_followers_Response extends MultipleUsersLookupRe
 }
 
 /**
+ * Generates route for fetching followers of a user:
+ * - GET `/users/:id/followers`
+ * @param userId The user id whose followers are to be fetched
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers
+ */
+export function GETUsersIdFollowersRoute(userId: Snowflake) {
+  return `/users/${userId}/followers` as const;
+}
+
+/* eslint-disable max-len */
+/**
  * The body for following a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
  */
-export interface POST_2_users_id_following_JSONBody {
+export interface POSTUsersIdFollowingJSONBody {
   target_user_id: Snowflake;
 }
 
 /**
  * The response of following a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
  */
-export interface POST_2_users_id_following_Response {
+export interface POSTUsersIdFollowingResponse {
   data: {
     following: boolean;
     pending_follow: boolean;
@@ -69,12 +92,36 @@ export interface POST_2_users_id_following_Response {
 }
 
 /**
+ * Generates route for following a user:
+ * - POST `/users/:id/following`
+ * @param userId The user id to make request on behalf of
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
+ */
+export function POSTUsersIdFollowingRoute(userId: Snowflake) {
+  return `/users/${userId}/following` as const;
+}
+/* eslint-enable max-len */
+
+/**
  * The response of unfollowing a user
  *
- * https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/delete-users-source_id-following
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/delete-users-source_id-following
  */
-export interface DELETE_2_users_source_user_id_following_target_user_id_Response {
+export interface DELETEUsersSourceUserIdFollowingTargetUserIdResponse {
   data: {
     following: boolean;
   };
+}
+
+/**
+ * Generates route for unfollowing a user:
+ * - DELETE `/users/:source_user_id/following/:target_user_id`
+ * @param sourceUserId The user id to make request on behalf of
+ * @param targetUserId The user id to unfollow
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/delete-users-source_id-following
+ */
+export function DELETEUsersSourceUserIdFollowingTargetUserIdRoute(sourceUserId: Snowflake, targetUserId: Snowflake) {
+  return `/users/${sourceUserId}/following/${targetUserId}` as const;
 }

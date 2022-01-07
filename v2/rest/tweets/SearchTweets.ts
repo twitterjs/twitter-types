@@ -1,12 +1,12 @@
 import type { Snowflake } from '../../payloads';
-import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './TweetsLookup';
+import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './index';
 
 /**
  * The query for fetching recent tweets by search query
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent
  */
-export interface GET_2_tweets_search_recent_Query extends MultipleTweetsLookupQuery {
+export interface GETTweetsSearchRecentQuery extends MultipleTweetsLookupQuery {
   query: string;
   next_token?: string;
   end_time?: string;
@@ -19,9 +19,9 @@ export interface GET_2_tweets_search_recent_Query extends MultipleTweetsLookupQu
 /**
  * The response of fetching recent tweets by search query
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent
  */
-export interface GET_2_tweets_search_recent_Response extends MultipleTweetsLookupResponse {
+export interface GETTweetsSearchRecentResponse extends MultipleTweetsLookupResponse {
   meta: {
     result_count: number;
     newest_id: Snowflake;
@@ -31,15 +31,35 @@ export interface GET_2_tweets_search_recent_Response extends MultipleTweetsLooku
 }
 
 /**
+ * Generates route for fetching recent tweets by search query:
+ * - GET `/tweets/search/recent`
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent
+ */
+export function GETTweetsSearchRecentRoute() {
+  return `/tweets/search/recent` as const;
+}
+
+/**
  * The query for fetching full-archive tweets by search query
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all
  */
-export type GET_2_tweets_search_all_Query = GET_2_tweets_search_recent_Query;
+export type GETTweetsSearchAllQuery = GETTweetsSearchRecentQuery;
 
 /**
  * The response of fetching full-archive tweets by search query
  *
- * https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all
  */
-export type GET_2_tweets_search_all_Response = GET_2_tweets_search_recent_Response;
+export type GETTweetsSearchAllResponse = GETTweetsSearchRecentResponse;
+
+/**
+ * Generates route for fetching full-archive tweets by search query:
+ * - GET `/tweets/search/all`
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all
+ */
+export function GETTweetsSearchAllRoute() {
+  return `/tweets/search/all` as const;
+}
