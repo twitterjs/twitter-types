@@ -23,7 +23,7 @@ export type GETSpacesIdResponse = SingleSpaceLookupResponse;
 
 /**
  * Generates route for fetching a space by its id
- * - GET /spaces/:id
+ * - GET `/spaces/:id`
  * @param spaceId The space id to fetch
  */
 export function GETSpacesIdRoute(spaceId: Snowflake) {
@@ -48,7 +48,7 @@ export type GETSpacesResponse = MultipleSpacesLookupResponse;
 
 /**
  * Generates route for fetching spaces by their ids:
- * - GET /spaces
+ * - GET `/spaces`
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces
  */
@@ -81,7 +81,7 @@ export interface GETSpacesIdBuyersResponse extends MultipleUsersLookupResponse {
 
 /**
  * Generates route for fetching users who purchased a ticket for a space:
- * - GET /spaces/:id/buyers
+ * - GET `/spaces/:id/buyers`
  * @param spaceId The space id whose buyers are to be fetched
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-buyers
@@ -113,7 +113,7 @@ export interface GETSpacesByCreatorIdsResponse extends MultipleSpacesLookupRespo
 
 /**
  * Generates route for fetching spaces created by users:
- * - GET /spaces/by/creator_ids
+ * - GET `/spaces/by/creator_ids`
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-by-creator-ids
  */

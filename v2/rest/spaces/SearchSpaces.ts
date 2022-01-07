@@ -24,7 +24,7 @@ export interface GETSpacesSearchResponse extends MultipleSpacesLookupResponse {
 
 /**
  * Generates route for fetching spaces by search query:
- * - GET /spaces/search
+ * - GET `/spaces/search`
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search
  */
