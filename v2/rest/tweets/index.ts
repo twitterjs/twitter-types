@@ -44,7 +44,6 @@ export const APITweetFieldsParameters: Array<APITweetFieldsParameterType> = [
   'context_annotations',
   'conversation_id',
   'created_at',
-  'created_at',
   'entities',
   'geo',
   'id',
