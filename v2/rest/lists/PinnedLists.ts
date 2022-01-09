@@ -6,7 +6,10 @@ import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './in
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/get-users-id-pinned_lists
  */
-export type GETUsersIdPinnedListsQuery = MultipleListsLookupQuery;
+export interface GETUsersIdPinnedListsQuery extends MultipleListsLookupQuery {
+  max_results?: number;
+  pagination_token?: string;
+}
 
 /**
  * The response of fetching list pinned by a user
@@ -16,6 +19,8 @@ export type GETUsersIdPinnedListsQuery = MultipleListsLookupQuery;
 export interface GETUsersIdPinnedListsResponse extends MultipleListsLookupResponse {
   meta: {
     result_count: number;
+    previous_token?: string;
+    next_token?: string;
   };
 }
 
