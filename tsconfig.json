@@ -1,27 +1,41 @@
 {
-  "compileOnSave": true,
   "compilerOptions": {
-    "alwaysStrict": true,
-    "lib": [
-      "ESNext",
-    ],
-    "module": "ESNext",
-    "noUnusedParameters": true,
-    "sourceMap": true,
+    /* Projects */
+    "incremental": true,
+    /* Language and Environment */
+    "lib": ["ES2020"],
+    "target": "ES2020",
+    /* Modules */
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    /* Emit */
     "declaration": true,
     "declarationMap": true,
-    "noUnusedLocals": true,
-    "removeComments": false,
-    "target": "ES2020",
     "importsNotUsedAsValues": "error",
-    "strictNullChecks": true,
-    "preserveConstEnums": true,
     "outDir": "dist",
-    "moduleResolution": "Node",
-    "incremental": true,
+    "stripInternal": true,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "sourceMap": true,
+    /* Interop Constraints */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    /* Type Checking */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "allowUnreachableCode": false,
+    /* Completeness */
+    "skipLibCheck": false
   },
-  "include": [
-    "v*/**/*",
-    "default/**/*"
-  ],
+  "include": ["v*/**/*", "default/**/*"],
+  "compileOnSave": true
 }
