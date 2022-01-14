@@ -45,7 +45,6 @@
     "url": "https://github.com/twitterjs/twitter-types/issues"
   },
   "homepage": "https://github.com/twitterjs/twitter-types#readme",
-  "type": "module",
   "files": [
     "/dist"
   ]
