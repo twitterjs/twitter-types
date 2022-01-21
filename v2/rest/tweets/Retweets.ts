@@ -6,7 +6,10 @@ import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../u
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
  */
-export type GETTweetsIdRetweetedByQuery = MultipleUsersLookupQuery;
+export interface GETTweetsIdRetweetedByQuery extends MultipleUsersLookupQuery {
+  max_results?: number;
+  pagination_token?: string;
+}
 
 /**
  * The response of fetching users who retweeted a tweet
@@ -16,6 +19,8 @@ export type GETTweetsIdRetweetedByQuery = MultipleUsersLookupQuery;
 export interface GETTweetsIdRetweetedByResponse extends MultipleUsersLookupResponse {
   meta: {
     result_count: number;
+    previous_token?: string;
+    next_token?: string;
   };
 }
 
