@@ -7,7 +7,10 @@ import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users
  */
-export type GETTweetsIdLikingUsersQuery = MultipleUsersLookupQuery;
+export interface GETTweetsIdLikingUsersQuery extends MultipleUsersLookupQuery {
+  max_results?: number;
+  pagination_token?: string;
+}
 
 /**
  * The response of fetching users who liked a tweet
@@ -17,6 +20,8 @@ export type GETTweetsIdLikingUsersQuery = MultipleUsersLookupQuery;
 export interface GETTweetsIdLikingUsersResponse extends MultipleUsersLookupResponse {
   meta: {
     result_count: number;
+    previous_token?: string;
+    next_token?: string;
   };
 }
 
