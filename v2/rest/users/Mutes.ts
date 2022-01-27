@@ -7,8 +7,8 @@ import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './in
  * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/get-users-muting
  */
 export interface GETUsersIdMutingQuery extends MultipleUsersLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface GETUsersIdMutingQuery extends MultipleUsersLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/get-users-muting
  */
 export interface GETUsersIdMutingResponse extends MultipleUsersLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -32,7 +32,7 @@ export interface GETUsersIdMutingResponse extends MultipleUsersLookupResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/get-users-muting
  */
 export function GETUsersIdMutingRoute(userId: Snowflake) {
-  return `/users/${userId}/muting` as const;
+	return `/users/${userId}/muting` as const;
 }
 
 /**
@@ -41,7 +41,7 @@ export function GETUsersIdMutingRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
  */
 export interface POSTUsersIdMutingJSONBody {
-  target_user_id: string;
+	target_user_id: string;
 }
 
 /**
@@ -50,9 +50,9 @@ export interface POSTUsersIdMutingJSONBody {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
  */
 export interface POSTUsersIdMutingResponse {
-  data: {
-    muting: boolean;
-  };
+	data: {
+		muting: boolean;
+	};
 }
 
 /**
@@ -63,7 +63,7 @@ export interface POSTUsersIdMutingResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting
  */
 export function POSTUsersIdMutingRoute(userId: Snowflake) {
-  return `/users/${userId}/muting` as const;
+	return `/users/${userId}/muting` as const;
 }
 
 /**
@@ -72,9 +72,9 @@ export function POSTUsersIdMutingRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/delete-users-user_id-muting
  */
 export interface DELETEUsersSourceUserIdMutingTargetUserIdResponse {
-  data: {
-    muting: boolean;
-  };
+	data: {
+		muting: boolean;
+	};
 }
 
 /**
@@ -86,5 +86,5 @@ export interface DELETEUsersSourceUserIdMutingTargetUserIdResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/mutes/api-reference/delete-users-user_id-muting
  */
 export function DELETEUsersSourceUserIdMutingTargetUserId(sourceUserId: Snowflake, targetUserId: Snowflake) {
-  return `/users/${sourceUserId}/muting/${targetUserId}` as const;
+	return `/users/${sourceUserId}/muting/${targetUserId}` as const;
 }

@@ -7,13 +7,13 @@ import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets
  */
 export interface GETUsersIdTweetsQuery extends MultipleTweetsLookupQuery {
-  end_time?: string;
-  max_results?: number;
-  pagination_token?: string;
-  since_id?: Snowflake;
-  start_time?: string;
-  until_id?: Snowflake;
-  exclude?: Array<'retweets' | 'replies'>;
+	end_time?: string;
+	max_results?: number;
+	pagination_token?: string;
+	since_id?: Snowflake;
+	start_time?: string;
+	until_id?: Snowflake;
+	exclude?: Array<'retweets' | 'replies'>;
 }
 
 /**
@@ -22,13 +22,13 @@ export interface GETUsersIdTweetsQuery extends MultipleTweetsLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets
  */
 export interface GETUsersIdTweetsResponse extends MultipleTweetsLookupResponse {
-  meta: {
-    result_count: number;
-    newest_id: Snowflake;
-    oldest_id: Snowflake;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		newest_id: Snowflake;
+		oldest_id: Snowflake;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -39,7 +39,7 @@ export interface GETUsersIdTweetsResponse extends MultipleTweetsLookupResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets
  */
 export function GETUsersIdTweetsRoute(userId: Snowflake) {
-  return `/users/${userId}/tweets` as const;
+	return `/users/${userId}/tweets` as const;
 }
 
 /**
@@ -48,12 +48,12 @@ export function GETUsersIdTweetsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions
  */
 export interface GETUsersIdMentionsQuery extends MultipleTweetsLookupQuery {
-  end_time?: string;
-  max_results?: number;
-  pagination_token?: string;
-  since_id?: Snowflake;
-  start_time?: string;
-  until_id?: Snowflake;
+	end_time?: string;
+	max_results?: number;
+	pagination_token?: string;
+	since_id?: Snowflake;
+	start_time?: string;
+	until_id?: Snowflake;
 }
 
 /**
@@ -62,13 +62,13 @@ export interface GETUsersIdMentionsQuery extends MultipleTweetsLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions
  */
 export interface GETUsersIdMentionsResponse extends MultipleTweetsLookupResponse {
-  meta: {
-    result_count: number;
-    newest_id: Snowflake;
-    oldest_id: Snowflake;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		newest_id: Snowflake;
+		oldest_id: Snowflake;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -79,5 +79,5 @@ export interface GETUsersIdMentionsResponse extends MultipleTweetsLookupResponse
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions
  */
 export function GETUsersIdMentionsRoute(userId: Snowflake) {
-  return `users/${userId}/mentions` as const;
+	return `users/${userId}/mentions` as const;
 }

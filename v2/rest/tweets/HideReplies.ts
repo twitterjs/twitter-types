@@ -6,7 +6,7 @@ import type { Snowflake } from '../../payloads';
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/hide-replies/api-reference/put-tweets-id-hidden
  */
 export interface PUTTweetsIdHiddenJSONBody {
-  hidden: boolean;
+	hidden: boolean;
 }
 
 /**
@@ -15,9 +15,9 @@ export interface PUTTweetsIdHiddenJSONBody {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/hide-replies/api-reference/put-tweets-id-hidden
  */
 export interface PUTTweetsIdHiddenResponse {
-  data: {
-    hidden: boolean;
-  };
+	data: {
+		hidden: boolean;
+	};
 }
 
 /**
@@ -28,5 +28,5 @@ export interface PUTTweetsIdHiddenResponse {
  * @link https://developer.twitter.com/en/docs/twitter-api/tweets/hide-replies/api-reference/put-tweets-id-hidden
  */
 export function PUTTweetsIdHiddenRoute(tweetId: Snowflake) {
-  return `/tweets/${tweetId}/hidden` as const;
+	return `/tweets/${tweetId}/hidden` as const;
 }

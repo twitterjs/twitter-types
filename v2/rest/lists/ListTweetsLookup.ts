@@ -7,8 +7,8 @@ import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from '..
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-tweets/api-reference/get-lists-id-tweets
  */
 export interface GETListsIdTweetsQuery extends MultipleTweetsLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface GETListsIdTweetsQuery extends MultipleTweetsLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-tweets/api-reference/get-lists-id-tweets
  */
 export interface GETListsIdtweetsResponse extends MultipleTweetsLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -32,5 +32,5 @@ export interface GETListsIdtweetsResponse extends MultipleTweetsLookupResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-tweets/api-reference/get-lists-id-tweets
  */
 export function GETListsIdTweetsRoute(listId: Snowflake) {
-  return `/lists/${listId}/tweets` as const;
+	return `/lists/${listId}/tweets` as const;
 }

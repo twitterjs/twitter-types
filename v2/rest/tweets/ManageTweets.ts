@@ -6,26 +6,26 @@ import type { APITweetReplySettings, Snowflake } from '../../payloads';
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
  */
 export interface POSTTweetsJSONBody {
-  direct_message_deep_link?: string;
-  for_super_followers_only?: boolean;
-  geo?: {
-    place_id?: string;
-  };
-  media?: {
-    media_ids?: Array<Snowflake>;
-    tagged_user_ids?: Array<Snowflake>;
-  };
-  poll?: {
-    duration_minutes?: number;
-    options?: Array<string>;
-  };
-  quote_tweet_id?: Snowflake;
-  reply?: {
-    exclude_reply_user_ids?: Array<Snowflake>;
-    in_reply_to_tweet_id?: string;
-  };
-  reply_settings?: APITweetReplySettings;
-  text?: string;
+	direct_message_deep_link?: string;
+	for_super_followers_only?: boolean;
+	geo?: {
+		place_id?: string;
+	};
+	media?: {
+		media_ids?: Array<Snowflake>;
+		tagged_user_ids?: Array<Snowflake>;
+	};
+	poll?: {
+		duration_minutes?: number;
+		options?: Array<string>;
+	};
+	quote_tweet_id?: Snowflake;
+	reply?: {
+		exclude_reply_user_ids?: Array<Snowflake>;
+		in_reply_to_tweet_id?: string;
+	};
+	reply_settings?: APITweetReplySettings;
+	text?: string;
 }
 
 /**
@@ -34,10 +34,10 @@ export interface POSTTweetsJSONBody {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
  */
 export interface POSTTweetsResponse {
-  data: {
-    id: Snowflake;
-    text: string;
-  };
+	data: {
+		id: Snowflake;
+		text: string;
+	};
 }
 
 /**
@@ -47,7 +47,7 @@ export interface POSTTweetsResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
  */
 export function POSTTweetsRoute() {
-  return `/tweets` as const;
+	return `/tweets` as const;
 }
 
 /**
@@ -56,9 +56,9 @@ export function POSTTweetsRoute() {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id
  */
 export interface DELETETweetsIdResponse {
-  data: {
-    deleted: boolean;
-  };
+	data: {
+		deleted: boolean;
+	};
 }
 
 /**
@@ -69,5 +69,5 @@ export interface DELETETweetsIdResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id
  */
 export function DELETETweetsIdRoute(tweetId: Snowflake) {
-  return `/tweets/${tweetId}` as const;
+	return `/tweets/${tweetId}` as const;
 }

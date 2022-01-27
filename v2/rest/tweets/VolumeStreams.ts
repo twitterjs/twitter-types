@@ -6,7 +6,7 @@ import type { SingleTweetLookupQuery, SingleTweetLookupResponse } from './index'
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream
  */
 export interface GETTweetsSampleStreamQuery extends SingleTweetLookupQuery {
-  backfill_minutes?: number;
+	backfill_minutes?: number;
 }
 
 /**
@@ -23,5 +23,5 @@ export type GETTweetsSampleStreamResponse = SingleTweetLookupResponse;
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream
  */
 export function GETTweetsSampleStreamRoute() {
-  return `/tweets/sample/stream` as const;
+	return `/tweets/sample/stream` as const;
 }

@@ -8,8 +8,8 @@ import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../u
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-lists-id-members
  */
 export interface GETListsIdMembersQuery extends MultipleUsersLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -18,11 +18,11 @@ export interface GETListsIdMembersQuery extends MultipleUsersLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-lists-id-members
  */
 export interface GETListsIdMembersResponse extends MultipleUsersLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -33,7 +33,7 @@ export interface GETListsIdMembersResponse extends MultipleUsersLookupResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-lists-id-members
  */
 export function GETListsIdMembersRoute(listId: Snowflake) {
-  return `/lists/${listId}/members` as const;
+	return `/lists/${listId}/members` as const;
 }
 
 /**
@@ -42,8 +42,8 @@ export function GETListsIdMembersRoute(listId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-users-id-list_memberships
  */
 export interface GETUsersIdListMembershipsQuery extends MultipleListsLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -52,11 +52,11 @@ export interface GETUsersIdListMembershipsQuery extends MultipleListsLookupQuery
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-users-id-list_memberships
  */
 export interface GETUsersIdListMembershipsResponse extends MultipleListsLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -67,7 +67,7 @@ export interface GETUsersIdListMembershipsResponse extends MultipleListsLookupRe
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-users-id-list_memberships
  */
 export function GETUsersIdListMembershipsRoute(userId: Snowflake) {
-  return `/users/${userId}/list_memberships` as const;
+	return `/users/${userId}/list_memberships` as const;
 }
 
 /**
@@ -76,7 +76,7 @@ export function GETUsersIdListMembershipsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/post-lists-id-members
  */
 export interface POSTListsIdMembersJSONBody {
-  user_id: Snowflake;
+	user_id: Snowflake;
 }
 
 /**
@@ -85,9 +85,9 @@ export interface POSTListsIdMembersJSONBody {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/post-lists-id-members
  */
 export interface POSTListsIdMembersResponse {
-  data: {
-    is_member: boolean;
-  };
+	data: {
+		is_member: boolean;
+	};
 }
 
 /**
@@ -98,7 +98,7 @@ export interface POSTListsIdMembersResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/post-lists-id-members
  */
 export function POSTListsIdMembersRoute(listId: Snowflake) {
-  return `/lists/${listId}/members` as const;
+	return `/lists/${listId}/members` as const;
 }
 
 /* eslint-disable max-len */
@@ -108,9 +108,9 @@ export function POSTListsIdMembersRoute(listId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/delete-lists-id-members-user_id
  */
 export interface DELETEListsIdMembersUserIdResponse {
-  data: {
-    is_member: boolean;
-  };
+	data: {
+		is_member: boolean;
+	};
 }
 
 /**
@@ -122,6 +122,6 @@ export interface DELETEListsIdMembersUserIdResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/delete-lists-id-members-user_id
  */
 export function DELETEListsIdMembersUserIdRoute(listId: Snowflake, userId: Snowflake) {
-  return `/lists/${listId}/members/${userId}` as const;
+	return `/lists/${listId}/members/${userId}` as const;
 }
 /* eslint-enable max-len */

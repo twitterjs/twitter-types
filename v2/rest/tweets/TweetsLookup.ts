@@ -1,9 +1,9 @@
 import type { Snowflake } from '../../payloads';
 import type {
-  MultipleTweetsLookupQuery,
-  MultipleTweetsLookupResponse,
-  SingleTweetLookupQuery,
-  SingleTweetLookupResponse,
+	MultipleTweetsLookupQuery,
+	MultipleTweetsLookupResponse,
+	SingleTweetLookupQuery,
+	SingleTweetLookupResponse,
 } from './index';
 
 /**
@@ -12,7 +12,7 @@ import type {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
  */
 export interface GETTweetsQuery extends MultipleTweetsLookupQuery {
-  ids: Array<Snowflake>;
+	ids: Array<Snowflake>;
 }
 
 /**
@@ -29,7 +29,7 @@ export type GETTweetsResponse = MultipleTweetsLookupResponse;
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
  */
 export function GETTweetsRoute() {
-  return `/tweets` as const;
+	return `/tweets` as const;
 }
 
 /**
@@ -54,5 +54,5 @@ export type GETTweetsIdResponse = SingleTweetLookupResponse;
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
  */
 export function GETTweetsIdRoute(tweetId: Snowflake) {
-  return `/tweets/${tweetId}` as const;
+	return `/tweets/${tweetId}` as const;
 }

@@ -7,8 +7,8 @@ import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../u
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
  */
 export interface GETTweetsIdRetweetedByQuery extends MultipleUsersLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface GETTweetsIdRetweetedByQuery extends MultipleUsersLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
  */
 export interface GETTweetsIdRetweetedByResponse extends MultipleUsersLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -32,7 +32,7 @@ export interface GETTweetsIdRetweetedByResponse extends MultipleUsersLookupRespo
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by
  */
 export function GETTweetsIdRetweetedByRoute(tweetId: Snowflake) {
-  return `/tweets/${tweetId}/retweeted_by` as const;
+	return `/tweets/${tweetId}/retweeted_by` as const;
 }
 
 /**
@@ -41,7 +41,7 @@ export function GETTweetsIdRetweetedByRoute(tweetId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
  */
 export interface POSTUsersIdRetweetsJSONBody {
-  tweet_id: Snowflake;
+	tweet_id: Snowflake;
 }
 
 /**
@@ -50,9 +50,9 @@ export interface POSTUsersIdRetweetsJSONBody {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
  */
 export interface POSTUsersIdRetweetsResponse {
-  data: {
-    retweeted: boolean;
-  };
+	data: {
+		retweeted: boolean;
+	};
 }
 
 /**
@@ -63,7 +63,7 @@ export interface POSTUsersIdRetweetsResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets
  */
 export function POSTUsersIdRetweetsRoute(userId: Snowflake) {
-  return `/users/${userId}/retweets` as const;
+	return `/users/${userId}/retweets` as const;
 }
 
 /* eslint-disable max-len */
@@ -73,9 +73,9 @@ export function POSTUsersIdRetweetsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/delete-users-id-retweets-tweet_id
  */
 export interface DELETEUsersIdRetweetsSourceTweetIdResponse {
-  data: {
-    retweeted: boolean;
-  };
+	data: {
+		retweeted: boolean;
+	};
 }
 
 /**
@@ -87,6 +87,6 @@ export interface DELETEUsersIdRetweetsSourceTweetIdResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/retweets/api-reference/delete-users-id-retweets-tweet_id
  */
 export function DELETEUsersIdRetweetsSourceTweetIdRoute(userId: Snowflake, tweetId: Snowflake) {
-  return `/users/${userId}/retweets/${tweetId}` as const;
+	return `/users/${userId}/retweets/${tweetId}` as const;
 }
 /* eslint-enable max-len */

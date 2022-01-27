@@ -7,8 +7,8 @@ import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './in
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/get-users-id-pinned_lists
  */
 export interface GETUsersIdPinnedListsQuery extends MultipleListsLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface GETUsersIdPinnedListsQuery extends MultipleListsLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/get-users-id-pinned_lists
  */
 export interface GETUsersIdPinnedListsResponse extends MultipleListsLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -32,7 +32,7 @@ export interface GETUsersIdPinnedListsResponse extends MultipleListsLookupRespon
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/get-users-id-pinned_lists
  */
 export function GETUsersIdPinnedListsRoute(userId: Snowflake) {
-  return `/users/${userId}/pinned_lists` as const;
+	return `/users/${userId}/pinned_lists` as const;
 }
 
 /**
@@ -41,7 +41,7 @@ export function GETUsersIdPinnedListsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/post-users-id-pinned-lists
  */
 export interface POSTUsersIdPinnedListsJSONBody {
-  list_id: Snowflake;
+	list_id: Snowflake;
 }
 
 /**
@@ -50,9 +50,9 @@ export interface POSTUsersIdPinnedListsJSONBody {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/post-users-id-pinned-lists
  */
 export interface POSTUsersIdPinnedListsResponse {
-  data: {
-    pinned: boolean;
-  };
+	data: {
+		pinned: boolean;
+	};
 }
 
 /**
@@ -63,7 +63,7 @@ export interface POSTUsersIdPinnedListsResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/post-users-id-pinned-lists
  */
 export function POSTUsersIdPinnedListsRoute(userId: Snowflake) {
-  return `/users/${userId}/pinned_lists` as const;
+	return `/users/${userId}/pinned_lists` as const;
 }
 
 /* eslint-disable max-len */
@@ -73,9 +73,9 @@ export function POSTUsersIdPinnedListsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/delete-users-id-pinned-lists-list_id
  */
 export interface DELETEUsersIdPinnedListsListIdResponse {
-  data: {
-    pinned: false;
-  };
+	data: {
+		pinned: false;
+	};
 }
 
 /**
@@ -87,6 +87,6 @@ export interface DELETEUsersIdPinnedListsListIdResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/delete-users-id-pinned-lists-list_id
  */
 export function DELETEUsersIdPinnedListsListIdRoute(userId: Snowflake, listId: Snowflake) {
-  return `/users/${userId}/pinned_lists/${listId}` as const;
+	return `/users/${userId}/pinned_lists/${listId}` as const;
 }
 /* eslint-enable max-len */

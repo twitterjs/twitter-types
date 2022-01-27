@@ -1,10 +1,10 @@
 import type { Snowflake } from '../../payloads';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
 import type {
-  SingleSpaceLookupQuery,
-  SingleSpaceLookupResponse,
-  MultipleSpacesLookupQuery,
-  MultipleSpacesLookupResponse,
+	SingleSpaceLookupQuery,
+	SingleSpaceLookupResponse,
+	MultipleSpacesLookupQuery,
+	MultipleSpacesLookupResponse,
 } from './index';
 
 /**
@@ -27,7 +27,7 @@ export type GETSpacesIdResponse = SingleSpaceLookupResponse;
  * @param spaceId The space id to fetch
  */
 export function GETSpacesIdRoute(spaceId: Snowflake) {
-  return `/spaces/${spaceId}` as const;
+	return `/spaces/${spaceId}` as const;
 }
 
 /**
@@ -36,7 +36,7 @@ export function GETSpacesIdRoute(spaceId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces
  */
 export interface GETSpacesQuery extends MultipleSpacesLookupQuery {
-  ids: Array<Snowflake>;
+	ids: Array<Snowflake>;
 }
 
 /**
@@ -53,7 +53,7 @@ export type GETSpacesResponse = MultipleSpacesLookupResponse;
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces
  */
 export function GETSpacesRoute() {
-  return `/spaces` as const;
+	return `/spaces` as const;
 }
 
 /**
@@ -62,7 +62,7 @@ export function GETSpacesRoute() {
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-buyers
  */
 export interface GETSpacesIdBuyersQuery extends MultipleUsersLookupQuery {
-  pagination_token?: string;
+	pagination_token?: string;
 }
 
 // TODO: verify this response
@@ -72,11 +72,11 @@ export interface GETSpacesIdBuyersQuery extends MultipleUsersLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-buyers
  */
 export interface GETSpacesIdBuyersResponse extends MultipleUsersLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -87,7 +87,7 @@ export interface GETSpacesIdBuyersResponse extends MultipleUsersLookupResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-buyers
  */
 export function GETSpacesIdBuyersRoute(spaceId: Snowflake) {
-  return `/spaces/${spaceId}/buyers` as const;
+	return `/spaces/${spaceId}/buyers` as const;
 }
 
 /**
@@ -96,7 +96,7 @@ export function GETSpacesIdBuyersRoute(spaceId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-by-creator-ids
  */
 export interface GETSpacesByCreatorIdsQuery extends MultipleSpacesLookupQuery {
-  user_ids: Array<string>;
+	user_ids: Array<string>;
 }
 
 // TODO: verify this response
@@ -106,9 +106,9 @@ export interface GETSpacesByCreatorIdsQuery extends MultipleSpacesLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-by-creator-ids
  */
 export interface GETSpacesByCreatorIdsResponse extends MultipleSpacesLookupResponse {
-  meta: {
-    result_count: number;
-  };
+	meta: {
+		result_count: number;
+	};
 }
 
 /**
@@ -118,5 +118,5 @@ export interface GETSpacesByCreatorIdsResponse extends MultipleSpacesLookupRespo
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-by-creator-ids
  */
 export function GETSpacesByCreatorIdsRoute() {
-  return `/spaces/by/creator_ids` as const;
+	return `/spaces/by/creator_ids` as const;
 }

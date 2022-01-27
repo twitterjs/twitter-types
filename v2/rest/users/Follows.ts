@@ -7,8 +7,8 @@ import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './in
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following
  */
 export interface GETUsersIdFollowingQuery extends MultipleUsersLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface GETUsersIdFollowingQuery extends MultipleUsersLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following
  */
 export interface GETUsersIdFollowingResponse extends MultipleUsersLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -32,7 +32,7 @@ export interface GETUsersIdFollowingResponse extends MultipleUsersLookupResponse
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following
  */
 export function GETUsersIdFollowingRoute(userId: Snowflake) {
-  return `/users/${userId}/following` as const;
+	return `/users/${userId}/following` as const;
 }
 
 /**
@@ -41,8 +41,8 @@ export function GETUsersIdFollowingRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers
  */
 export interface GETUsersIdFollowersQuery extends MultipleUsersLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -51,11 +51,11 @@ export interface GETUsersIdFollowersQuery extends MultipleUsersLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers
  */
 export interface GETUsersIdFollowersResponse extends MultipleUsersLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -66,7 +66,7 @@ export interface GETUsersIdFollowersResponse extends MultipleUsersLookupResponse
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers
  */
 export function GETUsersIdFollowersRoute(userId: Snowflake) {
-  return `/users/${userId}/followers` as const;
+	return `/users/${userId}/followers` as const;
 }
 
 /* eslint-disable max-len */
@@ -76,7 +76,7 @@ export function GETUsersIdFollowersRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
  */
 export interface POSTUsersIdFollowingJSONBody {
-  target_user_id: Snowflake;
+	target_user_id: Snowflake;
 }
 
 /**
@@ -85,10 +85,10 @@ export interface POSTUsersIdFollowingJSONBody {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
  */
 export interface POSTUsersIdFollowingResponse {
-  data: {
-    following: boolean;
-    pending_follow: boolean;
-  };
+	data: {
+		following: boolean;
+		pending_follow: boolean;
+	};
 }
 
 /**
@@ -99,7 +99,7 @@ export interface POSTUsersIdFollowingResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
  */
 export function POSTUsersIdFollowingRoute(userId: Snowflake) {
-  return `/users/${userId}/following` as const;
+	return `/users/${userId}/following` as const;
 }
 /* eslint-enable max-len */
 
@@ -109,9 +109,9 @@ export function POSTUsersIdFollowingRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/delete-users-source_id-following
  */
 export interface DELETEUsersSourceUserIdFollowingTargetUserIdResponse {
-  data: {
-    following: boolean;
-  };
+	data: {
+		following: boolean;
+	};
 }
 
 /**
@@ -123,5 +123,5 @@ export interface DELETEUsersSourceUserIdFollowingTargetUserIdResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/delete-users-source_id-following
  */
 export function DELETEUsersSourceUserIdFollowingTargetUserIdRoute(sourceUserId: Snowflake, targetUserId: Snowflake) {
-  return `/users/${sourceUserId}/following/${targetUserId}` as const;
+	return `/users/${sourceUserId}/following/${targetUserId}` as const;
 }
