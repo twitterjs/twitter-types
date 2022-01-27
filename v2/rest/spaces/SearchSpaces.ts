@@ -6,9 +6,9 @@ import type { MultipleSpacesLookupQuery, MultipleSpacesLookupResponse } from './
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search
  */
 export interface GETSpacesSearchQuery extends MultipleSpacesLookupQuery {
-  query: string;
-  state?: 'all' | 'live' | 'scheduled';
-  max_results?: number;
+	query: string;
+	state?: 'all' | 'live' | 'scheduled';
+	max_results?: number;
 }
 
 /**
@@ -17,9 +17,9 @@ export interface GETSpacesSearchQuery extends MultipleSpacesLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search
  */
 export interface GETSpacesSearchResponse extends MultipleSpacesLookupResponse {
-  meta: {
-    result_count: number;
-  };
+	meta: {
+		result_count: number;
+	};
 }
 
 /**
@@ -29,5 +29,5 @@ export interface GETSpacesSearchResponse extends MultipleSpacesLookupResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search
  */
 export function GETSpacesSearchRoute() {
-  return `/spaces/search` as const;
+	return `/spaces/search` as const;
 }

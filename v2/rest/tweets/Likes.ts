@@ -8,8 +8,8 @@ import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users
  */
 export interface GETTweetsIdLikingUsersQuery extends MultipleUsersLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -18,11 +18,11 @@ export interface GETTweetsIdLikingUsersQuery extends MultipleUsersLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users
  */
 export interface GETTweetsIdLikingUsersResponse extends MultipleUsersLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -33,7 +33,7 @@ export interface GETTweetsIdLikingUsersResponse extends MultipleUsersLookupRespo
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users
  */
 export function GETTweetsIdLikingUsersRoute(tweetId: Snowflake) {
-  return `/tweets/${tweetId}/liking_users` as const;
+	return `/tweets/${tweetId}/liking_users` as const;
 }
 
 /**
@@ -42,8 +42,8 @@ export function GETTweetsIdLikingUsersRoute(tweetId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets
  */
 export interface GETUsersIdLikedTweetsQuery extends MultipleTweetsLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -52,11 +52,11 @@ export interface GETUsersIdLikedTweetsQuery extends MultipleTweetsLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets
  */
 export interface GETUsersIdLikedTweetsResponse extends MultipleTweetsLookupResponse {
-  meta: {
-    result_count: number;
-    next_token?: string;
-    previous_token?: string;
-  };
+	meta: {
+		result_count: number;
+		next_token?: string;
+		previous_token?: string;
+	};
 }
 
 /**
@@ -67,7 +67,7 @@ export interface GETUsersIdLikedTweetsResponse extends MultipleTweetsLookupRespo
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets
  */
 export function GETUsersIdLikedTweetsRoute(userId: Snowflake) {
-  return `/users/${userId}/liked_tweets` as const;
+	return `/users/${userId}/liked_tweets` as const;
 }
 
 /**
@@ -76,7 +76,7 @@ export function GETUsersIdLikedTweetsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
  */
 export interface POSTUsersIdLikesJSONBody {
-  tweet_id: Snowflake;
+	tweet_id: Snowflake;
 }
 
 /**
@@ -85,9 +85,9 @@ export interface POSTUsersIdLikesJSONBody {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
  */
 export interface POSTUsersIdLikesResponse {
-  data: {
-    liked: boolean;
-  };
+	data: {
+		liked: boolean;
+	};
 }
 
 /**
@@ -98,7 +98,7 @@ export interface POSTUsersIdLikesResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
  */
 export function POSTUsersIdLikesRoute(userId: Snowflake) {
-  return `/users/${userId}/likes` as const;
+	return `/users/${userId}/likes` as const;
 }
 
 /**
@@ -107,9 +107,9 @@ export function POSTUsersIdLikesRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/delete-users-id-likes-tweet_id
  */
 export interface DELETEUsersIdLikesTweetIdResponse {
-  data: {
-    liked: boolean;
-  };
+	data: {
+		liked: boolean;
+	};
 }
 
 /**
@@ -121,5 +121,5 @@ export interface DELETEUsersIdLikesTweetIdResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/delete-users-id-likes-tweet_id
  */
 export function DELETEUsersIdLikesTweetIdRoute(userId: Snowflake, tweetId: Snowflake) {
-  return `/users/${userId}/likes/${tweetId}` as const;
+	return `/users/${userId}/likes/${tweetId}` as const;
 }

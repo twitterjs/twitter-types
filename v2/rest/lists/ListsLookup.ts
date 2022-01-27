@@ -1,9 +1,9 @@
 import type { Snowflake } from '../..';
 import type {
-  SingleListLookupQuery,
-  SingleListLookupResponse,
-  MultipleListsLookupQuery,
-  MultipleListsLookupResponse,
+	SingleListLookupQuery,
+	SingleListLookupResponse,
+	MultipleListsLookupQuery,
+	MultipleListsLookupResponse,
 } from './index';
 
 /**
@@ -28,7 +28,7 @@ export type GETListsIdResponse = SingleListLookupResponse;
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id
  */
 export function GETListsIdRoute(listId: Snowflake) {
-  return `/lists/${listId}` as const;
+	return `/lists/${listId}` as const;
 }
 
 /**
@@ -37,8 +37,8 @@ export function GETListsIdRoute(listId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists
  */
 export interface GETUsersIdOwnedListsQuery extends MultipleListsLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -47,11 +47,11 @@ export interface GETUsersIdOwnedListsQuery extends MultipleListsLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists
  */
 export interface GETUsersIdOwnedListsResponse extends MultipleListsLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -62,5 +62,5 @@ export interface GETUsersIdOwnedListsResponse extends MultipleListsLookupRespons
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists
  */
 export function GETUsersIdOwnedListsRoute(userId: Snowflake) {
-  return `/users/${userId}/owned_lists` as const;
+	return `/users/${userId}/owned_lists` as const;
 }

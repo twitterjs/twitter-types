@@ -4,32 +4,32 @@ import type { Snowflake } from '../../payloads';
 import type { SingleTweetLookupQuery, SingleTweetLookupResponse } from './index';
 
 export interface AddFilteredTweetStreamRulesJSONBody {
-  add: Array<{
-    value: string;
-    tag?: string;
-  }>;
+	add: Array<{
+		value: string;
+		tag?: string;
+	}>;
 }
 
 export interface RemoveFilteredTweetStreamRulesJSONBody {
-  delete: MergeExclusive<{ ids: Array<Snowflake> }, { values: Array<string> }>;
+	delete: MergeExclusive<{ ids: Array<Snowflake> }, { values: Array<string> }>;
 }
 
 export interface AddFilteredTweetStreamRulesResponseMeta {
-  sent: string;
-  summary: {
-    created: number;
-    not_created: number;
-    valid: number;
-    invalid: number;
-  };
+	sent: string;
+	summary: {
+		created: number;
+		not_created: number;
+		valid: number;
+		invalid: number;
+	};
 }
 
 export interface RemoveFilteredTweetStreamRulesResponseMeta {
-  sent: string;
-  summary: {
-    deleted: number;
-    not_deleted: number;
-  };
+	sent: string;
+	summary: {
+		deleted: number;
+		not_deleted: number;
+	};
 }
 
 /**
@@ -38,7 +38,7 @@ export interface RemoveFilteredTweetStreamRulesResponseMeta {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/post-tweets-search-stream-rules
  */
 export interface POSTTweetsSearchStreamRulesQuery {
-  dry_run?: boolean;
+	dry_run?: boolean;
 }
 
 /**
@@ -47,8 +47,8 @@ export interface POSTTweetsSearchStreamRulesQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/post-tweets-search-stream-rules
  */
 export type POSTTweetsSearchStreamRulesJSONBody = MergeExclusive<
-  AddFilteredTweetStreamRulesJSONBody,
-  RemoveFilteredTweetStreamRulesJSONBody
+	AddFilteredTweetStreamRulesJSONBody,
+	RemoveFilteredTweetStreamRulesJSONBody
 >;
 
 // TODO: verify this itnerface
@@ -58,17 +58,17 @@ export type POSTTweetsSearchStreamRulesJSONBody = MergeExclusive<
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/post-tweets-search-stream-rules
  */
 export type POSTTweetsSearchStreamRulesResponse = MergeExclusive<
-  {
-    data: Array<{
-      id: Snowflake;
-      value: string;
-      tag?: string;
-    }>;
-    meta: AddFilteredTweetStreamRulesResponseMeta;
-  },
-  {
-    meta: RemoveFilteredTweetStreamRulesResponseMeta;
-  }
+	{
+		data: Array<{
+			id: Snowflake;
+			value: string;
+			tag?: string;
+		}>;
+		meta: AddFilteredTweetStreamRulesResponseMeta;
+	},
+	{
+		meta: RemoveFilteredTweetStreamRulesResponseMeta;
+	}
 >;
 
 /**
@@ -78,7 +78,7 @@ export type POSTTweetsSearchStreamRulesResponse = MergeExclusive<
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/post-tweets-search-stream-rules
  */
 export function POSTTweetsSearchStreamRulesRoute() {
-  return `/tweets/search/stream/rules` as const;
+	return `/tweets/search/stream/rules` as const;
 }
 
 /**
@@ -87,7 +87,7 @@ export function POSTTweetsSearchStreamRulesRoute() {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream-rules
  */
 export interface GETTweetsSearchStreamRulesQuery {
-  ids?: Array<Snowflake>;
+	ids?: Array<Snowflake>;
 }
 
 // TODO: verify this interface
@@ -97,14 +97,14 @@ export interface GETTweetsSearchStreamRulesQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream-rules
  */
 export interface GETTweetsSearchStreamRulesResponse {
-  data: Array<{
-    id: Snowflake;
-    value: string;
-    tag?: string;
-  }>;
-  meta: {
-    sent: string;
-  };
+	data: Array<{
+		id: Snowflake;
+		value: string;
+		tag?: string;
+	}>;
+	meta: {
+		sent: string;
+	};
 }
 
 /**
@@ -114,7 +114,7 @@ export interface GETTweetsSearchStreamRulesResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream-rules
  */
 export function GETTweetsSearchStreamRulesRoute() {
-  return `/tweets/search/stream/rules` as const;
+	return `/tweets/search/stream/rules` as const;
 }
 
 /**
@@ -123,7 +123,7 @@ export function GETTweetsSearchStreamRulesRoute() {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream
  */
 export interface GETTweetsSearchStreamQuery extends SingleTweetLookupQuery {
-  backfill_minutes?: number;
+	backfill_minutes?: number;
 }
 
 /**
@@ -132,7 +132,7 @@ export interface GETTweetsSearchStreamQuery extends SingleTweetLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream
  */
 export interface GETTweetsSearchStreamResponse extends SingleTweetLookupResponse {
-  matching_rules: Array<{ id: Snowflake; tag?: string }>;
+	matching_rules: Array<{ id: Snowflake; tag?: string }>;
 }
 
 /**
@@ -142,5 +142,5 @@ export interface GETTweetsSearchStreamResponse extends SingleTweetLookupResponse
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream
  */
 export function GETTweetsSearchStreamRoute() {
-  return `/tweets/search/stream` as const;
+	return `/tweets/search/stream` as const;
 }

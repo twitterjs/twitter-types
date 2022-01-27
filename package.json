@@ -1,51 +1,53 @@
 {
-  "name": "twitter-types",
-  "version": "0.21.0",
-  "description": "Type definitions for Twitter API v2",
-  "author": "Shubham Parihar <shubhamparihar391@gmail.com>",
-  "main": "./dist/default/index.js",
-  "types": "./dist/default/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "build:dev": "tsc -w",
-    "doc": "typedoc",
-    "prepare": "husky install",
-    "lint": "eslint v2 --ext ts",
-    "prepublishOnly": "npm run build"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^16.1.0",
-    "@commitlint/config-angular": "^16.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.10.0",
-    "@typescript-eslint/parser": "^5.10.0",
-    "eslint": "^8.7.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.2.2",
-    "prettier": "^2.5.1",
-    "typedoc": "^0.22.11",
-    "typescript": "^4.5.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/twitterjs/twitter-types.git"
-  },
-  "keywords": [
-    "Twitter",
-    "TypeScript",
-    "twitter.js",
-    "api",
-    "types",
-    "twitter-api",
-    "node.js"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/twitterjs/twitter-types/issues"
-  },
-  "homepage": "https://github.com/twitterjs/twitter-types#readme",
-  "files": [
-    "/dist"
-  ]
+	"name": "twitter-types",
+	"version": "0.21.0",
+	"description": "Type definitions for Twitter API v2",
+	"author": "Shubham Parihar <shubhamparihar391@gmail.com>",
+	"main": "./dist/default/index.js",
+	"types": "./dist/default/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"build:dev": "tsc -w",
+		"doc": "typedoc",
+		"prepare": "husky install",
+		"lint:check": "eslint . --ext .js,.ts",
+		"lint:fix": "eslint . --ext .js,.ts --fix",
+		"format:check": "prettier --check .",
+		"format:fix": "prettier --write .",
+		"prepublishOnly": "npm run build"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^16.1.0",
+		"@commitlint/config-angular": "^16.0.0",
+		"@typescript-eslint/eslint-plugin": "^5.10.0",
+		"@typescript-eslint/parser": "^5.10.0",
+		"eslint": "^8.7.0",
+		"eslint-config-prettier": "^8.3.0",
+		"husky": "^7.0.4",
+		"lint-staged": "^12.2.2",
+		"prettier": "^2.5.1",
+		"typedoc": "^0.22.11",
+		"typescript": "^4.5.5"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/twitterjs/twitter-types.git"
+	},
+	"keywords": [
+		"Twitter",
+		"TypeScript",
+		"twitter.js",
+		"api",
+		"types",
+		"twitter-api",
+		"node.js"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/twitterjs/twitter-types/issues"
+	},
+	"homepage": "https://github.com/twitterjs/twitter-types#readme",
+	"files": [
+		"/dist"
+	]
 }

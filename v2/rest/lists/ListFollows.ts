@@ -8,8 +8,8 @@ import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../u
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference/get-lists-id-followers
  */
 export interface GETListsIdFollowersQuery extends MultipleUsersLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -18,11 +18,11 @@ export interface GETListsIdFollowersQuery extends MultipleUsersLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference/get-lists-id-followers
  */
 export interface GETListsIdFollowersResponse extends MultipleUsersLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -34,7 +34,7 @@ export interface GETListsIdFollowersResponse extends MultipleUsersLookupResponse
  *
  */
 export function GETListsIdFollowersRoute(listId: Snowflake) {
-  return `/lists/${listId}/followers` as const;
+	return `/lists/${listId}/followers` as const;
 }
 
 /**
@@ -43,8 +43,8 @@ export function GETListsIdFollowersRoute(listId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference/get-users-id-followed_lists
  */
 export interface GETUsersIdFollowedListsQuery extends MultipleListsLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -53,11 +53,11 @@ export interface GETUsersIdFollowedListsQuery extends MultipleListsLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference/get-users-id-followed_lists
  */
 export interface GETUsersIdFollowedListsResponse extends MultipleListsLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -68,7 +68,7 @@ export interface GETUsersIdFollowedListsResponse extends MultipleListsLookupResp
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference
  */
 export function GETUsersIdFollowedListsRoute(userId: Snowflake) {
-  return `/users/${userId}/followed_lists` as const;
+	return `/users/${userId}/followed_lists` as const;
 }
 
 /**
@@ -77,7 +77,7 @@ export function GETUsersIdFollowedListsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference/post-users-id-followed-lists
  */
 export interface POSTUsersIdFollowedListsJSONBody {
-  list_id: Snowflake;
+	list_id: Snowflake;
 }
 
 /**
@@ -86,9 +86,9 @@ export interface POSTUsersIdFollowedListsJSONBody {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference/post-users-id-followed-lists
  */
 export interface POSTUsersIdFollowedListsResponse {
-  data: {
-    following: boolean;
-  };
+	data: {
+		following: boolean;
+	};
 }
 
 /**
@@ -99,7 +99,7 @@ export interface POSTUsersIdFollowedListsResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference
  */
 export function POSTUsersIdFollowedListsRoute(userId: Snowflake) {
-  return `/users/${userId}/followed_lists` as const;
+	return `/users/${userId}/followed_lists` as const;
 }
 
 /* eslint-disable max-len */
@@ -109,9 +109,9 @@ export function POSTUsersIdFollowedListsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference/delete-users-id-followed-lists-list_id
  */
 export interface DELETEUsersIdFollowedListsListIdResponse {
-  data: {
-    following: boolean;
-  };
+	data: {
+		following: boolean;
+	};
 }
 
 /**
@@ -123,6 +123,6 @@ export interface DELETEUsersIdFollowedListsListIdResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference/delete-users-id-followed-lists-list_id
  */
 export function DELETEUsersIdFollowedListsListIdRoute(userId: Snowflake, listId: Snowflake) {
-  return `/users/${userId}/followed_lists/${listId}` as const;
+	return `/users/${userId}/followed_lists/${listId}` as const;
 }
 /* eslint-enable max-len */

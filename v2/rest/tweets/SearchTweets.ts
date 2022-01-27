@@ -7,13 +7,13 @@ import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent
  */
 export interface GETTweetsSearchRecentQuery extends MultipleTweetsLookupQuery {
-  query: string;
-  next_token?: string;
-  end_time?: string;
-  max_results?: number;
-  since_id?: Snowflake;
-  start_time?: string;
-  until_id?: Snowflake;
+	query: string;
+	next_token?: string;
+	end_time?: string;
+	max_results?: number;
+	since_id?: Snowflake;
+	start_time?: string;
+	until_id?: Snowflake;
 }
 
 /**
@@ -22,12 +22,12 @@ export interface GETTweetsSearchRecentQuery extends MultipleTweetsLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent
  */
 export interface GETTweetsSearchRecentResponse extends MultipleTweetsLookupResponse {
-  meta: {
-    result_count: number;
-    newest_id: Snowflake;
-    oldest_id: Snowflake;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		newest_id: Snowflake;
+		oldest_id: Snowflake;
+		next_token?: string;
+	};
 }
 
 /**
@@ -37,7 +37,7 @@ export interface GETTweetsSearchRecentResponse extends MultipleTweetsLookupRespo
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent
  */
 export function GETTweetsSearchRecentRoute() {
-  return `/tweets/search/recent` as const;
+	return `/tweets/search/recent` as const;
 }
 
 /**
@@ -61,5 +61,5 @@ export type GETTweetsSearchAllResponse = GETTweetsSearchRecentResponse;
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all
  */
 export function GETTweetsSearchAllRoute() {
-  return `/tweets/search/all` as const;
+	return `/tweets/search/all` as const;
 }

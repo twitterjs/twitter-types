@@ -13,40 +13,40 @@ export const APIUserExpansionsParameters: Array<APIUserExpansionsParameterType> 
 export type APIUserFieldsParameterType = keyof APIUser;
 
 export const APIUserFieldsParameters: Array<APIUserFieldsParameterType> = [
-  'created_at',
-  'description',
-  'entities',
-  'id',
-  'location',
-  'name',
-  'pinned_tweet_id',
-  'profile_image_url',
-  'protected',
-  'public_metrics',
-  'url',
-  'username',
-  'verified',
-  'withheld',
+	'created_at',
+	'description',
+	'entities',
+	'id',
+	'location',
+	'name',
+	'pinned_tweet_id',
+	'profile_image_url',
+	'protected',
+	'public_metrics',
+	'url',
+	'username',
+	'verified',
+	'withheld',
 ];
 
 export interface APIUserExpansions {
-  tweets?: Array<APITweet>;
+	tweets?: Array<APITweet>;
 }
 
 export interface SingleUserLookupQuery {
-  expansions?: Array<APIUserExpansionsParameterType>;
-  'tweet.fields'?: Array<APITweetFieldsParameterType>;
-  'user.fields'?: Array<APIUserFieldsParameterType>;
+	expansions?: Array<APIUserExpansionsParameterType>;
+	'tweet.fields'?: Array<APITweetFieldsParameterType>;
+	'user.fields'?: Array<APIUserFieldsParameterType>;
 }
 
 export interface SingleUserLookupResponse {
-  data: APIUser;
-  includes?: APIUserExpansions;
+	data: APIUser;
+	includes?: APIUserExpansions;
 }
 
 export type MultipleUsersLookupQuery = SingleUserLookupQuery;
 
 export interface MultipleUsersLookupResponse {
-  data: Array<APIUser>;
-  includes?: APIUserExpansions;
+	data: Array<APIUser>;
+	includes?: APIUserExpansions;
 }

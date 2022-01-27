@@ -6,20 +6,20 @@ import type { Snowflake } from '../../payloads';
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/manage-lists/api-reference/post-lists
  */
 export interface POSTListsJSONBody {
-  /**
-   * The name of the list
-   */
-  name: string;
+	/**
+	 * The name of the list
+	 */
+	name: string;
 
-  /**
-   * The description of the list
-   */
-  description?: string;
+	/**
+	 * The description of the list
+	 */
+	description?: string;
 
-  /**
-   * Whether the list should be private
-   */
-  private?: boolean;
+	/**
+	 * Whether the list should be private
+	 */
+	private?: boolean;
 }
 
 /**
@@ -28,16 +28,16 @@ export interface POSTListsJSONBody {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/manage-lists/api-reference/post-lists
  */
 export interface POSTListsResponse {
-  data: {
-    /**
-     * The id of the list
-     */
-    id: Snowflake;
-    /**
-     * The name of the list
-     */
-    name: string;
-  };
+	data: {
+		/**
+		 * The id of the list
+		 */
+		id: Snowflake;
+		/**
+		 * The name of the list
+		 */
+		name: string;
+	};
 }
 
 /**
@@ -47,7 +47,7 @@ export interface POSTListsResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/manage-lists/api-reference/post-lists
  */
 export function POSTListsRoute() {
-  return `/lists` as const;
+	return `/lists` as const;
 }
 
 /**
@@ -56,9 +56,9 @@ export function POSTListsRoute() {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/manage-lists/api-reference/delete-lists-id
  */
 export interface DELETEListsIdResponse {
-  data: {
-    deleted: boolean;
-  };
+	data: {
+		deleted: boolean;
+	};
 }
 
 /**
@@ -69,7 +69,7 @@ export interface DELETEListsIdResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/manage-lists/api-reference/delete-lists-id
  */
 export function DELETEListsIdRoute(listId: Snowflake) {
-  return `/lists/${listId}` as const;
+	return `/lists/${listId}` as const;
 }
 
 /**
@@ -85,9 +85,9 @@ export type PUTListsIdJSONBody = Partial<POSTListsJSONBody>;
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/manage-lists/api-reference/put-lists-id
  */
 export interface PUTListsIdResponse {
-  data: {
-    updated: boolean;
-  };
+	data: {
+		updated: boolean;
+	};
 }
 
 /**
@@ -98,5 +98,5 @@ export interface PUTListsIdResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/manage-lists/api-reference/put-lists-id
  */
 export function PUTListsIdRoute(listId: Snowflake) {
-  return `/lists/${listId}` as const;
+	return `/lists/${listId}` as const;
 }

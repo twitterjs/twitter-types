@@ -4,13 +4,13 @@
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent
  */
 export interface GETTweetsCountsRecentQuery {
-  query: string;
-  end_time?: string;
-  granularity?: 'minute' | 'hour' | 'day';
-  since_id?: string;
-  start_time?: string;
-  until_id?: string;
-  next_token?: string; // TODO: confirm this field
+	query: string;
+	end_time?: string;
+	granularity?: 'minute' | 'hour' | 'day';
+	since_id?: string;
+	start_time?: string;
+	until_id?: string;
+	next_token?: string; // TODO: confirm this field
 }
 
 /**
@@ -19,15 +19,15 @@ export interface GETTweetsCountsRecentQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent
  */
 export interface GETTweetsCountsRecentResponse {
-  data: Array<{
-    end: string;
-    start: string;
-    tweet_count: number;
-  }>;
-  meta: {
-    next_token?: string; // TODO: confirm this field
-    total_tweet_count: number;
-  };
+	data: Array<{
+		end: string;
+		start: string;
+		tweet_count: number;
+	}>;
+	meta: {
+		next_token?: string; // TODO: confirm this field
+		total_tweet_count: number;
+	};
 }
 
 /**
@@ -37,7 +37,7 @@ export interface GETTweetsCountsRecentResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent
  */
 export function GETTweetsCountsRecentRoute() {
-  return `/tweets/counts/recent` as const;
+	return `/tweets/counts/recent` as const;
 }
 
 /**
@@ -61,5 +61,5 @@ export type GETTweetsCountsAllResponse = GETTweetsCountsRecentResponse;
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-all
  */
 export function GETTweetsCountsAllRoute() {
-  return `/tweets/counts/all` as const;
+	return `/tweets/counts/all` as const;
 }

@@ -1,9 +1,9 @@
 import type { Snowflake } from '../../payloads';
 import type {
-  MultipleUsersLookupQuery,
-  MultipleUsersLookupResponse,
-  SingleUserLookupQuery,
-  SingleUserLookupResponse,
+	MultipleUsersLookupQuery,
+	MultipleUsersLookupResponse,
+	SingleUserLookupQuery,
+	SingleUserLookupResponse,
 } from './index';
 
 /**
@@ -12,7 +12,7 @@ import type {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users
  */
 export interface GETUsersQuery extends MultipleUsersLookupQuery {
-  ids: Array<Snowflake>;
+	ids: Array<Snowflake>;
 }
 
 /**
@@ -29,7 +29,7 @@ export type GETUsersResponse = MultipleUsersLookupResponse;
  * @see https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users
  */
 export function GETUsersRoute() {
-  return `/users` as const;
+	return `/users` as const;
 }
 
 /**
@@ -54,7 +54,7 @@ export type GETUsersIdResponse = SingleUserLookupResponse;
  * @see https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-id
  */
 export function GETUsersIdRoute(userId: Snowflake) {
-  return `/users/${userId}` as const;
+	return `/users/${userId}` as const;
 }
 
 /**
@@ -63,7 +63,7 @@ export function GETUsersIdRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by
  */
 export interface GETUsersByQuery extends MultipleUsersLookupQuery {
-  usernames: Array<string>;
+	usernames: Array<string>;
 }
 
 /**
@@ -80,7 +80,7 @@ export type GETUsersByResponse = MultipleUsersLookupResponse;
  * @see  https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by
  */
 export function GETUsersByRoute() {
-  return `/users/by` as const;
+	return `/users/by` as const;
 }
 
 /**
@@ -105,7 +105,7 @@ export type GETUsersByUsernameUsernameResponse = SingleUserLookupResponse;
  * @see https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by-username-username
  */
 export function GETUsersByUsernameUsernameRoute(username: string) {
-  return `/users/by/username/${username}` as const;
+	return `/users/by/username/${username}` as const;
 }
 
 /**
@@ -129,5 +129,5 @@ export type GETUsersMeResponse = SingleUserLookupResponse;
  * @see https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-me
  */
 export function GETUsersMeRoute() {
-  return `/users/me` as const;
+	return `/users/me` as const;
 }

@@ -7,8 +7,8 @@ import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './in
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/get-users-blocking
  */
 export interface GETUsersIdBlockingQuery extends MultipleUsersLookupQuery {
-  max_results?: number;
-  pagination_token?: string;
+	max_results?: number;
+	pagination_token?: string;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface GETUsersIdBlockingQuery extends MultipleUsersLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/get-users-blocking
  */
 export interface GETUsersIdBlockingResponse extends MultipleUsersLookupResponse {
-  meta: {
-    result_count: number;
-    previous_token?: string;
-    next_token?: string;
-  };
+	meta: {
+		result_count: number;
+		previous_token?: string;
+		next_token?: string;
+	};
 }
 
 /**
@@ -33,7 +33,7 @@ export interface GETUsersIdBlockingResponse extends MultipleUsersLookupResponse 
  *
  */
 export function GETUsersIdBlockingRoute(userId: Snowflake) {
-  return `/users/${userId}/blocking` as const;
+	return `/users/${userId}/blocking` as const;
 }
 
 /**
@@ -42,7 +42,7 @@ export function GETUsersIdBlockingRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking
  */
 export interface POSTUsersIdBlockingJSONBody {
-  target_user_id: Snowflake;
+	target_user_id: Snowflake;
 }
 
 /**
@@ -51,9 +51,9 @@ export interface POSTUsersIdBlockingJSONBody {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking
  */
 export interface POSTUsersIdBlockingResponse {
-  data: {
-    blocking: boolean;
-  };
+	data: {
+		blocking: boolean;
+	};
 }
 
 /**
@@ -65,7 +65,7 @@ export interface POSTUsersIdBlockingResponse {
  *
  */
 export function POSTUsersIdBlockingRoute(userId: Snowflake) {
-  return `/users/${userId}/blocking` as const;
+	return `/users/${userId}/blocking` as const;
 }
 
 /**
@@ -74,9 +74,9 @@ export function POSTUsersIdBlockingRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/delete-users-user_id-blocking
  */
 export interface DELETEUsersSourceUserIdBlockingTargetUserIdResponse {
-  data: {
-    blocking: boolean;
-  };
+	data: {
+		blocking: boolean;
+	};
 }
 
 /**
@@ -88,5 +88,5 @@ export interface DELETEUsersSourceUserIdBlockingTargetUserIdResponse {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/blocks/api-reference/delete-users-user_id-blocking
  */
 export function DELETEUsersSourceUserIdBlockingTargetUserIdRoute(sourceUserId: Snowflake, targetUserId: Snowflake) {
-  return `/users/${sourceUserId}/blocking/${targetUserId}` as const;
+	return `/users/${sourceUserId}/blocking/${targetUserId}` as const;
 }
