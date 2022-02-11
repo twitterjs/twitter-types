@@ -14,6 +14,7 @@ export interface GETTweetsSearchRecentQuery extends MultipleTweetsLookupQuery {
 	since_id?: Snowflake;
 	start_time?: string;
 	until_id?: Snowflake;
+	sort_order?: 'recency' | 'relevancy';
 }
 
 /**
