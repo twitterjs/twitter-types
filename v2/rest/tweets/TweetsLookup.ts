@@ -1,4 +1,3 @@
-import type { Snowflake } from '../../payloads';
 import type {
 	MultipleTweetsLookupQuery,
 	MultipleTweetsLookupResponse,
@@ -12,7 +11,7 @@ import type {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
  */
 export interface GETTweetsQuery extends MultipleTweetsLookupQuery {
-	ids: Array<Snowflake>;
+	ids: Array<string>;
 }
 
 /**
@@ -53,6 +52,6 @@ export type GETTweetsIdResponse = SingleTweetLookupResponse;
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id
  */
-export function GETTweetsIdRoute(tweetId: Snowflake) {
+export function GETTweetsIdRoute(tweetId: string) {
 	return `/tweets/${tweetId}` as const;
 }

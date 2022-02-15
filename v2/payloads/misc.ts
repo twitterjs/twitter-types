@@ -1,1 +1,1 @@
-export type Snowflake = `${bigint}`;
+export type string = `${bigint}`;

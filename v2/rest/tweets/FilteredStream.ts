@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import type { MergeExclusive } from '../misc';
-import type { Snowflake } from '../../payloads';
 import type { SingleTweetLookupQuery, SingleTweetLookupResponse } from './index';
 
 export interface AddFilteredTweetStreamRulesJSONBody {
@@ -11,7 +10,7 @@ export interface AddFilteredTweetStreamRulesJSONBody {
 }
 
 export interface RemoveFilteredTweetStreamRulesJSONBody {
-	delete: MergeExclusive<{ ids: Array<Snowflake> }, { values: Array<string> }>;
+	delete: MergeExclusive<{ ids: Array<string> }, { values: Array<string> }>;
 }
 
 export interface AddFilteredTweetStreamRulesResponseMeta {
@@ -60,7 +59,7 @@ export type POSTTweetsSearchStreamRulesJSONBody = MergeExclusive<
 export type POSTTweetsSearchStreamRulesResponse = MergeExclusive<
 	{
 		data: Array<{
-			id: Snowflake;
+			id: string;
 			value: string;
 			tag?: string;
 		}>;
@@ -87,7 +86,7 @@ export function POSTTweetsSearchStreamRulesRoute() {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream-rules
  */
 export interface GETTweetsSearchStreamRulesQuery {
-	ids?: Array<Snowflake>;
+	ids?: Array<string>;
 }
 
 // TODO: verify this interface
@@ -98,7 +97,7 @@ export interface GETTweetsSearchStreamRulesQuery {
  */
 export interface GETTweetsSearchStreamRulesResponse {
 	data: Array<{
-		id: Snowflake;
+		id: string;
 		value: string;
 		tag?: string;
 	}>;
@@ -132,7 +131,7 @@ export interface GETTweetsSearchStreamQuery extends SingleTweetLookupQuery {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream
  */
 export interface GETTweetsSearchStreamResponse extends SingleTweetLookupResponse {
-	matching_rules: Array<{ id: Snowflake; tag?: string }>;
+	matching_rules: Array<{ id: string; tag?: string }>;
 }
 
 /**

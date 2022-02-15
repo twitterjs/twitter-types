@@ -1,4 +1,3 @@
-import type { Snowflake } from '../../payloads';
 import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './index';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
 
@@ -32,7 +31,7 @@ export interface GETListsIdMembersResponse extends MultipleUsersLookupResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-lists-id-members
  */
-export function GETListsIdMembersRoute(listId: Snowflake) {
+export function GETListsIdMembersRoute(listId: string) {
 	return `/lists/${listId}/members` as const;
 }
 
@@ -66,7 +65,7 @@ export interface GETUsersIdListMembershipsResponse extends MultipleListsLookupRe
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/get-users-id-list_memberships
  */
-export function GETUsersIdListMembershipsRoute(userId: Snowflake) {
+export function GETUsersIdListMembershipsRoute(userId: string) {
 	return `/users/${userId}/list_memberships` as const;
 }
 
@@ -76,7 +75,7 @@ export function GETUsersIdListMembershipsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/post-lists-id-members
  */
 export interface POSTListsIdMembersJSONBody {
-	user_id: Snowflake;
+	user_id: string;
 }
 
 /**
@@ -97,7 +96,7 @@ export interface POSTListsIdMembersResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/post-lists-id-members
  */
-export function POSTListsIdMembersRoute(listId: Snowflake) {
+export function POSTListsIdMembersRoute(listId: string) {
 	return `/lists/${listId}/members` as const;
 }
 
@@ -121,7 +120,7 @@ export interface DELETEListsIdMembersUserIdResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-members/api-reference/delete-lists-id-members-user_id
  */
-export function DELETEListsIdMembersUserIdRoute(listId: Snowflake, userId: Snowflake) {
+export function DELETEListsIdMembersUserIdRoute(listId: string, userId: string) {
 	return `/lists/${listId}/members/${userId}` as const;
 }
 /* eslint-enable max-len */

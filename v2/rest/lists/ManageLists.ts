@@ -1,5 +1,3 @@
-import type { Snowflake } from '../../payloads';
-
 /**
  * The body for creating a list
  *
@@ -32,7 +30,7 @@ export interface POSTListsResponse {
 		/**
 		 * The id of the list
 		 */
-		id: Snowflake;
+		id: string;
 		/**
 		 * The name of the list
 		 */
@@ -68,7 +66,7 @@ export interface DELETEListsIdResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/manage-lists/api-reference/delete-lists-id
  */
-export function DELETEListsIdRoute(listId: Snowflake) {
+export function DELETEListsIdRoute(listId: string) {
 	return `/lists/${listId}` as const;
 }
 
@@ -97,6 +95,6 @@ export interface PUTListsIdResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/manage-lists/api-reference/put-lists-id
  */
-export function PUTListsIdRoute(listId: Snowflake) {
+export function PUTListsIdRoute(listId: string) {
 	return `/lists/${listId}` as const;
 }

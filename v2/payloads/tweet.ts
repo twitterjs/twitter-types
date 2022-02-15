@@ -1,5 +1,3 @@
-import type { Snowflake } from './misc';
-
 /**
  * https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet
  */
@@ -7,7 +5,7 @@ export interface APITweet {
 	/**
 	 * The unique identifier of the requested Tweet
 	 */
-	id: Snowflake;
+	id: string;
 
 	/**
 	 * The actual `UTF-8` text of the Tweet
@@ -22,7 +20,7 @@ export interface APITweet {
 	/**
 	 * The unique identifier of the User who posted the Tweet
 	 */
-	author_id?: Snowflake;
+	author_id?: string;
 
 	/**
 	 * Contains context annotations for the Tweet
@@ -32,7 +30,7 @@ export interface APITweet {
 	/**
 	 * The ID of the original Tweet of the conversation (which includes direct replies, replies of replies)
 	 */
-	conversation_id?: Snowflake;
+	conversation_id?: string;
 
 	/**
 	 * The `ISO 8601` creation time of the Tweet
@@ -53,7 +51,7 @@ export interface APITweet {
 	 * If the Tweet is a reply, this field will contain the original Tweet’s author ID.
 	 * This will not necessarily always be the user directly mentioned in the Tweet
 	 */
-	in_reply_to_user_id?: Snowflake;
+	in_reply_to_user_id?: string;
 
 	/**
 	 * The language of the Tweet, if detected by Twitter. Returned as a `BCP47` language tag
@@ -174,7 +172,7 @@ export interface APITweetHashtagEntity extends APITweetBaseEntity {
 
 export interface APITweetMentionEntity extends APITweetBaseEntity {
 	username: string;
-	id: Snowflake;
+	id: string;
 }
 
 export interface APITweetNonPublicMetrics {
@@ -206,7 +204,7 @@ export type APITweetReplySettings = 'everyone' | 'mentioned_users' | 'followers'
 
 export interface APITweetReferencedTweet {
 	type: APITweetReferencedTweetType;
-	id: Snowflake;
+	id: string;
 }
 
 export type APITweetReferencedTweetType = 'retweeted' | 'quoted' | 'replied_to';
@@ -261,5 +259,5 @@ export interface APIFilteredTweetStreamRule {
 	/**
 	 * Unique identifier of this rule
 	 */
-	id: Snowflake;
+	id: string;
 }

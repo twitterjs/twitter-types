@@ -1,4 +1,3 @@
-import type { Snowflake } from '../../payloads';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
 import type {
 	SingleSpaceLookupQuery,
@@ -26,7 +25,7 @@ export type GETSpacesIdResponse = SingleSpaceLookupResponse;
  * - GET `/spaces/:id`
  * @param spaceId The space id to fetch
  */
-export function GETSpacesIdRoute(spaceId: Snowflake) {
+export function GETSpacesIdRoute(spaceId: string) {
 	return `/spaces/${spaceId}` as const;
 }
 
@@ -36,7 +35,7 @@ export function GETSpacesIdRoute(spaceId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces
  */
 export interface GETSpacesQuery extends MultipleSpacesLookupQuery {
-	ids: Array<Snowflake>;
+	ids: Array<string>;
 }
 
 /**
@@ -86,7 +85,7 @@ export interface GETSpacesIdBuyersResponse extends MultipleUsersLookupResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-buyers
  */
-export function GETSpacesIdBuyersRoute(spaceId: Snowflake) {
+export function GETSpacesIdBuyersRoute(spaceId: string) {
 	return `/spaces/${spaceId}/buyers` as const;
 }
 

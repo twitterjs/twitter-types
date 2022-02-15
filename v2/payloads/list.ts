@@ -1,10 +1,8 @@
-import type { Snowflake } from './misc';
-
 export interface APIList {
 	/**
 	 * The id of the list
 	 */
-	id: Snowflake;
+	id: string;
 
 	/**
 	 * The name of the created list
@@ -39,5 +37,5 @@ export interface APIList {
 	/**
 	 * The user id of the owner of the list
 	 */
-	owner_id?: Snowflake;
+	owner_id?: string;
 }

@@ -1,5 +1,3 @@
-import type { Snowflake } from '../../payloads';
-
 /**
  * The body for hiding/unhiding a reply to a tweet
  *
@@ -27,6 +25,6 @@ export interface PUTTweetsIdHiddenResponse {
  *
  * @link https://developer.twitter.com/en/docs/twitter-api/tweets/hide-replies/api-reference/put-tweets-id-hidden
  */
-export function PUTTweetsIdHiddenRoute(tweetId: Snowflake) {
+export function PUTTweetsIdHiddenRoute(tweetId: string) {
 	return `/tweets/${tweetId}/hidden` as const;
 }

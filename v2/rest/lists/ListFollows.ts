@@ -1,4 +1,3 @@
-import type { Snowflake } from '../../payloads';
 import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './index';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
 
@@ -33,7 +32,7 @@ export interface GETListsIdFollowersResponse extends MultipleUsersLookupResponse
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference/get-lists-id-followers
  *
  */
-export function GETListsIdFollowersRoute(listId: Snowflake) {
+export function GETListsIdFollowersRoute(listId: string) {
 	return `/lists/${listId}/followers` as const;
 }
 
@@ -67,7 +66,7 @@ export interface GETUsersIdFollowedListsResponse extends MultipleListsLookupResp
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference
  */
-export function GETUsersIdFollowedListsRoute(userId: Snowflake) {
+export function GETUsersIdFollowedListsRoute(userId: string) {
 	return `/users/${userId}/followed_lists` as const;
 }
 
@@ -77,7 +76,7 @@ export function GETUsersIdFollowedListsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference/post-users-id-followed-lists
  */
 export interface POSTUsersIdFollowedListsJSONBody {
-	list_id: Snowflake;
+	list_id: string;
 }
 
 /**
@@ -98,7 +97,7 @@ export interface POSTUsersIdFollowedListsResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference
  */
-export function POSTUsersIdFollowedListsRoute(userId: Snowflake) {
+export function POSTUsersIdFollowedListsRoute(userId: string) {
 	return `/users/${userId}/followed_lists` as const;
 }
 
@@ -122,7 +121,7 @@ export interface DELETEUsersIdFollowedListsListIdResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-follows/api-reference/delete-users-id-followed-lists-list_id
  */
-export function DELETEUsersIdFollowedListsListIdRoute(userId: Snowflake, listId: Snowflake) {
+export function DELETEUsersIdFollowedListsListIdRoute(userId: string, listId: string) {
 	return `/users/${userId}/followed_lists/${listId}` as const;
 }
 /* eslint-enable max-len */

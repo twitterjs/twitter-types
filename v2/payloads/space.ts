@@ -1,10 +1,8 @@
-import type { Snowflake } from './misc';
-
 export interface APISpace {
 	/**
 	 * The unique identifier of the requested Space
 	 */
-	id: Snowflake;
+	id: string;
 
 	/**
 	 * Indicates if the Space has started or will start in the future, or if it has ended
@@ -21,7 +19,7 @@ export interface APISpace {
 	/**
 	 * The unique identifier of the Users who are hosting this Space
 	 */
-	host_ids?: Array<Snowflake>;
+	host_ids?: Array<string>;
 
 	/**
 	 * Language of the Space, if detected by Twitter. Returned as a `BCP47` language tag
@@ -37,7 +35,7 @@ export interface APISpace {
 	 * The list of user IDs that were invited to join as speakers.
 	 * Usually, users in this list are invited to speak via the Invite user option
 	 */
-	invited_user_ids?: Array<Snowflake>;
+	invited_user_ids?: Array<string>;
 
 	/**
 	 * The current number of users in the Space, including Hosts and Speakers
@@ -56,7 +54,7 @@ export interface APISpace {
 	 * This list contains all the users in `invited_user_ids` in addition to
 	 * any user who requested to speak and was allowed via the Add speaker option
 	 */
-	speaker_ids?: Array<Snowflake>;
+	speaker_ids?: Array<string>;
 
 	/**
 	 * Indicates the actual start time of a Space
@@ -78,5 +76,5 @@ export interface APISpace {
 	/**
 	 * The id of the user who created this space
 	 */
-	creator_id?: Snowflake;
+	creator_id?: string;
 }

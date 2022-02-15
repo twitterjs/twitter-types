@@ -1,4 +1,3 @@
-import type { Snowflake } from '../../payloads';
 import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './index';
 
 /**
@@ -11,9 +10,9 @@ export interface GETTweetsSearchRecentQuery extends MultipleTweetsLookupQuery {
 	next_token?: string;
 	end_time?: string;
 	max_results?: number;
-	since_id?: Snowflake;
+	since_id?: string;
 	start_time?: string;
-	until_id?: Snowflake;
+	until_id?: string;
 	sort_order?: 'recency' | 'relevancy';
 }
 
@@ -25,8 +24,8 @@ export interface GETTweetsSearchRecentQuery extends MultipleTweetsLookupQuery {
 export interface GETTweetsSearchRecentResponse extends MultipleTweetsLookupResponse {
 	meta: {
 		result_count: number;
-		newest_id: Snowflake;
-		oldest_id: Snowflake;
+		newest_id: string;
+		oldest_id: string;
 		next_token?: string;
 	};
 }

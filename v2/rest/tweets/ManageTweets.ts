@@ -1,4 +1,4 @@
-import type { APITweetReplySettings, Snowflake } from '../../payloads';
+import type { APITweetReplySettings, string } from '../../payloads';
 
 /**
  * The body for creating a tweet
@@ -12,16 +12,16 @@ export interface POSTTweetsJSONBody {
 		place_id?: string;
 	};
 	media?: {
-		media_ids?: Array<Snowflake>;
-		tagged_user_ids?: Array<Snowflake>;
+		media_ids?: Array<string>;
+		tagged_user_ids?: Array<string>;
 	};
 	poll?: {
 		duration_minutes?: number;
 		options?: Array<string>;
 	};
-	quote_tweet_id?: Snowflake;
+	quote_tweet_id?: string;
 	reply?: {
-		exclude_reply_user_ids?: Array<Snowflake>;
+		exclude_reply_user_ids?: Array<string>;
 		in_reply_to_tweet_id?: string;
 	};
 	reply_settings?: APITweetReplySettings;
@@ -35,7 +35,7 @@ export interface POSTTweetsJSONBody {
  */
 export interface POSTTweetsResponse {
 	data: {
-		id: Snowflake;
+		id: string;
 		text: string;
 	};
 }
@@ -68,6 +68,6 @@ export interface DELETETweetsIdResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id
  */
-export function DELETETweetsIdRoute(tweetId: Snowflake) {
+export function DELETETweetsIdRoute(tweetId: string) {
 	return `/tweets/${tweetId}` as const;
 }

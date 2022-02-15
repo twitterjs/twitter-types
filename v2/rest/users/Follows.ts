@@ -1,4 +1,3 @@
-import type { Snowflake } from '../../payloads';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from './index';
 
 /**
@@ -31,7 +30,7 @@ export interface GETUsersIdFollowingResponse extends MultipleUsersLookupResponse
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following
  */
-export function GETUsersIdFollowingRoute(userId: Snowflake) {
+export function GETUsersIdFollowingRoute(userId: string) {
 	return `/users/${userId}/following` as const;
 }
 
@@ -65,7 +64,7 @@ export interface GETUsersIdFollowersResponse extends MultipleUsersLookupResponse
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers
  */
-export function GETUsersIdFollowersRoute(userId: Snowflake) {
+export function GETUsersIdFollowersRoute(userId: string) {
 	return `/users/${userId}/followers` as const;
 }
 
@@ -76,7 +75,7 @@ export function GETUsersIdFollowersRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
  */
 export interface POSTUsersIdFollowingJSONBody {
-	target_user_id: Snowflake;
+	target_user_id: string;
 }
 
 /**
@@ -98,7 +97,7 @@ export interface POSTUsersIdFollowingResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/post-users-source_user_id-following
  */
-export function POSTUsersIdFollowingRoute(userId: Snowflake) {
+export function POSTUsersIdFollowingRoute(userId: string) {
 	return `/users/${userId}/following` as const;
 }
 /* eslint-enable max-len */
@@ -122,6 +121,6 @@ export interface DELETEUsersSourceUserIdFollowingTargetUserIdResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/follows/api-reference/delete-users-source_id-following
  */
-export function DELETEUsersSourceUserIdFollowingTargetUserIdRoute(sourceUserId: Snowflake, targetUserId: Snowflake) {
+export function DELETEUsersSourceUserIdFollowingTargetUserIdRoute(sourceUserId: string, targetUserId: string) {
 	return `/users/${sourceUserId}/following/${targetUserId}` as const;
 }

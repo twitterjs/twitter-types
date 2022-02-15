@@ -1,4 +1,3 @@
-import type { Snowflake } from '../../payloads';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
 import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './index';
 
@@ -32,7 +31,7 @@ export interface GETTweetsIdLikingUsersResponse extends MultipleUsersLookupRespo
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users
  */
-export function GETTweetsIdLikingUsersRoute(tweetId: Snowflake) {
+export function GETTweetsIdLikingUsersRoute(tweetId: string) {
 	return `/tweets/${tweetId}/liking_users` as const;
 }
 
@@ -66,7 +65,7 @@ export interface GETUsersIdLikedTweetsResponse extends MultipleTweetsLookupRespo
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets
  */
-export function GETUsersIdLikedTweetsRoute(userId: Snowflake) {
+export function GETUsersIdLikedTweetsRoute(userId: string) {
 	return `/users/${userId}/liked_tweets` as const;
 }
 
@@ -76,7 +75,7 @@ export function GETUsersIdLikedTweetsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
  */
 export interface POSTUsersIdLikesJSONBody {
-	tweet_id: Snowflake;
+	tweet_id: string;
 }
 
 /**
@@ -97,7 +96,7 @@ export interface POSTUsersIdLikesResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes
  */
-export function POSTUsersIdLikesRoute(userId: Snowflake) {
+export function POSTUsersIdLikesRoute(userId: string) {
 	return `/users/${userId}/likes` as const;
 }
 
@@ -120,6 +119,6 @@ export interface DELETEUsersIdLikesTweetIdResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/delete-users-id-likes-tweet_id
  */
-export function DELETEUsersIdLikesTweetIdRoute(userId: Snowflake, tweetId: Snowflake) {
+export function DELETEUsersIdLikesTweetIdRoute(userId: string, tweetId: string) {
 	return `/users/${userId}/likes/${tweetId}` as const;
 }
