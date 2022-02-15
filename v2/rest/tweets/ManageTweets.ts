@@ -1,4 +1,4 @@
-import type { APITweetReplySettings, string } from '../../payloads';
+import type { APITweetReplySettings } from '../../payloads';
 
 /**
  * The body for creating a tweet
