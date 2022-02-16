@@ -1,4 +1,3 @@
-import type { Snowflake } from '../../payloads';
 import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from './index';
 
 /**
@@ -10,9 +9,9 @@ export interface GETUsersIdTweetsQuery extends MultipleTweetsLookupQuery {
 	end_time?: string;
 	max_results?: number;
 	pagination_token?: string;
-	since_id?: Snowflake;
+	since_id?: string;
 	start_time?: string;
-	until_id?: Snowflake;
+	until_id?: string;
 	exclude?: Array<'retweets' | 'replies'>;
 }
 
@@ -24,8 +23,8 @@ export interface GETUsersIdTweetsQuery extends MultipleTweetsLookupQuery {
 export interface GETUsersIdTweetsResponse extends MultipleTweetsLookupResponse {
 	meta: {
 		result_count: number;
-		newest_id: Snowflake;
-		oldest_id: Snowflake;
+		newest_id: string;
+		oldest_id: string;
 		previous_token?: string;
 		next_token?: string;
 	};
@@ -38,7 +37,7 @@ export interface GETUsersIdTweetsResponse extends MultipleTweetsLookupResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets
  */
-export function GETUsersIdTweetsRoute(userId: Snowflake) {
+export function GETUsersIdTweetsRoute(userId: string) {
 	return `/users/${userId}/tweets` as const;
 }
 
@@ -51,9 +50,9 @@ export interface GETUsersIdMentionsQuery extends MultipleTweetsLookupQuery {
 	end_time?: string;
 	max_results?: number;
 	pagination_token?: string;
-	since_id?: Snowflake;
+	since_id?: string;
 	start_time?: string;
-	until_id?: Snowflake;
+	until_id?: string;
 }
 
 /**
@@ -64,8 +63,8 @@ export interface GETUsersIdMentionsQuery extends MultipleTweetsLookupQuery {
 export interface GETUsersIdMentionsResponse extends MultipleTweetsLookupResponse {
 	meta: {
 		result_count: number;
-		newest_id: Snowflake;
-		oldest_id: Snowflake;
+		newest_id: string;
+		oldest_id: string;
 		previous_token?: string;
 		next_token?: string;
 	};
@@ -78,6 +77,6 @@ export interface GETUsersIdMentionsResponse extends MultipleTweetsLookupResponse
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions
  */
-export function GETUsersIdMentionsRoute(userId: Snowflake) {
+export function GETUsersIdMentionsRoute(userId: string) {
 	return `users/${userId}/mentions` as const;
 }

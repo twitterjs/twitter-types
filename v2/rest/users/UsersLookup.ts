@@ -1,4 +1,3 @@
-import type { Snowflake } from '../../payloads';
 import type {
 	MultipleUsersLookupQuery,
 	MultipleUsersLookupResponse,
@@ -12,7 +11,7 @@ import type {
  * @see https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users
  */
 export interface GETUsersQuery extends MultipleUsersLookupQuery {
-	ids: Array<Snowflake>;
+	ids: Array<string>;
 }
 
 /**
@@ -53,7 +52,7 @@ export type GETUsersIdResponse = SingleUserLookupResponse;
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-id
  */
-export function GETUsersIdRoute(userId: Snowflake) {
+export function GETUsersIdRoute(userId: string) {
 	return `/users/${userId}` as const;
 }
 

@@ -1,4 +1,3 @@
-import type { Snowflake } from '../../payloads';
 import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from '../tweets';
 
 /**
@@ -31,6 +30,6 @@ export interface GETListsIdtweetsResponse extends MultipleTweetsLookupResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-tweets/api-reference/get-lists-id-tweets
  */
-export function GETListsIdTweetsRoute(listId: Snowflake) {
+export function GETListsIdTweetsRoute(listId: string) {
 	return `/lists/${listId}/tweets` as const;
 }

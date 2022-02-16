@@ -1,4 +1,3 @@
-import type { Snowflake } from '../..';
 import type {
 	SingleListLookupQuery,
 	SingleListLookupResponse,
@@ -27,7 +26,7 @@ export type GETListsIdResponse = SingleListLookupResponse;
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id
  */
-export function GETListsIdRoute(listId: Snowflake) {
+export function GETListsIdRoute(listId: string) {
 	return `/lists/${listId}` as const;
 }
 
@@ -61,6 +60,6 @@ export interface GETUsersIdOwnedListsResponse extends MultipleListsLookupRespons
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists
  */
-export function GETUsersIdOwnedListsRoute(userId: Snowflake) {
+export function GETUsersIdOwnedListsRoute(userId: string) {
 	return `/users/${userId}/owned_lists` as const;
 }

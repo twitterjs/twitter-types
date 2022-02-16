@@ -1,4 +1,3 @@
-import type { Snowflake } from '../../payloads';
 import type { MultipleListsLookupQuery, MultipleListsLookupResponse } from './index';
 
 /**
@@ -31,7 +30,7 @@ export interface GETUsersIdPinnedListsResponse extends MultipleListsLookupRespon
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/get-users-id-pinned_lists
  */
-export function GETUsersIdPinnedListsRoute(userId: Snowflake) {
+export function GETUsersIdPinnedListsRoute(userId: string) {
 	return `/users/${userId}/pinned_lists` as const;
 }
 
@@ -41,7 +40,7 @@ export function GETUsersIdPinnedListsRoute(userId: Snowflake) {
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/post-users-id-pinned-lists
  */
 export interface POSTUsersIdPinnedListsJSONBody {
-	list_id: Snowflake;
+	list_id: string;
 }
 
 /**
@@ -62,7 +61,7 @@ export interface POSTUsersIdPinnedListsResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/post-users-id-pinned-lists
  */
-export function POSTUsersIdPinnedListsRoute(userId: Snowflake) {
+export function POSTUsersIdPinnedListsRoute(userId: string) {
 	return `/users/${userId}/pinned_lists` as const;
 }
 
@@ -86,7 +85,7 @@ export interface DELETEUsersIdPinnedListsListIdResponse {
  *
  * @see https://developer.twitter.com/en/docs/twitter-api/lists/pinned-lists/api-reference/delete-users-id-pinned-lists-list_id
  */
-export function DELETEUsersIdPinnedListsListIdRoute(userId: Snowflake, listId: Snowflake) {
+export function DELETEUsersIdPinnedListsListIdRoute(userId: string, listId: string) {
 	return `/users/${userId}/pinned_lists/${listId}` as const;
 }
 /* eslint-enable max-len */
