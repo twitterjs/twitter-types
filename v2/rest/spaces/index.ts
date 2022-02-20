@@ -32,6 +32,7 @@ export const APISpaceFieldsParameters: Array<APISpaceFieldsParameterType> = [
 	'title',
 	'topic_ids',
 	'updated_at',
+	'subscriber_count',
 ];
 
 export interface APISpaceExpansions {
