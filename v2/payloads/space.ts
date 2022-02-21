@@ -77,4 +77,9 @@ export interface APISpace {
 	 * The id of the user who created this space
 	 */
 	creator_id?: string;
+
+	/**
+	 * The number of people who have either purchased a ticket or set a reminder for this space
+	 */
+	subscriber_count?: number;
 }

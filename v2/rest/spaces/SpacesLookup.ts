@@ -1,3 +1,4 @@
+import type { MultipleTweetsLookupQuery, MultipleTweetsLookupResponse } from '../tweets';
 import type { MultipleUsersLookupQuery, MultipleUsersLookupResponse } from '../users';
 import type {
 	SingleSpaceLookupQuery,
@@ -118,4 +119,35 @@ export interface GETSpacesByCreatorIdsResponse extends MultipleSpacesLookupRespo
  */
 export function GETSpacesByCreatorIdsRoute() {
 	return `/spaces/by/creator_ids` as const;
+}
+
+/**
+ * The query for fetching tweets shared in a space
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-tweets
+ */
+export interface GETSpacesIdTweetsQuery extends MultipleTweetsLookupQuery {
+	max_results: number;
+}
+
+/**
+ * The response of fetching tweets shared in a space
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-tweets
+ */
+export interface GETSpacesIdTweetsResponse extends MultipleTweetsLookupResponse {
+	meta: {
+		result_count: number;
+	};
+}
+
+/**
+ * Generates route for fetching tweets shared in a space:
+ * - GET `/spaces/:id/tweets`
+ * @param spaceId The space id whose shared tweets are to be fetched
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-tweets
+ */
+export function GETSpacesIdTweetsRoute(spaceId: string) {
+	return `/spaces/${spaceId}/tweets`;
 }
