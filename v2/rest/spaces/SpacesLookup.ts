@@ -127,7 +127,7 @@ export function GETSpacesByCreatorIdsRoute() {
  * @see https://developer.twitter.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces-id-tweets
  */
 export interface GETSpacesIdTweetsQuery extends MultipleTweetsLookupQuery {
-	max_results: number;
+	max_results?: number;
 }
 
 /**
