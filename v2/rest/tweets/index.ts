@@ -8,6 +8,7 @@ export * from './FilteredStream';
 export * from './HideReplies';
 export * from './Likes';
 export * from './ManageTweets';
+export * from './QuoteTweets';
 export * from './Retweets';
 export * from './SearchTweets';
 export * from './Timelines';
