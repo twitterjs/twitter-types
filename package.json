@@ -8,7 +8,7 @@
 	"scripts": {
 		"build": "tsc",
 		"build:dev": "tsc -w",
-		"doc": "typedoc",
+		"doc": "typedoc --json docs/typedoc-out.json default/index.ts && node scripts/DocsBuilder.mjs",
 		"prepare": "husky install",
 		"lint:check": "eslint . --ext .js,.ts",
 		"lint:fix": "eslint . --ext .js,.ts --fix",
@@ -19,6 +19,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^16.2.3",
 		"@commitlint/config-angular": "^16.2.3",
+		"@discordjs/ts-docgen": "^0.3.4",
 		"@typescript-eslint/eslint-plugin": "^5.16.0",
 		"@typescript-eslint/parser": "^5.16.0",
 		"eslint": "^8.11.0",
