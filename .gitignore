@@ -2,3 +2,4 @@ node_modules
 dist
 docs/docs.json
 docs/typedoc-out.json
+CHANGELOG.md
