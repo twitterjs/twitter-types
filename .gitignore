@@ -1,3 +1,4 @@
 node_modules
 dist
-docs
+docs/docs.json
+docs/typedoc-out.json

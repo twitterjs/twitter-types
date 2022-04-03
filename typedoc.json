@@ -1,7 +1,0 @@
-{
-	"name": "twitter-types",
-	"out": "docs",
-	"theme": "default",
-	"exclude": ["node_modules/**", "dist/**"],
-	"entryPoints": ["default/index.ts"]
-}
