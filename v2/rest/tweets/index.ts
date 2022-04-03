@@ -4,6 +4,7 @@ import type { APIMediaFieldsParameterType } from '../media';
 import type { APIPlaceFieldsParameterType } from '../places';
 import type { APIMedia, APIPlace, APIPoll, APITweet, APIUser } from '../../payloads';
 
+export * from './Bookmarks';
 export * from './FilteredStream';
 export * from './HideReplies';
 export * from './Likes';
