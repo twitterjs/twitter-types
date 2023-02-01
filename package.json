@@ -18,7 +18,7 @@
 		"prepublishOnly": "npm run build"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^17.1.2",
+		"@commitlint/cli": "^17.4.2",
 		"@commitlint/config-angular": "^17.1.0",
 		"@discordjs/ts-docgen": "^0.4.1",
 		"@typescript-eslint/eslint-plugin": "^5.38.1",
